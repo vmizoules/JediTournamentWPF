@@ -135,6 +135,7 @@ namespace StubDataAccessLayer
             users.Add(new Utilisateur("RABERIN", "Alexandre", "KeRNeLith", "qwerty"));
             users.Add(new Utilisateur("PASCAL", "Guillaume", "Gupascal", "azerty2"));
             users.Add(new Utilisateur("CHABALIER", "Nicolas", "Chabs", "azerty3"));
+            users.Add(new Utilisateur("MIZOULES", "Vincent", "vincent", "vincent"));
 
             return users.Where(u => u.Login == login).FirstOrDefault();
         }
