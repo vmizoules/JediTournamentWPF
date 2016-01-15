@@ -8,7 +8,13 @@
         /// <summary>
         /// ID de l'instance.
         /// </summary>
-        public int ID { get; }
+        private int _iD;
+
+        public int ID
+        {
+            get { return _iD; }
+            set { _iD = value; }
+        }
 
         /// <summary>
         /// Constructeur.

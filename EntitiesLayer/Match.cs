@@ -13,11 +13,44 @@
 
     public class Match : EntityObject
     {
-        public int IdJediVainqueur { get; set; }
-        public Jedi Jedi1 { get; }
-        public Jedi Jedi2 { get; }
-        public EPhaseTournoi PhaseTournoi { get; }
-        public Stade Stade { get; }
+        private int _idJediVainqueur;
+
+        public int IdJediVainqueur
+        {
+            get { return _idJediVainqueur; }
+            set { _idJediVainqueur = value; }
+        }
+        private Jedi _jedi1;
+
+        public Jedi Jedi1
+        {
+            get { return _jedi1; }
+            set { _jedi1 = value; }
+        }
+
+        private Jedi _jedi2;
+
+        public Jedi Jedi2
+        {
+            get { return _jedi2; }
+            set { _jedi2 = value; }
+        }
+
+        private EPhaseTournoi _phaseTournoi;
+
+        public EPhaseTournoi PhaseTournoi
+        {
+            get { return _phaseTournoi; }
+            set { _phaseTournoi = value; }
+        }
+        private Stade _stade;
+
+        public Stade Stade
+        {
+            get { return _stade; }
+            set { _stade = value; }
+        }
+
 
         /// <summary>
         /// Constructeur.

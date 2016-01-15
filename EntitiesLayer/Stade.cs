@@ -4,9 +4,28 @@ namespace EntitiesLayer
 {
     public class Stade : EntityObject
     {
-        public int NbPlaces { get; }
-        public List<Caracteristique> Caracteristiques { get; set; }
-        public string Planete { get; }
+        private int _nbPlaces;
+
+        public int NbPlaces
+        {
+            get { return _nbPlaces; }
+            set { _nbPlaces = value; }
+        }
+
+        private List<Caracteristique> _caracteristiques;
+
+        public List<Caracteristique> Caracteristiques
+        {
+            get { return _caracteristiques; }
+            set { _caracteristiques = value; }
+        }
+        private string Planete;
+
+        public string Planete1
+        {
+            get { return Planete; }
+            set { Planete = value; }
+        }
 
         /// <summary>
         /// Constructeur.

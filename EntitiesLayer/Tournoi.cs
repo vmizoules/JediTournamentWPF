@@ -4,8 +4,20 @@ namespace EntitiesLayer
 {
     public class Tournoi : EntityObject
     {
-        public List<Match> Matchs { get; set; }
-        public string Nom { get; }
+        private List<Match> _matchs;
+
+        public List<Match> Matchs
+        {
+            get { return _matchs; }
+            set { _matchs = value; }
+        }
+        private string _nom;
+
+        public string Nom
+        {
+            get { return _nom; }
+            set { _nom = value; }
+        }
 
         /// <summary>
         /// Constructeur.

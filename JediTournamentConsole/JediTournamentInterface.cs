@@ -145,7 +145,7 @@ namespace JediTournamentConsole
         {
             Console.WriteLine("Math opposant " + m.Jedi1.Nom + " a " + m.Jedi2.Nom);
             Console.WriteLine("\\-> en " + m.PhaseTournoi.ToString());
-            Console.WriteLine("\\-> Stade de " + m.Stade.Planete);
+            Console.WriteLine("\\-> Stade de " + m.Stade.Planete1);
             Console.WriteLine("\\-> " + (m.IdJediVainqueur == -1 ? "Le match n'a pas encore été joué" : "Remporté par " + (m.IdJediVainqueur == m.Jedi1.ID ? m.Jedi1.Nom : m.Jedi2.Nom)) + "\n");
         }
 

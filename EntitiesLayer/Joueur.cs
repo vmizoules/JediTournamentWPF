@@ -2,8 +2,21 @@
 {
     public class Joueur : EntityObject
     {
-        public string Nom { get; }
-        public int Score { get; set; }
+        private string _nom;
+
+        public string Nom
+        {
+            get { return _nom; }
+            set { _nom = value; }
+        }
+
+        private int _score;
+
+        public int Score
+        {
+            get { return _score; }
+            set { _score = value; }
+        }
 
         /// <summary>
         /// Constructeur.
