@@ -29,51 +29,12 @@ namespace JediTournamentWPF
         /// </summary>
         private JediTournamentManager m_manager;
 
-        public MainWindow()
-        {
+        public MainWindow() {
             InitializeComponent();
-
             m_manager = new JediTournamentManager();
-        }
+            Page homePage = new HomePage(m_manager);
 
-        private void ExportJedi_Click(object sender, RoutedEventArgs e)
-        {
-            SaveFileDialog dialog = new SaveFileDialog();
-            // Configure la boite de dialogue
-            dialog.InitialDirectory = System.IO.Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            dialog.DefaultExt = ".xml";
-            dialog.Filter = "Fichier XML (*.xml)|*.xml";
-            
-            // Boite de dialogue de sauvegarde
-            DialogResult result = dialog.ShowDialog();
-
-            // Sauvegarde
-            if (result.ToString() == "OK")
-            {
-                m_manager.serializeJedis(dialog.FileName);
-            }
-        }
-
-        private void buttonJedis_Click(object sender, RoutedEventArgs e)
-        {
-            displayPanel.Children.Clear();
-
-            List<Jedi> jedis = m_manager.getAllJedis();
-            foreach(Jedi j in jedis)
-            {
-                TextBlock tb = new TextBlock();
-                DockPanel.SetDock(tb, Dock.Left);
-                tb.Text = j.Nom + " (" + (j.IsSith ? "Sith" : "Non Sith" ) + ")\n";
-                tb.Foreground = new SolidColorBrush(Colors.White);
-
-                displayPanel.Children.Add(tb);
-            }
-        }
-
-        private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            Login win = new Login();
-            win.Show();
+            MainFrame.Navigate(homePage);
         }
     }
 }

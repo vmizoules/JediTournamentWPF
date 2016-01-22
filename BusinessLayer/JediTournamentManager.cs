@@ -49,6 +49,9 @@ namespace BusinessLayer
             return m_data.getAllJedis().Where(j => j.IsSith).Select(j => j.Nom).ToList();
         }
 
+        public List<string> getNoSithsName() {
+            return m_data.getAllJedis().Where(j => !j.IsSith).Select(j => j.Nom).ToList();
+        }
         /// <summary>
         /// Donne la liste des jedis ayant plus de 3 points de Force et 50 points de vie.
         /// </summary>
