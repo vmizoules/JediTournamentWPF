@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntitiesLayer", "EntitiesLa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JediTournamentWPF", "JediTournamentWPF\JediTournamentWPF.csproj", "{5D2D39BF-3F44-4ED6-BFB6-8F41CCA504DD}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{5F061032-E077-4ECA-A4BD-1D0DE1FC6627}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,29 +41,12 @@ Global
 		{5D2D39BF-3F44-4ED6-BFB6-8F41CCA504DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5D2D39BF-3F44-4ED6-BFB6-8F41CCA504DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5D2D39BF-3F44-4ED6-BFB6-8F41CCA504DD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F061032-E077-4ECA-A4BD-1D0DE1FC6627}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F061032-E077-4ECA-A4BD-1D0DE1FC6627}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F061032-E077-4ECA-A4BD-1D0DE1FC6627}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F061032-E077-4ECA-A4BD-1D0DE1FC6627}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(TeamFoundationVersionControl) = preSolution
-		SccNumberOfProjects = 6
-		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
-		SccTeamFoundationServer = https://alexadrien.visualstudio.com/defaultcollection
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = JediTournamentConsole\\JediTournamentConsole.csproj
-		SccProjectName1 = JediTournamentConsole
-		SccLocalPath1 = JediTournamentConsole
-		SccProjectUniqueName2 = BusinessLayer\\BusinessLayer.csproj
-		SccProjectName2 = BusinessLayer
-		SccLocalPath2 = BusinessLayer
-		SccProjectUniqueName3 = StubDataAccessLayer\\StubDataAccessLayer.csproj
-		SccProjectName3 = StubDataAccessLayer
-		SccLocalPath3 = StubDataAccessLayer
-		SccProjectUniqueName4 = EntitiesLayer\\EntitiesLayer.csproj
-		SccProjectName4 = EntitiesLayer
-		SccLocalPath4 = EntitiesLayer
-		SccProjectUniqueName5 = JediTournamentWPF\\JediTournamentWPF.csproj
-		SccProjectName5 = JediTournamentWPF
-		SccLocalPath5 = JediTournamentWPF
 	EndGlobalSection
 EndGlobal

@@ -33,5 +33,13 @@ namespace JediTournamentWPF {
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
             this.NavigationService.GoBack();
         }
+
+        private void comboJedi1_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
+
+        private void comboJedi2_SelectionChanged(object sender, SelectionChangedEventArgs e) {
+
+        }
     }
 }
