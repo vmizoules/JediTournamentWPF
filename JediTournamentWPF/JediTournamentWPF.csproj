@@ -62,12 +62,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="JediControlUser.xaml.cs">
+      <DependentUpon>JediControlUser.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControl1.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="UserControl1.Designer.cs">
       <DependentUpon>UserControl1.cs</DependentUpon>
     </Compile>
+    <Page Include="JediControlUser.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
