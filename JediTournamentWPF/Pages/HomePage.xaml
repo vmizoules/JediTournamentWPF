@@ -44,7 +44,7 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="buttonMatch" Grid.Column="1" FontFamily="Comic Sans MS" Content="Matchs" FontWeight="Bold" Foreground="White" Click="buttonMatch_Click" BorderBrush="White" Style="{DynamicResource ButtonStyle}" Grid.Row="3" Margin="10">
+            <Button x:Name="buttonMatch" Grid.Column="1" FontFamily="Comic Sans MS" Content="Matchs" FontWeight="Bold" Foreground="White" Click="buttonMatch_Click" BorderBrush="White" Grid.Row="3" Margin="10">
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red" Offset="0"/>

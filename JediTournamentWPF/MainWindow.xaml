@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="Jedi Tournament 2016" ResizeMode="CanResize" Width="Auto" Height="Auto" Icon="Resources/icon.png" SizeToContent="Manual" WindowStartupLocation="CenterScreen" WindowState="Maximized" >
     <Window.Background>
-        <ImageBrush ImageSource="../Resources/background.jpg"/>
+        <ImageBrush ImageSource="Resources/background.jpg"/>
     </Window.Background>
     <Frame x:Name="MainFrame" Content="Frame" NavigationUIVisibility = "Hidden" />
 </Window>
