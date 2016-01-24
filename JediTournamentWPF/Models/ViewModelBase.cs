@@ -6,13 +6,9 @@ using System.ComponentModel;
 using System.Diagnostics;
 
 
-namespace BiblioWPF.ViewModel
+namespace JediTournamentWPF.Models
 {
-    /// <summary>
-    /// Base class for all ViewModel classes in the application. Provides support for 
-    /// property changes notification.
-    /// </summary>
-    public abstract class ViewModelBase : INotifyPropertyChanged
+    class ViewModelBase : INotifyPropertyChanged
     {
         /// <summary>
         /// Raised when a property on this object has a new value.
@@ -48,5 +44,6 @@ namespace BiblioWPF.ViewModel
                 this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
         }
+    
     }
 }
