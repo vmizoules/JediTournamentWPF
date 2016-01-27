@@ -56,10 +56,18 @@ namespace JediTournamentWPF.ViewModel {
         public TournoiCreatorViewModel() {
             m_matchs = new ObservableCollection<MatchViewModel>();
 
+            BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
+            IList<Match> list = bm.getAllMatchs();
+
+            foreach (Match m in list)
+                m_matchs.Add(new MatchViewModel(m));
+
+            Console.WriteLine("" + m_matchs.Count);
+            /*    
             // Création de 8 Matchs
-            for(int i = 0; i < 8; i++) {
+            for (int i = 0; i < 8; i++) {
                 m_matchs.Add(new MatchViewModel());
-            }
+            }*/
         }
 
         #region "Commandes du formulaire"

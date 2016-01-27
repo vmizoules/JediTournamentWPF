@@ -25,10 +25,7 @@ namespace JediTournamentWPF.Pages {
             InitializeComponent();
         }
     
-        private void Window_Loaded(object sender, RoutedEventArgs e) {
-            // Récupération du Business Manager
-            JediTournamentManager manager = new JediTournamentManager();
-            
+        private void Page_Loaded(object sender, RoutedEventArgs e) {
             // Initialisation du viewModel
             TournoiCreatorViewModel tmv = new TournoiCreatorViewModel();
 

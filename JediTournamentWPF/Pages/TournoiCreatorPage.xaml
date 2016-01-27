@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:JediTournamentWPF.Pages"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
-      Title="TournoiCreator" Width="Auto" Height="Auto">
+      Title="TournoiCreator" Width="Auto" Height="Auto"  Loaded="Page_Loaded">
 
     <Grid>
         <Grid.RowDefinitions>
@@ -19,7 +19,7 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label Name="Titre" Grid.Row="0" Grid.ColumnSpan="2" Foreground="white" FontSize="24" Margin="0,5,0,0" HorizontalAlignment="Center">Créer un nouveau tournoi</Label>
+        <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Foreground="white" FontSize="24" Margin="0,5,0,0" HorizontalAlignment="Center">Créer un nouveau tournoi</Label>
         <ListView  
             ItemsSource="{Binding Matchs}" 
             SelectedItem="{Binding SelectedItem}"
@@ -27,7 +27,7 @@
             Margin="0,5" Grid.RowSpan="2">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Matchs" DisplayMemberBinding="{Binding Name}"/>
+                    <GridViewColumn Header="Matchs" DisplayMemberBinding="{Binding Descriptor}"/>
                 </GridView>
             </ListView.View>
         </ListView>
