@@ -31,7 +31,9 @@
                 </GridView>
             </ListView.View>
         </ListView>
-        <!-- Ajouter ici le UserControl -->
+        <!-- A ajouter quand ce sera prêt
+        <my:MatchUserControl x:Name="MatchEditor"></my:MatchUserControl>
+        -->
         <Button Name="Add" 
                 Command="{Binding Path=AddCommand}" 
                 Grid.Row="3" Grid.Column="1">Créer le tournoi</Button>
