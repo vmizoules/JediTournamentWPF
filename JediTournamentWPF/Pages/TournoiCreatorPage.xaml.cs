@@ -33,18 +33,8 @@ namespace JediTournamentWPF.Pages {
             this.DataContext = tmv;                     // On donne le contexte des données
         }
 
-
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
             this.NavigationService.GoBack();
         }
-
-        /*
-        private void Window_Closed(object sender, EventArgs e) {
-            ViewModel.ArtistesViewModel avm = null;
-
-            // On recupère le viewModel et on désinscrit l'event
-            avm = (ViewModel.ArtistesViewModel)ucArtistes.DataContext;
-            if (avm != null) avm.CloseNotified -= CloseNotified;
-        }*/
     }
 }

@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JediTournamentWPF.ViewModel {
-    class JediGestionModel : ViewModelBase {
+    class JediGestionViewModel : ViewModelBase {
 
     }
 }

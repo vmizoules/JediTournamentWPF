@@ -52,7 +52,6 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Constructeur du ViewModel
         /// </summary>
-        /// <param name="artistesModel"></param>
         public TournoiCreatorViewModel() {
             m_matchs = new ObservableCollection<MatchViewModel>();
 
