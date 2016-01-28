@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DataAccessLayer
-{
-    public class Class1
-    {
+namespace JediTournamentWPF.ViewModel {
+    class JediGestionViewModel : ViewModelBase {
+
     }
 }

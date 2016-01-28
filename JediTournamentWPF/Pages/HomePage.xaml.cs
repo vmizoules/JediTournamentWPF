@@ -71,7 +71,7 @@ namespace JediTournamentWPF {
         }
 
         private void buttonTournoi_Click(object sender, RoutedEventArgs e) {
-            NewTournamentPage nextpage = new NewTournamentPage();
+            NewTournoiPage nextpage = new NewTournoiPage();
             NavigationService.Navigate(nextpage);
         }
 

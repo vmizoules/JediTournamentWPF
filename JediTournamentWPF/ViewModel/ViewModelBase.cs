@@ -6,7 +6,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 
 
-namespace BiblioWPF.ViewModel
+namespace JediTournamentWPF.ViewModel
 {
     /// <summary>
     /// Base class for all ViewModel classes in the application. Provides support for 
