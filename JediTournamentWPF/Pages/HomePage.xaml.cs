@@ -65,10 +65,6 @@ namespace JediTournamentWPF {
                 displayPanel.Children.Add(tb);
             }*/
         }
-        private void buttonMatch_Click(object sender, RoutedEventArgs e) {
-            MatchCreator nextpage = new MatchCreator(m_manager);
-            NavigationService.Navigate(nextpage);
-        }
 
         private void buttonTournoi_Click(object sender, RoutedEventArgs e) {
             NewTournoiPage nextpage = new NewTournoiPage();

@@ -36,7 +36,7 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <ListBox x:Name="JediList" Margin="10,10.2,10.2,10" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding Matchs}" SelectedItem="{Binding SelectedItem}" />
+        <ListBox x:Name="JediList" Margin="10,10.2,10.2,10" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding Jedis}" SelectedItem="{Binding SelectedItem}" />
         <UserControls:JediWriteUserControl Grid.Column="2" HorizontalAlignment="Left" Height="223" Margin="9.6,10.2,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="447" Grid.ColumnSpan="3" DataContext="{Binding SelectedItem}"/>
     </Grid>
 </Page>
