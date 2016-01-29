@@ -31,7 +31,7 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Getter/Setter pour le nom
         /// </summary>
-        public string Nom
+        public string Name
         {
 
             get { return m_jedi.Nom; }

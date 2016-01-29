@@ -36,7 +36,17 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <ListBox x:Name="JediList" Margin="10,10.2,10.2,10" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding Jedis}" SelectedItem="{Binding SelectedItem}" />
+        <ListView x:Name="JediList" 
+            ItemsSource="{Binding Jedis}" 
+            SelectedItem="{Binding SelectedItem}"
+            Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" 
+            Margin="10,10.2,10.2,10">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Name}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
         <UserControls:JediWriteUserControl Grid.Column="2" HorizontalAlignment="Left" Height="223" Margin="9.6,10.2,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="447" Grid.ColumnSpan="3" DataContext="{Binding SelectedItem}"/>
     </Grid>
 </Page>
