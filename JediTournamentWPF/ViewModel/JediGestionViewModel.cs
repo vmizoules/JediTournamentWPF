@@ -173,4 +173,3 @@ namespace JediTournamentWPF.ViewModel {
     }
 
 }
-}

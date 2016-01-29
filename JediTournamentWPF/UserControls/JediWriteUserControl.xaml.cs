@@ -13,15 +13,12 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JediTournamentWPF
-{
+namespace JediTournamentWPF.UserControls {
     /// <summary>
-    /// Logique d'interaction pour JediControlUser.xaml
+    /// Logique d'interaction pour JediWriteUserControl.xaml
     /// </summary>
-    public partial class JediControlUser : UserControl
-    {
-        public JediControlUser()
-        {
+    public partial class JediWriteUserControl : UserControl {
+        public JediWriteUserControl() {
             InitializeComponent();
         }
     }

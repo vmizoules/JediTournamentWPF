@@ -4,6 +4,7 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:JediTournamentWPF.Pages"
+      xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls"
       xmlns:JediTournamentWPF="clr-namespace:JediTournamentWPF" x:Class="JediTournamentWPF.Pages.GestionJediPage"
       mc:Ignorable="d" 
       d:DesignHeight="364.151" d:DesignWidth="776.415"
@@ -35,16 +36,7 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="OKButton" Content="OK" Grid.Column="0" Margin="10" Style="{DynamicResource ButtonStyle}" Foreground="White" BorderBrush="White" FontFamily="Comic Sans MS" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Row="5" Click="OKButton_Click">
-            <Button.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="Red" Offset="0"/>
-                    <GradientStop Color="Black" Offset="1"/>
-                    <GradientStop Color="#FF500000" Offset="0.618"/>
-                </RadialGradientBrush>
-            </Button.Background>
-        </Button>
         <ListBox x:Name="JediList" Margin="10,10.2,10.2,10" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" ItemsSource="{Binding Matchs}" SelectedItem="{Binding SelectedItem}" />
-        <JediTournamentWPF:JediControlUser Grid.Column="2" HorizontalAlignment="Left" Height="223" Margin="9.6,10.2,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="447" Grid.ColumnSpan="3" DataContext="{Binding SelectedItem}"/>
+        <UserControls:JediWriteUserControl Grid.Column="2" HorizontalAlignment="Left" Height="223" Margin="9.6,10.2,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="447" Grid.ColumnSpan="3" DataContext="{Binding SelectedItem}"/>
     </Grid>
 </Page>

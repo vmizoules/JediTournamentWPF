@@ -66,7 +66,7 @@ namespace JediTournamentWPF.ViewModel {
             get { return m_selectedJedi; }
             set
             {
-                m_match.Jedi1 = value;
+                m_selectedJedi = value;
                 base.OnPropertyChanged("Jedi1");
             }
         }

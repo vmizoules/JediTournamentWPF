@@ -4,8 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace JediTournamentWPF.Models
-{
+namespace JediTournamentWPF.ViewModel {
     class CaracteristiqueViewModel : ViewModelBase
     {
         private EntitiesLayer.Caracteristique _carac;
@@ -22,9 +21,10 @@ namespace JediTournamentWPF.Models
         {
 
             get { return Carac.Nom; }
-            set {
+            set
+            {
                 if (value == Carac.Nom) return;
-                    Carac.Nom = value;
+                Carac.Nom = value;
                 OnPropertyChanged("Nom");
             }
         }
@@ -33,13 +33,14 @@ namespace JediTournamentWPF.Models
         {
 
             get { return Carac.Valeur; }
-            set {
+            set
+            {
                 if (value == Carac.Valeur) return;
                 Carac.Valeur = value;
                 OnPropertyChanged("Nom");
-                 }
+            }
         }
-        public CaracteristiqueViewModel(EntitiesLayer.Caracteristique caract){
+        public CaracteristiqueViewModel(EntitiesLayer.Caracteristique caract) {
             Carac = caract;
         }
     }
