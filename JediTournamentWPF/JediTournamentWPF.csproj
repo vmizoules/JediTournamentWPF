@@ -62,8 +62,17 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="UserControls\JediEditorUserControl.xaml.cs">
+      <DependentUpon>JediEditorUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\JediThumbnailUserControl.xaml.cs">
+      <DependentUpon>JediThumbnailUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MatchUserControl.xaml.cs">
       <DependentUpon>MatchUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StadeEditorUserControl.xaml.cs">
+      <DependentUpon>StadeEditorUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\JediGestionViewModel.cs" />
     <Compile Include="ViewModel\JediViewModel.cs" />
@@ -106,6 +115,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\JediEditorUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\JediThumbnailUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\JediUserControl.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\MatchUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\StadeEditorUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
