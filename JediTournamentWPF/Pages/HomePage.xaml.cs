@@ -50,7 +50,7 @@ namespace JediTournamentWPF {
         }*/
 
         private void buttonJedis_Click(object sender, RoutedEventArgs e) {
-            GestionJediPage nextpage = new GestionJediPage();
+            GestionJediPage nextpage = new GestionJediPage(m_manager);
             NavigationService.Navigate(nextpage);
 
             /*displayPanel.Children.Clear();
@@ -76,7 +76,7 @@ namespace JediTournamentWPF {
         }
 
         private void buttonStades_Click(object sender, RoutedEventArgs e) {
-            GestionStadePage nextpage = new GestionStadePage();
+            GestionStadePage nextpage = new GestionStadePage(m_manager);
             NavigationService.Navigate(nextpage);
         }
     }

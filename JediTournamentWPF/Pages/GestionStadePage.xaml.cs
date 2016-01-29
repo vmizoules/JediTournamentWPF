@@ -12,14 +12,36 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using EntitiesLayer;
+using BusinessLayer;
 
 namespace JediTournamentWPF.Pages {
     /// <summary>
     /// Logique d'interaction pour GestionStadePage.xaml
     /// </summary>
     public partial class GestionStadePage : Page {
-        public GestionStadePage() {
+
+        private JediTournamentManager m_manager;
+        public GestionStadePage(JediTournamentManager manager)
+        {
+            m_manager = manager;
             InitializeComponent();
+            StadeList.ItemsSource = m_manager.getStades();
+        }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
+        }
+
+        private void JediList_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void OKButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.NavigationService.GoBack();
         }
     }
 }

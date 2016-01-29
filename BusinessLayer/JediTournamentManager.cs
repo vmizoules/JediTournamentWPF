@@ -41,6 +41,15 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// Donne la liste des noms de tous les jedis.
+        /// </summary>
+        /// <returns>Liste des noms de tous les jedis.</returns>
+        public List<string> getAllJedisNames()
+        {
+            return m_data.getAllJedis().Select(j => j.Nom).ToList();
+        }
+
+        /// <summary>
         /// Donne la liste des noms des jedis siths.
         /// </summary>
         /// <returns>Liste des noms des jedis siths.</returns>
