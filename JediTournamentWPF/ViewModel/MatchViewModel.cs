@@ -1,6 +1,7 @@
 ﻿using EntitiesLayer;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,13 +9,8 @@ using System.Threading.Tasks;
 namespace JediTournamentWPF.ViewModel {
     class MatchViewModel : ViewModelBase {
 
+        // Attribute of the model
         private Match m_match;
-
-        public Match Match
-        {
-            get { return m_match; }
-            private set{ m_match = value; }
-        }
 
         public MatchViewModel() {
 
@@ -24,15 +20,86 @@ namespace JediTournamentWPF.ViewModel {
 
         public MatchViewModel(Match m) {
             m_match = m;
+            // Initialiser m_jedi et m_sith
         }
 
         #region "Propriétés accessibles, mappables par la View"
 
+        /// <summary>
+        /// A "ToString" for a Match
+        /// </summary>
         public string Descriptor
         {
             get { return m_match.Jedi1.Nom + " vs " + m_match.Jedi2.Nom; }
         }
 
+        // List of Jedis
+        private ObservableCollection<JediViewModel> m_jedis;
+
+        /// <summary>
+        /// Getters to have the list of Jedis
+        /// </summary>
+        public ObservableCollection<JediViewModel> Jedis
+        {
+            get { return m_jedis; }
+        }
+
+        // List of Siths
+        private ObservableCollection<JediViewModel> m_siths;
+
+        /// <summary>
+        /// Getters to have the list of Siths
+        /// </summary>
+        public ObservableCollection<JediViewModel> Siths
+        {
+            get { return m_siths; }
+        }
+
+        // Jedi selected
+        private JediViewModel m_selectedJedi;
+
+        /// <summary>
+        /// Getter and setter for selected Jedi
+        /// </summary>
+        public JediViewModel SelectedJedi
+        {
+            get { return m_selectedJedi; }
+            set
+            {
+                m_match.Jedi1 = value;
+                base.OnPropertyChanged("Jedi1");
+            }
+        }
+
+        // Sith selected
+        private JediViewModel m_selectedSith;
+
+        /// <summary>
+        /// Getter and setter for selected Jedi
+        /// </summary>
+        public JediViewModel SelectedSith
+        {
+            get { return m_selectedSith; }
+            set
+            {
+                m_selectedSith = value;
+                OnPropertyChanged("SelectedSith");
+            }
+        }
+
+        private StadeViewModel m_selectedStade;
+
+        public StadeViewModel SelectedStade
+        {
+            get { return m_selectedStade; }
+            set
+            {
+                m_selectedStade = value;
+                OnPropertyChanged("SelectedStade");
+            }
+        }
+
+        /*
         /// <summary>
         /// First Jedi in the match
         /// Must be a jedi
@@ -73,6 +140,7 @@ namespace JediTournamentWPF.ViewModel {
                 base.OnPropertyChanged("Stade");
             }
         }
+        */
 
         #endregion
     }

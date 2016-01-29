@@ -66,8 +66,10 @@
       <DependentUpon>MatchUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\JediGestionViewModel.cs" />
+    <Compile Include="ViewModel\JediViewModel.cs" />
     <Compile Include="ViewModel\MatchViewModel.cs" />
     <Compile Include="ViewModel\StadeGestionModel.cs" />
+    <Compile Include="ViewModel\StadeViewModel.cs" />
     <Compile Include="ViewModel\TournoiCreatorViewModel.cs" />
     <Compile Include="Pages\GestionJediPage.xaml.cs">
       <DependentUpon>GestionJediPage.xaml</DependentUpon>

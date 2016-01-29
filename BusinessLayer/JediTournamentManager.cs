@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using StubDataAccessLayer;
+using StubDataAccessLayer;          // TODO : échanger avec le DataAccessLayer
 using EntitiesLayer;
 using System.IO;
 using System.Xml.Serialization;

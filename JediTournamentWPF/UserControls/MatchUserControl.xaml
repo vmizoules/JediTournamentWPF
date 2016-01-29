@@ -31,10 +31,10 @@
 
             <!-- TODO : Fonctions de binding à finir -->
         </Grid>
-        <ComboBox x:Name="Jedi1ComboBox" Margin="10,5" Grid.Row="1"/>
-        <ComboBox x:Name="Jedi2ComboBox" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top" Height="27" Grid.Column="1"/>
-        <JediTournamentWPF:JediControlUser x:Name="Jedi1UserControl" Margin="10" Grid.Row="2"/>
-        <JediTournamentWPF:JediControlUser x:Name="Jedi2UserControl" Margin="10" Grid.Row="2" Grid.Column="1"/>
+        <ComboBox x:Name="Jedi1ComboBox" Margin="10,5" Grid.Row="1" DataContext="{Binding Jedis}"/>
+        <ComboBox x:Name="Jedi2ComboBox" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top" Height="27" Grid.Column="1" DataContext="{Binding Siths}"/>
+        <JediTournamentWPF:JediControlUser x:Name="Jedi1UserControl" Margin="10" Grid.Row="2" DataContext="{Binding Jedi1}"/>
+        <JediTournamentWPF:JediControlUser x:Name="Jedi2UserControl" Margin="10" Grid.Row="2" DataContext="{Binding Jedi2}" Grid.Column="1"/>
         <Grid Grid.ColumnSpan="2" Margin="10" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"/>
