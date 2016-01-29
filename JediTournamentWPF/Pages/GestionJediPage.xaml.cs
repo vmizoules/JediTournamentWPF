@@ -22,7 +22,6 @@ namespace JediTournamentWPF.Pages {
     /// </summary>
     public partial class GestionJediPage : Page {
 
-        private JediTournamentManager m_manager;
         public GestionJediPage(JediTournamentManager manager) 
         {
             InitializeComponent();
@@ -32,14 +31,11 @@ namespace JediTournamentWPF.Pages {
             // Initialisation du viewModel
             JediGestionViewModel jgvm = new JediGestionViewModel();
             this.DataContext = jgvm;
+            jgvm.CancelNotified += onCancel;
         }
 
-
-        /*
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
-        {
+        private void onCancel(Object sender, EventArgs args) {
             this.NavigationService.GoBack();
         }
-        */
     }
 }

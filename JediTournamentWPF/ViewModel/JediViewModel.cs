@@ -22,9 +22,10 @@ namespace JediTournamentWPF.ViewModel {
         public JediViewModel(Jedi jedi) {
             m_jedi = jedi;
             _carac = new ObservableCollection<CaracteristiqueViewModel>();
-            foreach(Caracteristique c in m_jedi.Caracteristiques) {
+            // TODO : voir pour les caractéristiques : initialisation
+            /*foreach(Caracteristique c in m_jedi.Caracteristiques) {
                 _carac.Add(new CaracteristiqueViewModel(c));
-            }
+            }*/
         }
 
         /// <summary>
