@@ -51,7 +51,7 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Getter/setter pour la planete
         /// </summary>
-        public string planete
+        public string Planete
         {
             get { return m_stades.Planete1; }
             private set

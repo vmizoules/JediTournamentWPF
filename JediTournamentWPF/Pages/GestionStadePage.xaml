@@ -44,7 +44,7 @@
             Margin="10,10.2,10.2,10" >
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    <TextBlock Text="{Binding Name}" />
+                    <TextBlock Text="{Binding Planete}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
