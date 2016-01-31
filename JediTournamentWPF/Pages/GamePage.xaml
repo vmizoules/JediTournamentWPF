@@ -10,9 +10,10 @@
       Title="GamePage">
 
     <Grid>
-        <DockPanel HorizontalAlignment="Left" LastChildFill="True" Width="776">
-            <StackPanel x:Name="explanations" Height="364" Orientation="Vertical" VerticalAlignment="Top" DockPanel.Dock="Right" Width="120">
-                <TextBlock TextWrapping="Wrap" Text="Explications" HorizontalAlignment="Center" Foreground="White" FontSize="20"/>
+        <DockPanel x:Name="Container" HorizontalAlignment="Left" LastChildFill="True" Width="776">
+            <StackPanel x:Name="explanations" Height="364" Orientation="Vertical" VerticalAlignment="Top" DockPanel.Dock="Right" Width="120" Visibility="Hidden">
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" FontSize="20">Explications</TextBlock>
+                <!-- TODO : ajouter les explications -->
             </StackPanel>
             <Grid DockPanel.Dock="Bottom" Height="50">
                 <Grid.ColumnDefinitions>
@@ -23,7 +24,7 @@
                     <Button x:Name="cancelButton" Content="Return"/>
                 </Viewbox>
                 <Viewbox Stretch="Uniform" Grid.Column="1">
-                    <Button x:Name="GoButton" Content="Go !"/>
+                    <Button x:Name="GoButton" Content="Go !" Click="countdown"/>
                 </Viewbox>
                 
             </Grid>

@@ -65,6 +65,9 @@
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\CountDownUserControl.xaml.cs">
+      <DependentUpon>CountDownUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\JediReadUserControl.xaml.cs">
       <DependentUpon>JediReadUserControl.xaml</DependentUpon>
     </Compile>
@@ -144,6 +147,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StyleDictionnary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\CountDownUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

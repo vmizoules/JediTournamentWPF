@@ -21,20 +21,28 @@ namespace JediTournamentWPF.Pages {
     /// Logique d'interaction pour NewTournoiPage.xaml
     /// </summary>
     public partial class NewTournoiPage : Page {
+
+        private TournoiCreatorViewModel m_tmv;
         public NewTournoiPage() {
             InitializeComponent();
         }
     
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             // Initialisation du viewModel
-            TournoiCreatorViewModel tmv = new TournoiCreatorViewModel();
+            m_tmv = new TournoiCreatorViewModel();
 
             // Abonnement à l'évènement pour revenir en arrière
-            this.DataContext = tmv;                     // On donne le contexte des données
+            this.DataContext = m_tmv;                     // On donne le contexte des données
+            m_tmv.CancelNotified += onCancel;
+            m_tmv.CreateNotified += onCreate;
         }
 
-        private void cancelButton_Click(object sender, RoutedEventArgs e) {
+        private void onCancel(Object sender, EventArgs args) {
             this.NavigationService.GoBack();
         }
-    }
+
+        private void onCreate(Object sender, EventArgs args) {
+            GamePage nextPage = new GamePage(m_tmv.Tournoi, m_tmv.Manual);
+            this.NavigationService.Navigate();
+        }
 }
