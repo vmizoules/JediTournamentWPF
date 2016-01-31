@@ -39,6 +39,6 @@
 
 
         <Button x:Name="Cancel" Grid.Row="3" Click="cancelButton_Click" Content="Cancel" Margin="10"/>
-        <UserControls:MatchWriteUserControl Grid.Column="1" Margin="0,5,1,0" Grid.Row="1" VerticalAlignment="Top" Height="195" Grid.RowSpan="2"/>
+        <UserControls:MatchWriteUserControl Grid.Column="1" Margin="0,5,1,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2" DataContext="{Binding SelectedItem}"/>
     </Grid>
 </Page>

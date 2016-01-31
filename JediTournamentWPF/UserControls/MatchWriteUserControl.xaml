@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              xmlns:JediTournamentWPF="clr-namespace:JediTournamentWPF" x:Class="JediTournamentWPF.UserControls.MatchWriteUserControl"
              mc:Ignorable="d"
-             d:DesignHeight="480              " d:DesignWidth="270"
+             d:DesignHeight="480" d:DesignWidth="270"
              Width="Auto" Height="Auto">
     <Grid>
         <Grid.RowDefinitions>
@@ -21,7 +21,7 @@
         </Grid.ColumnDefinitions>
         <Label x:Name="title" Grid.ColumnSpan="2"
 			Foreground="white" FontSize="24" HorizontalContentAlignment="Center"
-			Content="{Binding Description}"/>
+			Content="{Binding Descriptor}"/>
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*"/>
