@@ -19,8 +19,14 @@ namespace JediTournamentWPF.ViewModel {
         }
 
         public MatchViewModel(Match m) {
+            // displayed match
             m_match = m;
+
             // Initialiser m_jedi et m_sith
+
+            //BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
+            //m_jedis = new ObservableCollection<JediViewModel>(bm.getAllJedis());
+
         }
 
         #region "Propriétés accessibles, mappables par la View"
