@@ -26,7 +26,7 @@ namespace JediTournamentWPF.Pages {
         public NewTournoiPage() {
             InitializeComponent();
         }
-    
+
         private void Page_Loaded(object sender, RoutedEventArgs e) {
             // Initialisation du viewModel
             m_tmv = new TournoiCreatorViewModel();
@@ -42,7 +42,8 @@ namespace JediTournamentWPF.Pages {
         }
 
         private void onCreate(Object sender, EventArgs args) {
-            GamePage nextPage = new GamePage(m_tmv.Tournoi, m_tmv.Manual);
-            this.NavigationService.Navigate();
+            GamePage nextPage = new GamePage(m_tmv.Tournoi, m_tmv.Mode);
+            this.NavigationService.Navigate(nextPage);
         }
+    }
 }

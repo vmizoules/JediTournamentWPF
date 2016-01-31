@@ -4,11 +4,12 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
+             Width="Auto" Height="Auto"
              d:DesignHeight="364.151" d:DesignWidth="776.415">
     <Grid>
         <Viewbox>
-            <TextBlock x:Name="textBlock" TextWrapping="Wrap" Text="Ready ?" Foreground="White"/>
+            <TextBlock x:Name="displayText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Ready ?" Foreground="White"/>
         </Viewbox>
 
     </Grid>

@@ -90,7 +90,7 @@ namespace JediTournamentWPF.ViewModel {
             BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
             IList<Match> list = bm.getAllMatchs();                              // Création tournoi
 
-            m_tournoi = new Tournoi(1, "Yolo", list);
+            m_tournoi = new Tournoi(1, "Yolo", null);                           // TODO : à modifier absolument !
 
             foreach (Match m in list)
                 m_matchs.Add(new MatchViewModel(m));

@@ -34,11 +34,11 @@
         </ListView>
 
         <Button x:Name="Add" 
-			Command="{Binding AddCommand}" 
+			Command="{Binding CreateCommand}" 
 			Grid.Row="3" Grid.Column="1" Content="Créer le tournoi" Margin="10"/>
 
 
-        <Button x:Name="Cancel" Grid.Row="3" Click="cancelButton_Click" Content="Cancel" Margin="10"/>
+        <Button x:Name="Cancel" Grid.Row="3" Command="{Binding CancelCommand}" Content="Cancel" Margin="10"/>
         <UserControls:MatchWriteUserControl Grid.Column="1" Margin="0,5,1,0" Grid.Row="1" VerticalAlignment="Top" Grid.RowSpan="2" DataContext="{Binding SelectedItem}"/>
     </Grid>
 </Page>

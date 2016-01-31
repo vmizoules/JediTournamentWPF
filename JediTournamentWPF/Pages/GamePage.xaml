@@ -6,11 +6,12 @@
       xmlns:local="clr-namespace:JediTournamentWPF.Pages"
       xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls" x:Class="JediTournamentWPF.Pages.GamePage"
       mc:Ignorable="d" 
+      Width="Auto" Height="Auto"
       d:DesignHeight="364.151" d:DesignWidth="776.415"
       Title="GamePage">
 
     <Grid>
-        <DockPanel x:Name="Container" HorizontalAlignment="Left" LastChildFill="True" Width="776">
+        <DockPanel x:Name="Container" LastChildFill="True">
             <StackPanel x:Name="explanations" Height="364" Orientation="Vertical" VerticalAlignment="Top" DockPanel.Dock="Right" Width="120" Visibility="Hidden">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" FontSize="20">Explications</TextBlock>
                 <!-- TODO : ajouter les explications -->
@@ -26,13 +27,9 @@
                 <Viewbox Stretch="Uniform" Grid.Column="1">
                     <Button x:Name="GoButton" Content="Go !" Click="countdown"/>
                 </Viewbox>
-                
+
             </Grid>
-
-            
             <UserControls:MatchReadUserControl VerticalAlignment="Top" DockPanel.Dock="Left" Width="651"/>
-
-
         </DockPanel>
 
     </Grid>
