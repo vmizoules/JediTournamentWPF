@@ -9,14 +9,12 @@
     <Grid>
         <DockPanel LastChildFill="True">
             <TextBlock x:Name="matchDescriptor" Height="57" TextWrapping="Wrap" Text="{Binding Descriptor}" DockPanel.Dock="Top" Width="597" Foreground="White" HorizontalAlignment="Center"/>
+            <local:StadeReadUserControl Height="49" DockPanel.Dock="Bottom" Margin="10,194,10,0"/>
             <StackPanel Height="175" VerticalAlignment="Top" Width="600" Orientation="Horizontal" HorizontalAlignment="Center">
-                <local:JediReadUserControl Width="270"/>
-                <TextBlock x:Name="vs" Text="V.S." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,114,0,113" Width="60"/>
-                <local:JediReadUserControl Width="270"/>
-                <local:StadeUserControl Width="100"/>
+                <local:JediReadUserControl Width="252" DataContext="{Binding SelectedJedi}"/>
+                <TextBlock x:Name="vs" Text="V.S." Foreground="White" HorizontalAlignment="Center" Width="60" FontSize="26.667"/>
+                <local:JediReadUserControl Width="261" DataContext="{Binding SelectedSith}"/>
             </StackPanel>
-            <local:StadeReadUserControl Height="96" VerticalAlignment="Top" DockPanel.Dock="Bottom" Margin="0,0,-264,0"/>
         </DockPanel>
-
     </Grid>
 </UserControl>
