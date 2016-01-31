@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EntitiesLayer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,13 +14,18 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace JediTournamentWPF.UserControls {
+namespace JediTournamentWPF.Pages {
     /// <summary>
-    /// Logique d'interaction pour StadeUserControl.xaml
+    /// Logique d'interaction pour GamePage.xaml
     /// </summary>
-    public partial class StadeUserControl : UserControl {
-        public StadeUserControl() {
+    public partial class GamePage : Page {
+        public GamePage() {
             InitializeComponent();
+        }
+
+        public GamePage(Tournoi t, bool b) {
+            InitializeComponent();
+            
         }
     }
 }

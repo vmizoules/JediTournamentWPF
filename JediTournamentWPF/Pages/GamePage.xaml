@@ -1,0 +1,18 @@
+﻿<Page
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:JediTournamentWPF.Pages"
+      xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls" x:Class="JediTournamentWPF.Pages.GamePage"
+      mc:Ignorable="d" 
+      d:DesignHeight="364.151" d:DesignWidth="776.415"
+      Title="GamePage">
+
+    <Grid>
+        <DockPanel HorizontalAlignment="Left" LastChildFill="False" Width="776">
+            <TextBlock x:Name="textBlock" Height="364" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top"/>
+        </DockPanel>
+
+    </Grid>
+</Page>

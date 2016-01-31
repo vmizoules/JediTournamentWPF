@@ -62,14 +62,23 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\JediReadUserControl.xaml.cs">
       <DependentUpon>JediReadUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\JediWriteUserControl.xaml.cs">
       <DependentUpon>JediWriteUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MatchUserControl.xaml.cs">
-      <DependentUpon>MatchUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\MatchReadUserControl.xaml.cs">
+      <DependentUpon>MatchReadUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\MatchWriteUserControl.xaml.cs">
+      <DependentUpon>MatchWriteUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\StadeReadUserControl.xaml.cs">
+      <DependentUpon>StadeReadUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\StadeWriteUserControl.xaml.cs">
       <DependentUpon>StadeWriteUserControl.xaml</DependentUpon>
@@ -95,9 +104,10 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="UserControls\StadeUserControl.xaml.cs">
-      <DependentUpon>StadeUserControl.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Pages\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GestionJediPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -145,11 +155,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\MatchUserControl.xaml">
+    <Page Include="UserControls\MatchReadUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\StadeUserControl.xaml">
+    <Page Include="UserControls\MatchWriteUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\StadeReadUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
