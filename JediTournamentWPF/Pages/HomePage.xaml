@@ -53,7 +53,7 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="buttonHisto" Grid.Column="1" FontFamily="Comic Sans MS" Content="Historique" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="3" BorderBrush="White" Grid.Row="5" Margin="10">
+            <Button x:Name="buttonHisto" Grid.Column="1" FontFamily="Comic Sans MS" Content="Historique" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="3" BorderBrush="White" Grid.Row="5" Margin="10" Click="buttonHisto_Click">
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red" Offset="0"/>

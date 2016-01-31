@@ -79,5 +79,10 @@ namespace JediTournamentWPF {
             GestionStadePage nextpage = new GestionStadePage();
             NavigationService.Navigate(nextpage);
         }
+
+        private void buttonHisto_Click(object sender, RoutedEventArgs e) {
+            TournamentHistoryPage nextpage = new TournamentHistoryPage();
+            NavigationService.Navigate(nextpage);
+        }
     }
 }

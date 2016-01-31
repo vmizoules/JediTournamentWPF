@@ -62,12 +62,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Pages\TournamentHistoryPage.xaml.cs">
+      <DependentUpon>TournamentHistoryPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\JediThumbnailUserControl.xaml.cs">
+      <DependentUpon>JediThumbnailUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\MatchUserControl.xaml.cs">
       <DependentUpon>MatchUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\JediGestionViewModel.cs" />
     <Compile Include="ViewModel\MatchViewModel.cs" />
     <Compile Include="ViewModel\StadeGestionModel.cs" />
+    <Compile Include="ViewModel\TournamentHistoryViewModel.cs" />
     <Compile Include="ViewModel\TournoiCreatorViewModel.cs" />
     <Compile Include="Pages\GestionJediPage.xaml.cs">
       <DependentUpon>GestionJediPage.xaml</DependentUpon>
@@ -100,7 +107,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\TournamentHistoryPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\TournoiCreatorPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\JediThumbnailUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
