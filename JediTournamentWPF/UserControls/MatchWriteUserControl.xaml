@@ -31,8 +31,19 @@
 
             <!-- TODO : Fonctions de binding à finir -->
         </Grid>
-        <ComboBox x:Name="Jedi1ComboBox" Margin="10,5" Grid.Row="1" DataContext="{Binding Jedis}"/>
-        <ComboBox x:Name="Jedi2ComboBox" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top" Height="27" Grid.Column="1" DataContext="{Binding Siths}"/>
+        <ComboBox
+            x:Name="Jedi1ComboBox" Margin="10,5" Grid.Row="1"
+            ItemsSource="{Binding Path=Jedis}"
+            DisplayMemberPath="Name"
+            SelectedValuePath="Name"
+            SelectedValue="{Binding Path=SelectedJedi}"
+            />
+        <ComboBox x:Name="Jedi2ComboBox" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top" Height="27" Grid.Column="1"
+            ItemsSource="{Binding Path=Siths}"
+            DisplayMemberPath="Name"
+            SelectedValuePath="Name"
+            SelectedValue="{Binding Path=SelectedSith}"
+            />
         <local:JediReadUserControl x:Name="Jedi1UserControl" Margin="10" Grid.Row="2" DataContext="{Binding Jedi1}"/>
         <local:JediReadUserControl x:Name="Jedi2UserControl" Margin="10" Grid.Row="2" DataContext="{Binding Jedi2}" Grid.Column="1"/>
         <Grid Grid.ColumnSpan="2" Margin="10" Grid.Row="3">
