@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="267">
     <Grid Margin="0,0,10,0">
-        <Label x:Name="label" Content="Planete : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="65"/>
+        <Label x:Name="label" Content="Planete : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="128,14,0,0" TextWrapping="Wrap" Text="{Binding Planete}" VerticalAlignment="Top" Width="119"/>
-        <Label x:Name="label1" Content="Nombre de places :" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.303,0.404"/>
-        <Label x:Name="label2" Content="Caracteristiques :" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.737,-1.385"/>
+        <Label x:Name="label1" Content="Nombre de places :" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.303,0.404" Foreground="White"/>
+        <Label x:Name="label2" Content="Caracteristiques :" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.737,-1.385" Foreground="White"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="128,53,0,0" TextWrapping="Wrap" Text="{Binding NbPlaces }" VerticalAlignment="Top" Width="49"/>
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="149" Margin="10,141,0,0" VerticalAlignment="Top" Width="237">
             <ListView.View>

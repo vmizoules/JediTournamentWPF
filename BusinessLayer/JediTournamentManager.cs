@@ -83,6 +83,15 @@ namespace BusinessLayer
         }
 
         /// <summary>
+        /// Donne la liste de tous les stades.
+        /// </summary>
+        /// <returns>Liste de tous les stades.</returns>
+        public List<Stade> getAllStades()
+        {
+            return m_data.getAllStades();
+        }
+
+        /// <summary>
         /// Donne la liste des matchs qui ont eu lieu dans un stade de plus de 200 places et ou deux Siths se sont affrontés.
         /// </summary>
         /// <returns>Liste des matchs qui ont eu lieu dans un stade de plus de 200 places et ou deux Siths se sont affrontés.</returns>
