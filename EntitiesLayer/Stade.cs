@@ -6,6 +6,17 @@ namespace EntitiesLayer
     {
         private int _nbPlaces;
 
+        /// <summary>
+        /// Constructeur par défaut.
+        /// </summary>
+        public Stade()
+            : base(0)
+        {
+            NbPlaces = 0;
+            Planete = "Default Name";
+            Caracteristiques = null;
+        }
+
         public int NbPlaces
         {
             get { return _nbPlaces; }

@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EntitiesLayer;
 using BusinessLayer;
+using JediTournamentWPF.ViewModel;
 
 namespace JediTournamentWPF.Pages {
     /// <summary>
@@ -21,25 +22,20 @@ namespace JediTournamentWPF.Pages {
     /// </summary>
     public partial class GestionStadePage : Page {
 
-        private JediTournamentManager m_manager;
         public GestionStadePage(JediTournamentManager manager)
         {
-            m_manager = manager;
+            //m_manager = manager;
             InitializeComponent();
-            StadeList.ItemsSource = m_manager.getStades();
+            //StadeList.ItemsSource = m_manager.getStades();
         }
-
-        private void cancelButton_Click(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            this.NavigationService.GoBack();
+            // Initialisation du viewModel
+            StadeGestionModel svm = new StadeGestionModel();
+            this.DataContext = svm;
+            svm.CancelNotified += onCancel;
         }
-
-        private void JediList_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
-        private void OKButton_Click(object sender, RoutedEventArgs e)
+        private void onCancel(Object sender, EventArgs args)
         {
             this.NavigationService.GoBack();
         }

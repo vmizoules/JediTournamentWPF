@@ -13,7 +13,7 @@
                 <local:JediReadUserControl Width="270"/>
                 <TextBlock x:Name="vs" Text="V.S." Foreground="White" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,114,0,113" Width="60"/>
                 <local:JediReadUserControl Width="270"/>
-                <local:StadeUserControl Width="100"/>
+                <local:StadeReadUserControl Width="100"/>
             </StackPanel>
             <local:StadeReadUserControl Height="96" VerticalAlignment="Top" DockPanel.Dock="Bottom" Margin="0,0,-264,0"/>
         </DockPanel>

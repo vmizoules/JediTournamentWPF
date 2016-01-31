@@ -42,7 +42,7 @@
                 <ColumnDefinition Width="110*"/>
                 <ColumnDefinition Width="25*"/>
             </Grid.ColumnDefinitions>
-            <local:StadeUserControl Grid.ColumnSpan="2" Grid.Column="1" Margin="10"/>
+            <local:StadeReadUserControl Grid.ColumnSpan="2" Grid.Column="1" Margin="10"/>
         </Grid>
     </Grid>
 </UserControl>
