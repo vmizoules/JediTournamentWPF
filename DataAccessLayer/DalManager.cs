@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using EntitiesLayer;
 namespace DataAccessLayer
 {
     /// <summary>
@@ -14,7 +14,7 @@ namespace DataAccessLayer
     public sealed class DalManager{
         private static DalManager m_instance = null;
         private static readonly object padlock = new object();
-
+        IBridge bd;
         /// <summary>
         /// Constructor of the Singleton DalManager
         /// </summary>
@@ -35,8 +35,15 @@ namespace DataAccessLayer
                 return m_instance;
             }
         }
+        public DalManager()
+        {
+            string connection = "Data Source=reseaug5.database.windows.net;Initial Catalog=JediTournamentBDD;Integrated Security=False;User ID=Reseau;Password=********;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            bd = new SQLAccess(connection);
+        }
 
-
-        // TODO : méthodes
+        public List<Jedi> getJedis()
+        {
+            return bd.GetAllJedis();
+        }
     }
 }
