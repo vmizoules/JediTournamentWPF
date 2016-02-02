@@ -19,33 +19,35 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
+        
         <Label x:Name="title" Grid.ColumnSpan="2"
 			Foreground="white" FontSize="24" HorizontalContentAlignment="Center"
 			Content="{Binding Descriptor}"/>
+        
         <Grid Grid.Row="2" Grid.ColumnSpan="2">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="15*"/>
                 <ColumnDefinition Width="100*"/>
                 <ColumnDefinition Width="15*"/>
             </Grid.ColumnDefinitions>
-
-            <!-- TODO : Fonctions de binding à finir -->
         </Grid>
+        
         <ComboBox
             x:Name="Jedi1ComboBox" Margin="10,5" Grid.Row="1"
-            ItemsSource="{Binding Path=Jedis}"
+            ItemsSource="{Binding Jedis}"
             DisplayMemberPath="Name"
-            SelectedValuePath="Name"
-            SelectedValue="{Binding Path=SelectedJedi}"
-            />
+            SelectedValue="{Binding SelectedJedi}"
+        />
+
         <ComboBox x:Name="Jedi2ComboBox" Margin="10,5,10,0" Grid.Row="1" VerticalAlignment="Top" Height="27" Grid.Column="1"
             ItemsSource="{Binding Path=Siths}"
             DisplayMemberPath="Name"
-            SelectedValuePath="Name"
             SelectedValue="{Binding Path=SelectedSith}"
             />
+        
         <local:JediReadUserControl x:Name="Jedi1UserControl" Margin="10" Grid.Row="2" DataContext="{Binding Jedi1}"/>
         <local:JediReadUserControl x:Name="Jedi2UserControl" Margin="10" Grid.Row="2" DataContext="{Binding Jedi2}" Grid.Column="1"/>
+        
         <Grid Grid.ColumnSpan="2" Margin="10" Grid.Row="3">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="25*"/>
@@ -55,5 +57,6 @@
             </Grid.ColumnDefinitions>
             <local:StadeReadUserControl Grid.ColumnSpan="2" Grid.Column="1" Margin="10"/>
         </Grid>
+        
     </Grid>
 </UserControl>
