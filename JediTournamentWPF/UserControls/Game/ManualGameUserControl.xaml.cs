@@ -32,18 +32,19 @@ namespace JediTournamentWPF.UserControls {
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
+            initializeAndLaunch();
+        }
 
-            #region Variables initialization
+        private void initializeAndLaunch() {
             m_counter = 5;
 
             m_timer = new DispatcherTimer();
             m_timer.Interval = new TimeSpan(0, 0, 1);                                 // will 'tick' once every second
             m_timer.Tick += new EventHandler(doGame);
-            
+
             m_j1 = false;
             m_j2 = false;
             m_keyPressed = new List<Key>();
-            #endregion
 
             m_timer.Start();
         }
@@ -54,7 +55,7 @@ namespace JediTournamentWPF.UserControls {
             }
             else if (m_counter == 0) {
                 this.displayText.Text = "Play !";
-                this.Focus();
+                this.displayText.Focus();
                 this.KeyUp += GetPlayersKeys;
             }
             else if (m_counter == -3) {
@@ -88,6 +89,46 @@ namespace JediTournamentWPF.UserControls {
         }
 
         private void displayResults() {
+
+            // TODO : plus de gestion de cas : si un joueur n'a pas joué ? Si juste deux touches ? Si plus de deux touches, etc...
+
+            if (m_keyPressed.Count < 2) {                   // Need to launch again
+                MessageBox.Show("Il y a eu une erreur, ou les deux joueurs n'ont pas joué, nous allons recommencer !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                this.displayText.Text = "5";
+                initializeAndLaunch();                      // Relaunch
+            }
+            else {
+                //if (m_keyPressed.Count == 2) {
+
+                    viewbox.Visibility = Visibility.Hidden;
+                    resultsGrid.Visibility = Visibility.Visible;
+
+                    Key joueur1_key;
+                    Key joueur2_key;
+
+                    bool j1_ok = false;
+                    bool j2_ok = false;
+
+                    // Assignation des touches
+                    foreach (Key k in m_keyPressed) {
+                        if (k == Key.Q || k == Key.S || k == Key.D) {
+                            joueur1_key = k;
+                            j1_ok = true;
+                        }
+
+                        if (k == Key.K || k == Key.L || k == Key.M) {
+                            joueur2_key = k;
+                            j2_ok = true;
+                        }
+
+                        if (j1_ok && j2_ok) break;
+                    }
+
+                    //GameResultUserControl joueur1_UserControl = new GameResultUserControl(joueur1_key);
+                    //GameResultUserControl joueur2_UserControl = new GameResultUserControl(joueur2_key);
+                //}
+            }
+
 
         }
 

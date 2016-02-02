@@ -65,6 +65,9 @@
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Game\GameResultUserControl.xaml.cs">
+      <DependentUpon>GameResultUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Game\ManualGameUserControl.xaml.cs">
       <DependentUpon>ManualGameUserControl.xaml</DependentUpon>
     </Compile>
@@ -150,6 +153,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="UserControls\Game\GameResultUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="UserControls\Game\ManualGameUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -223,9 +230,24 @@
   <ItemGroup>
     <Resource Include="Resources\background.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\arrow.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Coruscant_vue_de_la_planète_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\keyboardPics\d_key.png" />
+    <Resource Include="Resources\keyboardPics\k_key.png" />
+    <Resource Include="Resources\keyboardPics\l_key.png" />
+    <Resource Include="Resources\keyboardPics\m_key.png" />
+    <Resource Include="Resources\keyboardPics\q_key.png" />
+    <Resource Include="Resources\keyboardPics\s_key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gameSymbols\ciseaux.png" />
+    <Resource Include="Resources\gameSymbols\feuille.png" />
+    <Resource Include="Resources\gameSymbols\pierre.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
