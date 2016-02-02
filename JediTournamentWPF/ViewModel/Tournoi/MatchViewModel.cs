@@ -14,6 +14,7 @@ namespace JediTournamentWPF.ViewModel {
 
         private ObservableCollection<JediViewModel> m_jedis;
         private ObservableCollection<JediViewModel> m_siths;
+        private ObservableCollection<StadeViewModel> m_stades;
         private JediViewModel m_selectedJedi;
         private JediViewModel m_selectedSith;
 
@@ -29,11 +30,25 @@ namespace JediTournamentWPF.ViewModel {
             // init list vars
             m_jedis = new ObservableCollection<JediViewModel>();
             m_siths = new ObservableCollection<JediViewModel>();
+            m_stades = new ObservableCollection<StadeViewModel>();
+
+            // get all stades
+            BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
+            List<Stade> listStades = bm.getAllStades();
+            // insert in first
+            m_stades.Add(new StadeViewModel(Stade));
+            // for all stades
+            foreach (Stade oneStade in listStades)
+            {
+                if (oneStade.ID != Stade.ID)
+                {
+                    m_stades.Add(new StadeViewModel(oneStade));
+                }
+            }
+            SelectedStade = Stades[0];
 
             // get all jedis & all siths
-            BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
             List<Jedi> listJedis = bm.getAllJedis();
-
             // insert Jedi1 first in jedis list
             m_jedis.Add(new JediViewModel(Jedi1));
             // insert Jedi2 first in siths list
@@ -126,6 +141,11 @@ namespace JediTournamentWPF.ViewModel {
             get { return m_siths; }
         }
 
+        public ObservableCollection<StadeViewModel> Stades
+        {
+            get { return m_stades; }
+        }
+
         /// <summary>
         /// Getter and setter for selected Jedi
         /// </summary>
@@ -171,8 +191,14 @@ namespace JediTournamentWPF.ViewModel {
             get { return m_selectedStade; }
             set
             {
+                // update SelectedStade
                 m_selectedStade = value;
-                OnPropertyChanged("SelectedStade");
+                // update m_match.Stade
+                Stade = value.Stade;
+
+                // refresh view
+                base.OnPropertyChanged("SelectedStade");
+                base.OnPropertyChanged("Stade");
             }
         }
 

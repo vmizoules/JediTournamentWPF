@@ -5,10 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             >
     <Grid>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="126" Margin="89,10,0,0" VerticalAlignment="Top" Width="138" Source="{Binding Source}"/>
-        <Label x:Name="label" Content="Nom :" HorizontalAlignment="Left" Margin="10,155,0,0" VerticalAlignment="Top" Width="95"/>
-        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="89,158,0,0" TextWrapping="Wrap" Text="{Binding Nom }" VerticalAlignment="Top" Width="138"/>
+        <Label x:Name="label"
+               Content="Nom :"
+               HorizontalAlignment="Left" VerticalAlignment="Top"
+               Foreground="White"/>
+        <TextBox x:Name="textBox"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 TextWrapping="Wrap"
+                 Text="{Binding Path=Nom, Mode=OneWay}"
+                 IsEnabled="False"
+                 Margin="60,0,0,0"/>
     </Grid>
 </UserControl>

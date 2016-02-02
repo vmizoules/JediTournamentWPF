@@ -13,7 +13,7 @@ namespace EntitiesLayer
             : base(0)
         {
             NbPlaces = 0;
-            Planete = "Default Name";
+            _Planete = "Default Name";
             Caracteristiques = null;
         }
 
@@ -30,12 +30,18 @@ namespace EntitiesLayer
             get { return _caracteristiques; }
             set { _caracteristiques = value; }
         }
-        private string Planete;
 
+        private string _Planete;
+        public string Planete
+        {
+            get { return _Planete; }
+            set { _Planete = value; }
+        }
+        // typo (todo: fix it)
         public string Planete1
         {
-            get { return Planete; }
-            set { Planete = value; }
+            get { return _Planete; }
+            set { _Planete = value; }
         }
 
         /// <summary>
