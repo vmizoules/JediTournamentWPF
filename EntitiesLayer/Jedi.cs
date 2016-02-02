@@ -9,8 +9,7 @@ namespace EntitiesLayer
         public List<Caracteristique> Caracteristiques { get; set; }
         public bool IsSith { get; set; }
         public string Nom { get; set; }
-
-        /// <summary>
+        public string Image { get; set; }         /// <summary>
         /// Constructeur par défaut.
         /// </summary>
         public Jedi()
@@ -34,6 +33,14 @@ namespace EntitiesLayer
             Nom = nom;
             IsSith = isSith;
             Caracteristiques = carac;
+        }
+        public Jedi(int id, string nom, bool isSith, List<Caracteristique> carac,string source)
+           : base(id)
+        {
+            Nom = nom;
+            IsSith = isSith;
+            Caracteristiques = carac;
+            this.Image = source;
         }
     }
 }

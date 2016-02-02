@@ -8,7 +8,21 @@ using EntitiesLayer;
 
 namespace DataAccessLayer {
     class SQLAccess : IBridge {
-
+        public enum Champ_Jedi
+        {
+            IDJEDI = 0,
+            NAME = 1,
+            ISSITH = 2,
+            PIC = 3
+        }
+        public enum Champ_Carac// Cours 
+        {
+            IDCARAC = 0,
+            IDJEDI = 1,
+            IDSTADE = 2,
+            NOM = 3,
+            VALEUR = 4
+        }
         private string m_connectionString = "";
 
          public SQLAccess(string connectionString) {
@@ -36,9 +50,43 @@ namespace DataAccessLayer {
             List<Jedi> _allJedis = new List<Jedi>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                //throw new NotImplementedException();
-            }
+                string requete = "SELECT idJedi, Name, isSith, Pic FROM Jedis;";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlConnection.Open();
 
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+                while (sqlDataReader.Read())
+                {
+                    List<Caracteristique> _carac = new List<Caracteristique>();
+                    using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
+                    {
+                        String id = sqlDataReader.GetInt32((int)Champ_Jedi.IDJEDI).ToString(); ;
+                        String requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Jedis jedi, Carac carac WHERE jedi.idJedi=" + id + " AND jedi.id=carac.idjedi;";
+                        SqlCommand sqlCommand2 = new SqlCommand(requete2, sqlConnection2);
+                        sqlConnection2.Open();
+
+                        SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();//creation d'une nouvelle sqlDataReader2
+                        while (sqlDataReader2.Read())
+                        {
+                            _carac.Add(new Caracteristique(/*sqlDataReader2.GetInt32((int)Champ_Carac.IDCARAC),
+                                                          sqlDataReader2.GetString((int)Champ_Carac.NOM),
+                                                          sqlDataReader2.GetInt32((int)Champ_Carac.VALEUR)*/)
+                              );
+                        }
+                        sqlConnection2.Close();
+                        //jointure entre les 2 tables
+                    }
+                   // int id, string nom, bool isSith, List< Caracteristique > carac
+                    _allJedis.Add(new Jedi(sqlDataReader.GetInt32((int)Champ_Jedi.IDJEDI),
+                                           sqlDataReader.GetString((int)Champ_Jedi.NAME),
+                                           sqlDataReader.GetBoolean((int)Champ_Jedi.ISSITH),
+                                                _carac,
+                                           sqlDataReader.GetString((int)Champ_Jedi.PIC)));
+                }
+                sqlDataReader.Close();
+                sqlConnection.Close();
+            }
             return _allJedis;
         }
         public List<Match> GetAllMatchs()
