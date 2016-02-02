@@ -21,6 +21,5 @@ namespace DataAccessLayer {
         int RemoveListMatches(List<Match> _listMatch);
         int RemoveListCaracteristiques(List<Caracteristique> _listCarac);
         int RemoveListTournois(List<Tournoi> _listTournoi);
-        Utilisateur GetUtilisateurByLogin(string log);
     }
 }

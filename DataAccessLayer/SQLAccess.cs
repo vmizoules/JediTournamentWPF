@@ -14,42 +14,67 @@ namespace DataAccessLayer {
          public SQLAccess(string connectionString) {
             m_connectionString = connectionString;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
-                sqlConnection.Open();
+                //sqlConnection.Open();
                 SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idJedi, Name, isSith, Pic FROM Jedis;", sqlConnection));
-
+                
             }
         }
 
         public List<Caracteristique> GetAllCaracteristiques()
         {
-            throw new NotImplementedException();
+            List<Caracteristique> _allCarac = new List<Caracteristique>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                //throw new NotImplementedException();
+            }
+
+            return _allCarac;
         }
 
         public List<Jedi> GetAllJedis()
         {
-            throw new NotImplementedException();
-        }
+            List<Jedi> _allJedis = new List<Jedi>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                //throw new NotImplementedException();
+            }
 
+            return _allJedis;
+        }
         public List<Match> GetAllMatchs()
         {
-            throw new NotImplementedException();
+            List<Match> _allMatchs = new List<Match>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                //throw new NotImplementedException();
+            }
+
+            return _allMatchs;
         }
 
         public List<Stade> GetAllStades()
         {
-            throw new NotImplementedException();
+            List<Stade> _allStade = new List<Stade>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                //throw new NotImplementedException();
+            }
+
+            return _allStade;
         }
 
         public List<Tournoi> GetAllTournois()
         {
-            throw new NotImplementedException();
+            List<Tournoi> _allTournoi = new List<Tournoi>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                //throw new NotImplementedException();
+            }
+
+            return _allTournoi;
         }
 
-        public Utilisateur GetUtilisateurByLogin(string log)
-        {
-            throw new NotImplementedException();
-        }
-
+       
         public int RemoveListCaracteristiques(List<Caracteristique> _listCarac)
         {
             throw new NotImplementedException();

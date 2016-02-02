@@ -11,7 +11,7 @@ namespace DataAccessLayer
     /// Sealed prevents heritage
     /// Pattern Singleton used
     /// </summary>
-    public sealed class DalManager : IBridge {
+    public sealed class DalManager{
         private static DalManager m_instance = null;
         private static readonly object padlock = new object();
 
