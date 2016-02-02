@@ -22,14 +22,15 @@ namespace StubDataAccessLayer
             List<Caracteristique> caracsObiwan = getAllCaracs().Where(c => c.Type == ETypeCaracteristique.Jedi && (c.ID == 5 || c.ID == 8)).ToList();
 
             // Crée la liste des jedis
-            listJedi.Add(new Jedi(1, "Anakin Skywalker", true, caracsAnakin));
-            listJedi.Add(new Jedi(2, "Count Dooku", true, null));
-            listJedi.Add(new Jedi(3, "Darth Maul", true, caracsDarthMaul));
+            listJedi.Add(new Jedi(1, "Yoda", false, caracsYoda));   // Jedis
+            listJedi.Add(new Jedi(2, "Qui-Gon Jinn", false, null));
+            listJedi.Add(new Jedi(3, "Obi-Wan Kenobi", false, caracsObiwan));
             listJedi.Add(new Jedi(4, "Luke Skywalker", false, caracsLukeS));
-            listJedi.Add(new Jedi(5, "Yoda", false, caracsYoda));
-            listJedi.Add(new Jedi(6, "Qui-Gon Jinn", false, null));
-            listJedi.Add(new Jedi(7, "Obi-Wan Kenobi", false, caracsObiwan));
+            listJedi.Add(new Jedi(5, "Anakin Skywalker", true, caracsAnakin)); // Siths
+            listJedi.Add(new Jedi(6, "Count Dooku", true, null));
+            listJedi.Add(new Jedi(7, "Darth Maul", true, caracsDarthMaul));
             listJedi.Add(new Jedi(8, "Emperor Palpatine", true, null));
+
 
             return listJedi;
         }
@@ -96,26 +97,26 @@ namespace StubDataAccessLayer
             // Match sur Jakku
             listMatch.Add(new Match(1,
                                     getAllJedis().Where(j => j.ID == 3).First(),
-                                    getAllJedis().Where(j => j.ID == 4).First(),
+                                    getAllJedis().Where(j => j.ID == 5).First(),
                                     EPhaseTournoi.HuitiemeFinale,
                                     getAllStades().Where(s => s.ID == 1).First()));
 
             // Match sur Tatooine
             listMatch.Add(new Match(2,
                                     getAllJedis().Where(j => j.ID == 1).First(),
-                                    getAllJedis().Where(j => j.ID == 2).First(),
+                                    getAllJedis().Where(j => j.ID == 6).First(),
                                     EPhaseTournoi.HuitiemeFinale,
                                     getAllStades().Where(s => s.ID == 2).First()));
 
             listMatch.Add(new Match(3,
-                                    getAllJedis().Where(j => j.ID == 5).First(),
-                                    getAllJedis().Where(j => j.ID == 6).First(),
+                                    getAllJedis().Where(j => j.ID == 2).First(),
+                                    getAllJedis().Where(j => j.ID == 7).First(),
                                     EPhaseTournoi.HuitiemeFinale,
                                     getAllStades().Where(s => s.ID == 2).First()));
 
             // Matchs sur Hoth
             listMatch.Add(new Match(3,
-                                    getAllJedis().Where(j => j.ID == 7).First(),
+                                    getAllJedis().Where(j => j.ID == 4).First(),
                                     getAllJedis().Where(j => j.ID == 8).First(),
                                     EPhaseTournoi.HuitiemeFinale,
                                     getAllStades().Where(s => s.ID == 3).First()));
