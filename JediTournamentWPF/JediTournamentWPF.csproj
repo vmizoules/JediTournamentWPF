@@ -62,25 +62,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="UserControls\JediReadUserControl.xaml.cs">
+    <Compile Include="Pages\GamePage.xaml.cs">
+      <DependentUpon>GamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Game\GameResultUserControl.xaml.cs">
+      <DependentUpon>GameResultUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Game\ManualGameUserControl.xaml.cs">
+      <DependentUpon>ManualGameUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Jedi\JediReadUserControl.xaml.cs">
       <DependentUpon>JediReadUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\JediWriteUserControl.xaml.cs">
+    <Compile Include="UserControls\Jedi\JediWriteUserControl.xaml.cs">
       <DependentUpon>JediWriteUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\MatchUserControl.xaml.cs">
-      <DependentUpon>MatchUserControl.xaml</DependentUpon>
+    <Compile Include="UserControls\Match\MatchReadUserControl.xaml.cs">
+      <DependentUpon>MatchReadUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="UserControls\StadeWriteUserControl.xaml.cs">
+    <Compile Include="UserControls\Match\MatchWriteUserControl.xaml.cs">
+      <DependentUpon>MatchWriteUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Stade\StadeReadUserControl.xaml.cs">
+      <DependentUpon>StadeReadUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Stade\StadeWriteUserControl.xaml.cs">
       <DependentUpon>StadeWriteUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\CaracteristiqueViewModel.cs" />
-    <Compile Include="ViewModel\JediGestionViewModel.cs" />
-    <Compile Include="ViewModel\JediViewModel.cs" />
-    <Compile Include="ViewModel\MatchViewModel.cs" />
-    <Compile Include="ViewModel\StadeGestionModel.cs" />
-    <Compile Include="ViewModel\StadeViewModel.cs" />
-    <Compile Include="ViewModel\TournoiCreatorViewModel.cs" />
+    <Compile Include="ViewModel\Jedi\JediGestionViewModel.cs" />
+    <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
+    <Compile Include="ViewModel\Tournoi\MatchViewModel.cs" />
+    <Compile Include="ViewModel\Stade\StadeGestionModel.cs" />
+    <Compile Include="ViewModel\Stade\StadeViewModel.cs" />
+    <Compile Include="ViewModel\Tournoi\TournoiCreatorViewModel.cs" />
     <Compile Include="Pages\GestionJediPage.xaml.cs">
       <DependentUpon>GestionJediPage.xaml</DependentUpon>
     </Compile>
@@ -95,9 +110,10 @@
       <DependentUpon>HomePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="UserControls\StadeUserControl.xaml.cs">
-      <DependentUpon>StadeUserControl.xaml</DependentUpon>
-    </Compile>
+    <Page Include="Pages\GamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\GestionJediPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -137,23 +153,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\JediReadUserControl.xaml">
+    <Page Include="UserControls\Game\GameResultUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\JediWriteUserControl.xaml">
+    <Page Include="UserControls\Game\ManualGameUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\MatchUserControl.xaml">
+    <Page Include="UserControls\Jedi\JediReadUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\StadeUserControl.xaml">
+    <Page Include="UserControls\Jedi\JediWriteUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="UserControls\StadeWriteUserControl.xaml">
+    <Page Include="UserControls\Match\MatchReadUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Match\MatchWriteUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Stade\StadeReadUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Stade\StadeWriteUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -202,9 +230,24 @@
   <ItemGroup>
     <Resource Include="Resources\background.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\arrow.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Coruscant_vue_de_la_planète_.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\keyboardPics\d_key.png" />
+    <Resource Include="Resources\keyboardPics\k_key.png" />
+    <Resource Include="Resources\keyboardPics\l_key.png" />
+    <Resource Include="Resources\keyboardPics\m_key.png" />
+    <Resource Include="Resources\keyboardPics\q_key.png" />
+    <Resource Include="Resources\keyboardPics\s_key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\gameSymbols\ciseaux.png" />
+    <Resource Include="Resources\gameSymbols\feuille.png" />
+    <Resource Include="Resources\gameSymbols\pierre.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

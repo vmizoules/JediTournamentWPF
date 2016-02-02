@@ -4,10 +4,11 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:JediTournamentWPF.Pages"
-      xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls" x:Class="JediTournamentWPF.Pages.GestionStadePage"
+      xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls"
+      xmlns:JediTournamentWPF="clr-namespace:JediTournamentWPF" x:Class="JediTournamentWPF.Pages.GestionStadePage"
       mc:Ignorable="d" 
       d:DesignHeight="364.151" d:DesignWidth="776.415"
-      Title="GestionStadePage" Width="Auto" Height="Auto" WindowHeight="400" WindowWidth="800">
+      Title="GestionStadePage" Width="Auto" Height="Auto" WindowHeight="400" WindowWidth="800" Loaded="Page_Loaded">
 
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
@@ -26,7 +27,8 @@
             <RowDefinition SharedSizeGroup="R6" />
         </Grid.RowDefinitions>
         <TextBlock x:Name="title" TextAlignment="Center" TextWrapping="Wrap" Text="Gestion des Stades" FontWeight="Bold" FontSize="26.667" Grid.ColumnSpan="5" Foreground="White" Margin="10" Style="{DynamicResource title}" FontFamily="Comic Sans MS"/>
-        <Button x:Name="cancelButton" Content="Cancel" Margin="10,10,10.002,10" Style="{DynamicResource ButtonStyle}" Foreground="White" BorderBrush="White" FontFamily="Comic Sans MS" Click="cancelButton_Click" Grid.Column="1" Grid.Row="5" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
+        <Button x:Name="cancelButton" Content="Retour" Margin="10,10,10.002,10" Style="{DynamicResource ButtonStyle}" Foreground="White" BorderBrush="White" FontFamily="Comic Sans MS" 
+                Command="{Binding CancelCommand}" Grid.Column="1" Grid.Row="5" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin">
             <Button.Background>
                 <RadialGradientBrush>
                     <GradientStop Color="Red" Offset="0"/>
@@ -35,16 +37,17 @@
                 </RadialGradientBrush>
             </Button.Background>
         </Button>
-        <Button x:Name="OKButton" Content="OK" Grid.Column="0" Margin="10" Style="{DynamicResource ButtonStyle}" Foreground="White" BorderBrush="White" FontFamily="Comic Sans MS" d:LayoutOverrides="LeftMargin, RightMargin, TopMargin, BottomMargin" Grid.Row="5" Click="OKButton_Click">
-            <Button.Background>
-                <RadialGradientBrush>
-                    <GradientStop Color="Red" Offset="0"/>
-                    <GradientStop Color="Black" Offset="1"/>
-                    <GradientStop Color="#FF500000" Offset="0.618"/>
-                </RadialGradientBrush>
-            </Button.Background>
-        </Button>
-        <ListBox x:Name="StadeList" Margin="10,10.2,10.2,10" Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" SelectionChanged="JediList_SelectionChanged"/>
-        <UserControls:StadeUserControl Grid.Column="2" HorizontalAlignment="Left" Height="223" Margin="9.6,10.2,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="447" Grid.ColumnSpan="3"/>
+        <ListView x:Name="StadeList" 
+            ItemsSource="{Binding Stades}" 
+            SelectedItem="{Binding SelectedItem}"
+            Grid.Column="0" Grid.Row="1" Grid.RowSpan="4" 
+            Margin="10,10.2,10.2,10" >
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding Planete}" />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <UserControls:StadeWriteUserControl Grid.Column="2" HorizontalAlignment="Left" Height="223" Margin="9.6,10.2,0,0" Grid.Row="1" Grid.RowSpan="4" VerticalAlignment="Top" Width="447" Grid.ColumnSpan="3" DataContext="{Binding SelectedItem}"/>
     </Grid>
 </Page>

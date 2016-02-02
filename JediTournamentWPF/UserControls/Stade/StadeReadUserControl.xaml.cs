@@ -15,10 +15,10 @@ using System.Windows.Shapes;
 
 namespace JediTournamentWPF.UserControls {
     /// <summary>
-    /// Logique d'interaction pour MatchUserControl.xaml
+    /// Logique d'interaction pour StadeReadUserControl.xaml
     /// </summary>
-    public partial class MatchUserControl : UserControl {
-        public MatchUserControl() {
+    public partial class StadeReadUserControl : UserControl {
+        public StadeReadUserControl() {
             InitializeComponent();
         }
     }

@@ -11,14 +11,44 @@ namespace JediTournamentWPF.ViewModel {
 
         // Event destiné à réclamer la fermeture du conteneur;
         public event EventHandler<EventArgs> CancelNotified;
+        public event EventHandler<EventArgs> CreateNotified;
+
+        #region Fonctions relatives aux évènements
         protected void OnCancelNotified(EventArgs e) {
             this.CancelNotified(this, e);
         }
 
+        protected void OnCreateNotified(EventArgs e) {
+            this.CreateNotified(this, e);
+        }
+        #endregion
+
         // Model encapsulé dans le ViewModel
 
-        // Liste des matchs
+        // Attributs
+        private Tournoi m_tournoi;
         private ObservableCollection<MatchViewModel> m_matchs;
+        private bool m_mode;                                                // true = manual, false = auto
+
+        /// <summary>
+        /// Return the turnament. Only getter.
+        /// </summary>
+        public Tournoi Tournoi
+        {
+            get { return m_tournoi; }
+        }
+
+        /// <summary>
+        /// Getter and setter for the game mode (automatic or manual).
+        /// </summary>
+        public bool Mode
+        {
+            get { return m_mode; }
+            set
+            {
+                m_mode = value;
+            }
+        }
 
         /// <summary>
         /// Liste des matchs : Getter/Setter
@@ -53,10 +83,14 @@ namespace JediTournamentWPF.ViewModel {
         /// Constructeur du ViewModel
         /// </summary>
         public TournoiCreatorViewModel() {
-            m_matchs = new ObservableCollection<MatchViewModel>();
 
+            // TODO : à modifier pour avoir les matchs d'un tournoi
+            
+            m_matchs = new ObservableCollection<MatchViewModel>();
             BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
-            IList<Match> list = bm.getAllMatchs();
+            IList<Match> list = bm.getAllMatchs();                              // Création tournoi
+
+            m_tournoi = new Tournoi(1, "Yolo", null);                           // TODO : à modifier absolument !
 
             foreach (Match m in list)
                 m_matchs.Add(new MatchViewModel(m));
@@ -110,6 +144,8 @@ namespace JediTournamentWPF.ViewModel {
 
             this.SelectedItem = new ArtisteViewModel(a);
             Artistes.Add(this.SelectedItem);*/
+
+            OnCreateNotified(new EventArgs());
         }
         
         // Commande Close

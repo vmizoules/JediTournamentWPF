@@ -35,7 +35,10 @@ namespace JediTournamentWPF.ViewModel {
         {
 
             get { return m_jedi.Nom; }
-            set { m_jedi.Nom = value; }
+            set {
+                m_jedi.Nom = value;
+                OnPropertyChanged("Name");
+            }
         }
 
         /// <summary>
@@ -53,7 +56,10 @@ namespace JediTournamentWPF.ViewModel {
         private ObservableCollection<CaracteristiqueViewModel> Carac
         {
             get { return _carac; }
-            set { _carac = value; }
+            set {
+                _carac = value;
+                OnPropertyChanged("Carac");
+            }
         }
 
     }

@@ -13,14 +13,36 @@ namespace JediTournamentWPF.ViewModel {
         private Match m_match;
 
         public MatchViewModel() {
-
-        //    m_match = new Match(null, null, EPhaseTournoi.HuitiemeFinale, null);
-            // TODO constructeur avec variables aléatoires
+            // TODO
+            // init empty match
         }
 
         public MatchViewModel(Match m) {
+            // displayed match
             m_match = m;
-            // Initialiser m_jedi et m_sith
+
+            // init selected jedi & sith // TODO
+            //SelectedJedi = new JediViewModel(m.Jedi1);
+            //SelectedJedi = new JediViewModel(m.Jedi2);
+
+            // init vars
+            m_jedis = new ObservableCollection<JediViewModel>();
+            m_siths = new ObservableCollection<JediViewModel>();
+
+            // get all jedis
+            BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
+            List<Jedi> listJedis = bm.getAllJedis();
+            foreach(Jedi oneJedi in listJedis) {
+                // fill in collection
+                m_jedis.Add(new JediViewModel(oneJedi));
+            }
+
+            // get all siths
+            List<Jedi> listSiths = bm.getAllJedis();
+            foreach (Jedi oneSith in listSiths) {
+                // fill in collection
+                m_siths.Add(new JediViewModel(oneSith));
+            }
         }
 
         #region "Propriétés accessibles, mappables par la View"
