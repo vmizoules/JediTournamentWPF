@@ -11,7 +11,7 @@
       Title="GamePage">
 
     <Grid>
-        <DockPanel x:Name="Container" LastChildFill="True">
+        <DockPanel x:Name="Container" LastChildFill="True" Focusable="True">
             <StackPanel x:Name="explanations" Height="364" Orientation="Vertical" VerticalAlignment="Top" DockPanel.Dock="Right" Width="120" Visibility="Hidden">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" FontSize="20">Explications</TextBlock>
                 <!-- TODO : ajouter les explications -->
@@ -25,9 +25,8 @@
                     <Button x:Name="cancelButton" Content="Return"/>
                 </Viewbox>
                 <Viewbox Stretch="Uniform" Grid.Column="1">
-                    <Button x:Name="GoButton" Content="Go !" Click="countdown"/>
+                    <Button x:Name="GoButton" Content="Go !" />
                 </Viewbox>
-
             </Grid>
             <UserControls:MatchReadUserControl VerticalAlignment="Top" DockPanel.Dock="Left" Width="651"/>
         </DockPanel>
