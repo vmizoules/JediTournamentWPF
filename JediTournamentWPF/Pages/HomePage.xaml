@@ -26,7 +26,7 @@
                 <RowDefinition SharedSizeGroup="R6" />
             </Grid.RowDefinitions>
             <TextBlock x:Name="title" TextAlignment="Center" TextWrapping="Wrap" Text="Jedi Tournament 2016" FontWeight="Bold" FontSize="26.667" Grid.ColumnSpan="5" Foreground="White" Margin="10" Style="{DynamicResource title}" FontFamily="Comic Sans MS"/>
-            <Button x:Name="buttonJedis" Grid.Column="3" FontFamily="Comic Sans MS" Content="Jedis" BorderBrush="White" FontWeight="Bold" Foreground="White" Click="buttonJedis_Click" Grid.Row="1" Margin="10">
+            <Button x:Name="buttonJedis" Grid.Column="2" FontFamily="Comic Sans MS" Content="Jedis" BorderBrush="White" FontWeight="Bold" Foreground="White" Click="buttonJedis_Click" Grid.Row="1" Margin="10">
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red" Offset="0"/>
@@ -35,7 +35,9 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="buttonStades" Grid.Column="3" FontFamily="Comic Sans MS" Content="Stades" FontWeight="Bold" Foreground="White" BorderBrush="White" Grid.Row="3" Margin="10,10,10,10.001" Click="buttonStades_Click">
+            <Button x:Name="buttonStades" Grid.Column="2" Grid.Row="2" 
+                    FontFamily="Comic Sans MS" Content="Stades" FontWeight="Bold"
+                    Foreground="White" BorderBrush="White" Margin="10,10,10,10.001" Click="buttonStades_Click">
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red" Offset="0"/>
@@ -44,7 +46,10 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="buttonHisto" Grid.Column="1" FontFamily="Comic Sans MS" Content="Historique" FontWeight="Bold" Foreground="White" Grid.ColumnSpan="3" BorderBrush="White" Grid.Row="5" Margin="10">
+            <Button x:Name="buttonHisto" Grid.Column="2" Grid.Row="3" 
+                    FontFamily="Comic Sans MS" Content="Historique"
+                    Margin="10"
+                    FontWeight="Bold" Foreground="White" BorderBrush="White">
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red" Offset="0"/>
@@ -53,7 +58,9 @@
                     </RadialGradientBrush>
                 </Button.Background>
             </Button>
-            <Button x:Name="buttonTournoi" Grid.Column="1" FontFamily="Comic Sans MS" Content="Nouveau Tournoi" Margin="10" FontWeight="Bold" Foreground="White" BorderBrush="White" Click="buttonTournoi_Click" Grid.Row="1">
+            <Button x:Name="buttonTournoi" Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"
+                    FontFamily="Comic Sans MS" Content="Nouveau Tournoi" FontSize="16"
+                    Margin="10" FontWeight="Bold" Foreground="White" BorderBrush="White" Click="buttonTournoi_Click">
                 <Button.Background>
                     <RadialGradientBrush>
                         <GradientStop Color="Red" Offset="0"/>
