@@ -18,11 +18,13 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
+        <!-- Self binding on JediReadUC -->
         <local:JediReadUserControl x:Name="JediUserControl"
                                    Grid.Row="0" Grid.ColumnSpan="3"
                                    DataContext="{Binding Path=.}"
                                    Width="125" Height="125"/>
 
+        <!-- Name -->
         <Label x:Name="label"
                Grid.Row="1" Grid.Column="0"
                HorizontalAlignment="Right" VerticalAlignment="Top"
@@ -34,7 +36,8 @@
                  TextWrapping="Wrap"
                  Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                  Background="White"/>
-        
+
+        <!-- Sith -->
         <Label x:Name="label1"
                Grid.Row="2" Grid.Column="0"
                Content="Sith :"
@@ -46,24 +49,16 @@
                   Margin="0,6"
                   VerticalAlignment="Top"
                   IsChecked="{Binding IsSith}" />
-        
+
+        <!-- Caracteristiques -->
         <Label x:Name="label2"
                Grid.Row="3" Grid.Column="0"
                Content="Caracteristiques :"
                HorizontalAlignment="Right" VerticalAlignment="Top"
                Foreground="White"/>
-        <ListView x:Name="listView"
-                  Grid.Row="4" Grid.Column="2"
-                  HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Height="150" Width="200"
-                  ItemsSource="{Binding Caracteristiques}" 
-                  SelectedItem="{Binding SelectedCarac}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                    <GridViewColumn Header="Valeur" DisplayMemberBinding="{Binding Valeur}"/>
-                </GridView>
-            </ListView.View>
-        </ListView>
+
+        <local:CaracteristiquesWriteUserControl x:Name="CaracUC"
+                                   Grid.Row="4" Grid.Column="2"
+                                   DataContext="{Binding Caracteristiques}"/>
     </Grid>
 </UserControl>

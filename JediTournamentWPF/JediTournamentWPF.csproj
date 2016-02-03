@@ -65,6 +65,12 @@
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\Caracteristique\CaracteristiquesWriteUserControl.xaml.cs">
+      <DependentUpon>CaracteristiquesWriteUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Caracteristique\CaracteristiqueWriteUserControl.xaml.cs">
+      <DependentUpon>CaracteristiqueWriteUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\Game\GameResultUserControl.xaml.cs">
       <DependentUpon>GameResultUserControl.xaml</DependentUpon>
     </Compile>
@@ -150,6 +156,14 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="StyleDictionnary.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Caracteristique\CaracteristiquesWriteUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Caracteristique\CaracteristiqueWriteUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -254,6 +268,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\no-stade.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ViewModel\Caracteristique\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
