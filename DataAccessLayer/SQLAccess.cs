@@ -53,8 +53,8 @@ namespace DataAccessLayer
                     List<Caracteristique> _carac = new List<Caracteristique>();
                     using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
                     {
-                        String id = sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI).ToString(); ;
-                        String requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Jedis jedi, Carac carac WHERE jedi.idJedi=" + id + " AND jedi.id=carac.idjedi;";
+                        string id = sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI).ToString(); ;
+                        string requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Jedis jedi, Carac carac WHERE jedi.idJedi=" + id + " AND jedi.id=carac.idjedi;";
                         SqlCommand sqlCommand2 = new SqlCommand(requete2, sqlConnection2);
                         sqlConnection2.Open();
 
