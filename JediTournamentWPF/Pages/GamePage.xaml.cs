@@ -43,5 +43,9 @@ namespace JediTournamentWPF.Pages {
             explanations.Visibility = Visibility.Hidden;
             Container.Children.Add(countDownControl);
         }
+
+        private void cancelButton_Click(object sender, RoutedEventArgs e) {
+            this.NavigationService.GoBack();
+        }
     }
 }

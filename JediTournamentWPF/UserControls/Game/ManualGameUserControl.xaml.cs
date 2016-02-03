@@ -1,4 +1,6 @@
-﻿using System;
+﻿using EntitiesLayer;
+using JediTournamentWPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,18 +27,33 @@ namespace JediTournamentWPF.UserControls {
 
         private bool m_j1;
         private bool m_j2;
+        private Jedi m_joueur1;
+        private Jedi m_joueur2;
+        private Jedi m_winner = null;                             // Winner of the match
         private List<Key> m_keyPressed;
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ManualGameUserControl() {
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Launch the game when page is loaded
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UserControl_Loaded(object sender, RoutedEventArgs e) {
             initializeAndLaunch();
         }
 
+        /// <summary>
+        /// Initialize and launch the game
+        /// </summary>
         private void initializeAndLaunch() {
             m_counter = 5;
+            displayText.Text = "5";
 
             m_timer = new DispatcherTimer();
             m_timer.Interval = new TimeSpan(0, 0, 1);                                 // will 'tick' once every second
@@ -49,6 +66,11 @@ namespace JediTournamentWPF.UserControls {
             m_timer.Start();
         }
         
+        /// <summary>
+        /// Doing the countDown for the game and activate/desactive the key Handler
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void doGame(object sender, EventArgs e) {
             if (m_counter > 0) {
                 this.displayText.Text = m_counter.ToString();
@@ -88,13 +110,12 @@ namespace JediTournamentWPF.UserControls {
             }
         }
 
+        /// <summary>
+        /// Display results of a round
+        /// </summary>
         private void displayResults() {
-
-            // TODO : plus de gestion de cas : si un joueur n'a pas joué ? Si juste deux touches ? Si plus de deux touches, etc...
-
             if (m_keyPressed.Count < 2) {                   // Need to launch again
                 MessageBox.Show("Il y a eu une erreur, ou les deux joueurs n'ont pas joué, nous allons recommencer !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                this.displayText.Text = "5";
                 initializeAndLaunch();                      // Relaunch
             }
             else {                                          // Define only one key for each player
@@ -116,7 +137,6 @@ namespace JediTournamentWPF.UserControls {
 
                 if (!(m_j1 && m_j2)) {                      // If one of the players didn't play
                     MessageBox.Show("Il y a eu une erreur (2), ou les deux joueurs n'ont pas joué, nous allons recommencer !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-                    this.displayText.Text = "5";
                     initializeAndLaunch();                  // Relaunch
                 }
                 else {                                      // All is ok, go to results
@@ -132,12 +152,71 @@ namespace JediTournamentWPF.UserControls {
                     joueur1_UserControl.SetValue(Grid.RowProperty, 2);
                     joueur2_UserControl.SetValue(Grid.RowProperty, 2);
 
-                    joueur1_UserControl.SetValue(Grid.ColumnProperty, 2);
-                    joueur1_UserControl.SetValue(Grid.ColumnProperty, 3);
+                    joueur1_UserControl.SetValue(Grid.ColumnProperty, 1);
+                    joueur2_UserControl.SetValue(Grid.ColumnProperty, 3);
+
+                    getWinner(joueur1_key, joueur2_key);    // Get who win ?
                 }
             }
+        }
 
+        /// <summary>
+        /// Give the winner of the "battle"
+        /// </summary>
+        private void getWinner(Key player1, Key player2) {
+            switch(player1) {
+                case (Key.Q):
+                    if (player2 == Key.L)
+                        m_winner = m_joueur2;
+                    else if (player2 == Key.M)
+                        m_winner = m_joueur1;
+                    break;
+                case (Key.S):
+                    if (player2 == Key.M)
+                        m_winner = m_joueur2;
+                    else if (player2 == Key.K)
+                        m_winner = m_joueur1;
+                    break;
+                case (Key.D):
+                    if (player2 == Key.K)
+                        m_winner = m_joueur2;
+                    else if (player2 == Key.L)
+                        m_winner = m_joueur1;
+                    break;
+            }
 
+            if(m_winner == null) {                      // Egalité
+                egalite.Visibility = Visibility.Visible;
+                egalite.MouseLeftButtonDown += launchAgain;  
+            }
+            else {                                      // A winner is defined
+                JediViewModel jvm = new JediViewModel(m_winner);
+                JediReadUserControl winner_uc = new JediReadUserControl();
+
+                resultsGrid.Children.Add(winner_uc);
+                winner_uc.SetValue(Grid.ColumnProperty, 1);
+                winner_uc.SetValue(Grid.RowProperty, 3);
+                winner_uc.SetValue(Grid.ColumnSpanProperty, 3);
+                winner_uc.Margin = new Thickness(10);
+
+                // TODO : vérifier que la recopie de jedi est ok
+                // TODO : update match and tournament table
+                // TODO : go to the next match
+            }
+        }
+
+        /// <summary>
+        /// Event to launch a new round
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void launchAgain(object sender, MouseButtonEventArgs e) {
+            initializeAndLaunch();
+            egalite.MouseLeftButtonDown -= launchAgain;
+            egalite.Visibility = Visibility.Hidden;
+            resultsGrid.Visibility = Visibility.Hidden;
+            viewbox.Visibility = Visibility.Visible;
+            
         }
 
     }
