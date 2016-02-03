@@ -7,16 +7,25 @@
              mc:Ignorable="d" 
              >
     <Grid>
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="126" Margin="89,10,0,0" VerticalAlignment="Top" Width="138" Source="{Binding Source}"/>
-        <Label x:Name="label"
-               Content="Nom :"
-               HorizontalAlignment="Left" VerticalAlignment="Top"
-               Foreground="White"/>
-        <TextBox x:Name="textBox"
-                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                 TextWrapping="Wrap"
-                 Text="{Binding Path=Nom, Mode=OneWay}"
-                 IsEnabled="False"
-                 Margin="60,0,0,0"/>
+        <Canvas
+            Width="125"
+            Height="125"
+            >
+            <Image x:Name="defaultPic"
+                Source="../../Resources/no-picture.jpg"
+                Width="125"
+                Height="125"
+                />
+            <Label x:Name="label"
+               Content="{Binding Nom}"
+               Height="25"
+               Canvas.Left="0" Canvas.Top="100"
+               Foreground="White"
+               >
+                <Label.Background>
+                    <SolidColorBrush Color="Black" Opacity="0.5"/>
+                </Label.Background>
+            </Label>
+        </Canvas>
     </Grid>
 </UserControl>

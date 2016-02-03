@@ -58,5 +58,12 @@ namespace EntitiesLayer
             Type = type;
             Valeur = valeur;
         }
+
+        public Caracteristique(int id, string nom, int valeur)
+            : base(id)
+        {
+            Nom = nom;
+            Valeur = valeur;
+        }
     }
 }

@@ -6,16 +6,18 @@ using System.Text;
 using System.Threading.Tasks;
 using EntitiesLayer;
 
-namespace DataAccessLayer {
-    class SQLAccess : IBridge {
-        public enum Champ_Jedi
+namespace DataAccessLayer
+{
+    class SQLAccess : IBridge
+    {
+        public enum Jedi_enum
         {
             IDJEDI = 0,
             NAME = 1,
             ISSITH = 2,
             PIC = 3
         }
-        public enum Champ_Carac// Cours 
+        public enum Carac_enum// Cours 
         {
             IDCARAC = 0,
             IDJEDI = 1,
@@ -25,25 +27,17 @@ namespace DataAccessLayer {
         }
         private string m_connectionString = "";
 
-         public SQLAccess(string connectionString) {
-            m_connectionString = connectionString;
-            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
-                //sqlConnection.Open();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idJedi, Name, isSith, Pic FROM Jedis;", sqlConnection));
-                
-            }
-        }
-
-        public List<Caracteristique> GetAllCaracteristiques()
+        public SQLAccess(string connectionString)
         {
-            List<Caracteristique> _allCarac = new List<Caracteristique>();
+            m_connectionString = connectionString;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                //throw new NotImplementedException();
-            }
+                //sqlConnection.Open();
+              //  SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idJedi, Name, isSith, Pic FROM Jedis;", sqlConnection));
 
-            return _allCarac;
+            }
         }
+
 
         public List<Jedi> GetAllJedis()
         {
@@ -53,15 +47,13 @@ namespace DataAccessLayer {
                 string requete = "SELECT idJedi, Name, isSith, Pic FROM Jedis;";
                 SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
                 sqlConnection.Open();
-
                 SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-
                 while (sqlDataReader.Read())
                 {
                     List<Caracteristique> _carac = new List<Caracteristique>();
                     using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
                     {
-                        String id = sqlDataReader.GetInt32((int)Champ_Jedi.IDJEDI).ToString(); ;
+                        String id = sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI).ToString(); ;
                         String requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Jedis jedi, Carac carac WHERE jedi.idJedi=" + id + " AND jedi.id=carac.idjedi;";
                         SqlCommand sqlCommand2 = new SqlCommand(requete2, sqlConnection2);
                         sqlConnection2.Open();
@@ -69,108 +61,92 @@ namespace DataAccessLayer {
                         SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();//creation d'une nouvelle sqlDataReader2
                         while (sqlDataReader2.Read())
                         {
-                            _carac.Add(new Caracteristique(/*sqlDataReader2.GetInt32((int)Champ_Carac.IDCARAC),
-                                                          sqlDataReader2.GetString((int)Champ_Carac.NOM),
-                                                          sqlDataReader2.GetInt32((int)Champ_Carac.VALEUR)*/)
+                            _carac.Add(new Caracteristique(sqlDataReader2.GetInt32((int)Carac_enum.IDCARAC),
+                                                          sqlDataReader2.GetString((int)Carac_enum.NOM),
+                                                          sqlDataReader2.GetInt32((int)Carac_enum.VALEUR))
                               );
                         }
                         sqlConnection2.Close();
                         //jointure entre les 2 tables
                     }
-                   // int id, string nom, bool isSith, List< Caracteristique > carac
-                    _allJedis.Add(new Jedi(sqlDataReader.GetInt32((int)Champ_Jedi.IDJEDI),
-                                           sqlDataReader.GetString((int)Champ_Jedi.NAME),
-                                           sqlDataReader.GetBoolean((int)Champ_Jedi.ISSITH),
-                                                _carac,
-                                           sqlDataReader.GetString((int)Champ_Jedi.PIC)));
+                    // int id, string nom, bool isSith, List< Caracteristique > carac
+                    _allJedis.Add(new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
+                                           sqlDataReader.GetString((int)Jedi_enum.NAME),
+                                           sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
+                                           _carac,
+                                           sqlDataReader.GetString((int)Jedi_enum.PIC)));
                 }
-                sqlDataReader.Close();
                 sqlConnection.Close();
             }
             return _allJedis;
         }
-        public List<Match> GetAllMatchs()
+
+        public void AddJedis(Jedi _jedi)
         {
-            List<Match> _allMatchs = new List<Match>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                //throw new NotImplementedException();
-            }
+                string query = "INSERT INTO Jedis (Name, IsSith, Pic) VALUES (@Name, @IsSith, @Pic)";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Name", _jedi.Nom);
+                sqlCommand.Parameters.AddWithValue("@IsSith", _jedi.IsSith);
+                sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Image);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
 
-            return _allMatchs;
+               /* using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
+                {
+                    //string requete2 = "INSERT INTO Carac(idCarac, Nom, Valeur) .....";
+                }*/
+                sqlConnection.Close();
+              }
         }
 
-        public List<Stade> GetAllStades()
+        public int RemoveJedi(Jedi _jedi)
         {
-            List<Stade> _allStade = new List<Stade>();
+            int val = 0;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                //throw new NotImplementedException();
+                string query = "DELETE FROM Jedis WHERE idJedi='@idJedi'";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@id", _jedi.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                val = 1;
             }
-
-            return _allStade;
+            return val;
         }
 
-        public List<Tournoi> GetAllTournois()
+        public List<Caracteristique> GetAllCaracteristique()
         {
-            List<Tournoi> _allTournoi = new List<Tournoi>();
+            List<Caracteristique> _allCarac = new List<Caracteristique>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                //throw new NotImplementedException();
             }
 
-            return _allTournoi;
+            return _allCarac;
         }
 
-       
-        public int RemoveListCaracteristiques(List<Caracteristique> _listCarac)
+        public int EditJedi(Jedi _jedi)
         {
-            throw new NotImplementedException();
-        }
-
-        public int RemoveListJedis(List<Jedi> _listeJedi)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int RemoveListMatches(List<Match> _listMatch)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int RemoveListStades(List<Stade> _listStade)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int RemoveListTournois(List<Tournoi> _listTournoi)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateListCaracteristiques(List<Caracteristique> _listCarac)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateListJedis(List<Jedi> _listeJedi)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateListMatches(List<Match> _listMatch)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateListStades(List<Stade> _listStade)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int UpdateListTournois(List<Tournoi> _listTournoi)
-        {
-            throw new NotImplementedException();
+            /*command.Text = "UPDATE Student 
+            SET Address = @add, City = @cit Where FirstName = @fn and LastName = @add";*/
+            int val = 0;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                string query = "UPDATE Jedis SET Name=@name, IsSith=@Sith, Pic=@pic WHERE idJedi=@idjedi";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idjedi", _jedi.ID);
+                sqlCommand.Parameters.AddWithValue("@name", _jedi.Nom);
+                sqlCommand.Parameters.AddWithValue("@Sith", _jedi.IsSith);
+                sqlCommand.Parameters.AddWithValue("@pic", _jedi.Image);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                val = 1;
+            }
+            return val;
         }
     }
+
 }

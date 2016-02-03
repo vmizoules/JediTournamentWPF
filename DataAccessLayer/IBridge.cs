@@ -7,7 +7,11 @@ using EntitiesLayer;
 namespace DataAccessLayer {
     interface IBridge {
         List<Jedi> GetAllJedis();
-        List<Stade> GetAllStades();
+        void AddJedis(Jedi _jedi);
+        int RemoveJedi(Jedi _jedi);
+        int EditJedi(Jedi _jedi);
+        List<Caracteristique> GetAllCaracteristique();
+        /*List<Stade> GetAllStades();
         List<Match> GetAllMatchs();
         List<Caracteristique> GetAllCaracteristiques();
         List<Tournoi> GetAllTournois();
@@ -20,6 +24,6 @@ namespace DataAccessLayer {
         int RemoveListStades(List<Stade> _listStade);
         int RemoveListMatches(List<Match> _listMatch);
         int RemoveListCaracteristiques(List<Caracteristique> _listCarac);
-        int RemoveListTournois(List<Tournoi> _listTournoi);
+        int RemoveListTournois(List<Tournoi> _listTournoi);*/
     }
 }

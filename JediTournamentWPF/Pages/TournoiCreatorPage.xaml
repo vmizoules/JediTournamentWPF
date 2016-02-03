@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:JediTournamentWPF.Pages"
       xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls" x:Class="JediTournamentWPF.Pages.NewTournoiPage"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      d:DesignHeight="600" d:DesignWidth="800"
       Title="TournoiCreator" Width="Auto" Height="Auto"  Loaded="Page_Loaded">
 
     <Grid>
