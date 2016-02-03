@@ -62,5 +62,11 @@ namespace JediTournamentWPF.ViewModel {
             }
         }
 
+        public Boolean IsSith
+        {
+            get { return Jedi.IsSith; }
+            set { Jedi.IsSith = value; }
+        }
+
     }
 }
