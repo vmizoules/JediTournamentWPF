@@ -76,6 +76,12 @@ namespace JediTournamentWPF.ViewModel {
             set { Jedi.IsSith = value; }
         }
 
+        public Boolean IsNotSith
+        {
+            get { return ! Jedi.IsSith; }
+            set { Jedi.IsSith = ! value; }
+        }
+
         public CaracteristiqueViewModel SelectedCarac
         {
             get { return _selectedCarac; }
