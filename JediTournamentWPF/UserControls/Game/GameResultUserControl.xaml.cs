@@ -28,28 +28,28 @@ namespace JediTournamentWPF.UserControls {
 
             switch (m_key) {
                 case (Key.Q):
-                    key_uri = new Uri("JediTournamentWPF;Resources/keyboardPics/q_key.png");
-                    symbol_uri = new Uri("JediTournamentWPF;Resources/gameSymbols/pierre.png");
+                    key_uri = new Uri(@"/Resources/keyboardPics/q_key.png", UriKind.Relative);
+                    symbol_uri = new Uri(@"/Resources/gameSymbols/pierre.png", UriKind.Relative);
                     break;
                 case (Key.S):
-                    key_uri = new Uri("JediTournamentWPF;Resources/keyboardPics/s_key.png");
-                    symbol_uri = new Uri("JediTournamentWPF;Resources/gameSymbols/feuille.png");
+                    key_uri = new Uri(@"/Resources/keyboardPics/s_key.png", UriKind.Relative);
+                    symbol_uri = new Uri(@"/Resources/gameSymbols/feuille.png", UriKind.Relative);
                     break;
                 case (Key.D):
-                    key_uri = new Uri("JediTournamentWPF;Resources/keyboardPics/d_key.png");
-                    symbol_uri = new Uri("JediTournamentWPF;Resources/gameSymbols/ciseaux.png");
+                    key_uri = new Uri(@"/Resources/keyboardPics/d_key.png", UriKind.Relative);
+                    symbol_uri = new Uri(@"/Resources/gameSymbols/ciseaux.png", UriKind.Relative);
                     break;
                 case (Key.K):
-                    key_uri = new Uri("JediTournamentWPF;Resources/keyboardPics/k_key.png");
-                    symbol_uri = new Uri("JediTournamentWPF;Resources/gameSymbols/pierre.png");
+                    key_uri = new Uri(@"/Resources/keyboardPics/k_key.png", UriKind.Relative);
+                    symbol_uri = new Uri(@"/Resources/gameSymbols/pierre.png", UriKind.Relative);
                     break;
                 case (Key.L):
-                    key_uri = new Uri("JediTournamentWPF;Resources/keyboardPics/l_key.png");
-                    symbol_uri = new Uri("JediTournamentWPF;Resources/gameSymbols/feuille.png");
+                    key_uri = new Uri(@"/Resources/keyboardPics/l_key.png", UriKind.Relative);
+                    symbol_uri = new Uri(@"/Resources/gameSymbols/feuille.png", UriKind.Relative);
                     break;
                 case (Key.M):
-                    key_uri = new Uri("JediTournamentWPF;Resources/keyboardPics/m_key.png");
-                    symbol_uri = new Uri("JediTournamentWPF;Resources/gameSymbols/ciseaux.png");
+                    key_uri = new Uri(@"/Resources/keyboardPics/m_key.png", UriKind.Relative);
+                    symbol_uri = new Uri(@"/Resources/gameSymbols/ciseaux.png", UriKind.Relative);
                     break;
                     // TODO : ajouter un default pour mettre un picture not found ?
             }

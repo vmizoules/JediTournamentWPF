@@ -40,6 +40,7 @@ namespace JediTournamentWPF.Pages {
             ManualGameUserControl countDownControl = new ManualGameUserControl();
 
             Container.Children.Clear();
+            explanations.Visibility = Visibility.Hidden;
             Container.Children.Add(countDownControl);
         }
     }

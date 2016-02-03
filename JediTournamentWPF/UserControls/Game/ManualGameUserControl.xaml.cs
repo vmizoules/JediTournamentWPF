@@ -54,18 +54,18 @@ namespace JediTournamentWPF.UserControls {
                 this.displayText.Text = m_counter.ToString();
             }
             else if (m_counter == 0) {
-                this.displayText.Text = "Play !";
-                this.displayText.Focus();
-                this.KeyUp += GetPlayersKeys;
+                displayText.Text = "Play !";
+                Window.GetWindow(this).Focus();
+                Window.GetWindow(this).KeyDown += GetPlayersKeys;
             }
             else if (m_counter == -3) {
-                this.KeyUp -= GetPlayersKeys;
+                Window.GetWindow(this).KeyDown -= GetPlayersKeys;
                 m_timer.Stop();
 
                 displayResults();
             }
             if (m_j1 && m_j2)
-                m_counter = -3;
+                m_counter = -3; 
             else
                 m_counter--;
         }
@@ -97,36 +97,44 @@ namespace JediTournamentWPF.UserControls {
                 this.displayText.Text = "5";
                 initializeAndLaunch();                      // Relaunch
             }
-            else {
-                //if (m_keyPressed.Count == 2) {
+            else {                                          // Define only one key for each player
+                int i = 0;
+                // We don't use the boolean anymore, let's reuse them
+                Key joueur1_key = Key.A, joueur2_key = Key.A;   // Compilator oblige to initialize
+                m_j1 = false; m_j2 = false;
+                while (!(m_j1 && m_j2) && i < m_keyPressed.Count) {
+                    if (m_keyPressed[i] == Key.Q || m_keyPressed[i] == Key.S || m_keyPressed[i] == Key.D) {
+                        joueur1_key = m_keyPressed[i];
+                        m_j1 = true;
+                    }
+                    else if (m_keyPressed[i] == Key.K || m_keyPressed[i] == Key.L || m_keyPressed[i] == Key.M) {
+                        joueur2_key = m_keyPressed[i];
+                        m_j2 = true;
+                    }
+                    i++;
+                }   // End while
 
+                if (!(m_j1 && m_j2)) {                      // If one of the players didn't play
+                    MessageBox.Show("Il y a eu une erreur (2), ou les deux joueurs n'ont pas joué, nous allons recommencer !", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                    this.displayText.Text = "5";
+                    initializeAndLaunch();                  // Relaunch
+                }
+                else {                                      // All is ok, go to results
                     viewbox.Visibility = Visibility.Hidden;
                     resultsGrid.Visibility = Visibility.Visible;
 
-                    Key joueur1_key;
-                    Key joueur2_key;
+                    GameResultUserControl joueur1_UserControl = new GameResultUserControl(joueur1_key);
+                    GameResultUserControl joueur2_UserControl = new GameResultUserControl(joueur2_key);
 
-                    bool j1_ok = false;
-                    bool j2_ok = false;
+                    resultsGrid.Children.Add(joueur1_UserControl);
+                    resultsGrid.Children.Add(joueur2_UserControl);
 
-                    // Assignation des touches
-                    foreach (Key k in m_keyPressed) {
-                        if (k == Key.Q || k == Key.S || k == Key.D) {
-                            joueur1_key = k;
-                            j1_ok = true;
-                        }
+                    joueur1_UserControl.SetValue(Grid.RowProperty, 2);
+                    joueur2_UserControl.SetValue(Grid.RowProperty, 2);
 
-                        if (k == Key.K || k == Key.L || k == Key.M) {
-                            joueur2_key = k;
-                            j2_ok = true;
-                        }
-
-                        if (j1_ok && j2_ok) break;
-                    }
-
-                    //GameResultUserControl joueur1_UserControl = new GameResultUserControl(joueur1_key);
-                    //GameResultUserControl joueur2_UserControl = new GameResultUserControl(joueur2_key);
-                //}
+                    joueur1_UserControl.SetValue(Grid.ColumnProperty, 2);
+                    joueur1_UserControl.SetValue(Grid.ColumnProperty, 3);
+                }
             }
 
 

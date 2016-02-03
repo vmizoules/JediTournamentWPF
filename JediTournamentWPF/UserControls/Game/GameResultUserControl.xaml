@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
             <Image x:Name="symbol" Grid.Column="0"/>
-            <Image x:Name="arrow" Source="../Resources/arrow.png" Grid.Column="1"/>
+            <Image x:Name="arrow" Source="../../Resources/arrow.png" Grid.Column="1"/>
             <Image x:Name="key" Grid.Column="2"/>
         </Grid>
     </Grid>

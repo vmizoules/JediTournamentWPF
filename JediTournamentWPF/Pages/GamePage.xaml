@@ -10,13 +10,38 @@
       d:DesignHeight="364.151" d:DesignWidth="776.415"
       Title="GamePage">
 
-    <Grid>
-        <DockPanel x:Name="Container" LastChildFill="True" Focusable="True">
-            <StackPanel x:Name="explanations" Height="364" Orientation="Vertical" VerticalAlignment="Top" DockPanel.Dock="Right" Width="120" Visibility="Hidden">
+    <Grid x:Name="Container">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="80*"/>
+                <ColumnDefinition Width="20*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80*"/>
+                <RowDefinition Height="20*" />
+            </Grid.RowDefinitions>
+            <UserControls:MatchReadUserControl Grid.Column="0" Grid.Row="0"/>
+            <StackPanel x:Name="explanations" Orientation="Vertical" Grid.Column="1" Visibility="Visible">
                 <TextBlock TextWrapping="Wrap" HorizontalAlignment="Center" Foreground="White" FontSize="20">Explications</TextBlock>
-                <!-- TODO : ajouter les explications -->
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="White">
+                    Il s'agit de jouer ici au jeu Pierre-Feuille-Ciseaux. Chaque joueur devra appuyer à la suite du compte à rebours
+                    sur la touche définie correspondant à son choix.
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="White" Margin="0, 10, 0, 0">
+                    Joueur 1 :<LineBreak/>
+                        - Touche Q : Pierre<LineBreak/>
+                        - Touche S : Feuille<LineBreak/>
+                        - Touche D : Ciseaux
+                </TextBlock>
+                <TextBlock TextWrapping="Wrap" HorizontalAlignment="Left" Foreground="White" Margin="0, 10, 0, 0">
+                    Joueur 2 :<LineBreak/>
+                        - Touche K : Pierre<LineBreak/>
+                        - Touche L : Feuille<LineBreak/>
+                        - Touche M : Ciseaux
+                </TextBlock>
+            <!-- TODO : ajouter les explications -->
             </StackPanel>
-            <Grid DockPanel.Dock="Bottom" Height="50">
+            <Grid Grid.Row="1" Grid.ColumnSpan="2" Margin="0,0,0,10">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
@@ -28,8 +53,12 @@
                     <Button x:Name="GoButton" Content="Go !" />
                 </Viewbox>
             </Grid>
-            <UserControls:MatchReadUserControl VerticalAlignment="Top" DockPanel.Dock="Left" Width="651"/>
-        </DockPanel>
+        </Grid>
+
+
+
+
+
 
     </Grid>
 </Page>
