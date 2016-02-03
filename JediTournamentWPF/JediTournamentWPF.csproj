@@ -95,6 +95,7 @@
     <Compile Include="UserControls\Stade\StadeWriteUserControl.xaml.cs">
       <DependentUpon>StadeWriteUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Caracteristique\CaracteristiquesViewModel.cs" />
     <Compile Include="ViewModel\Caracteristique\CaracteristiqueViewModel.cs" />
     <Compile Include="ViewModel\Jedi\JediGestionViewModel.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />

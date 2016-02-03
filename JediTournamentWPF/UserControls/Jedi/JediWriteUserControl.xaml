@@ -57,7 +57,7 @@
                HorizontalAlignment="Right" VerticalAlignment="Top"
                Foreground="White"/>
 
-        <local:CaracteristiquesWriteUserControl x:Name="CaracUC"
+        <local:CaracteristiquesWriteUserControl x:Name="CaracsUC"
                                    Grid.Row="4" Grid.Column="2"
                                    DataContext="{Binding Caracteristiques}"/>
     </Grid>

@@ -17,6 +17,7 @@ namespace JediTournamentWPF.ViewModel {
                 _carac = value;
             }
         }
+
         public string Nom
         {
 

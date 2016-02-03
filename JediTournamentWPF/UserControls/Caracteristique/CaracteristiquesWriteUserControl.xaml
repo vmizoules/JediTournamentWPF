@@ -3,13 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d">
     <Grid>
         <ListView x:Name="listView"
                   Grid.Row="4" Grid.Column="2"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
                   Height="150" Width="200"
-                  ItemsSource="{Binding}"
+                  ItemsSource="{Binding CaracteristiquesList}"
                   SelectedItem="{Binding SelectedCarac}">
             <ListView.View>
                 <GridView>
@@ -17,6 +18,11 @@
                     <GridViewColumn Header="Valeur" DisplayMemberBinding="{Binding Valeur}"/>
                 </GridView>
             </ListView.View>
-        </ListView> 
+        </ListView>
+        
+        <local:CaracteristiqueWriteUserControl x:Name="CaracUC"
+                                   DataContext="{Binding SelectedCarac}" Margin="0,105,0,-105"
+            />
+        
     </Grid>
 </UserControl>

@@ -13,8 +13,7 @@ namespace JediTournamentWPF.ViewModel {
     /// </summary>
     class JediViewModel : ViewModelBase {
 
-        private ObservableCollection<CaracteristiqueViewModel> _caracs;
-        private CaracteristiqueViewModel _selectedCarac;
+        private CaracteristiquesViewModel _caracs;
         private Jedi m_jedi;
         
         /// <summary>
@@ -23,17 +22,7 @@ namespace JediTournamentWPF.ViewModel {
         /// <param name="jedi"></param>
         public JediViewModel(Jedi jedi) {
             m_jedi = jedi;
-            _caracs = new ObservableCollection<CaracteristiqueViewModel>();
-
-            // if not null
-            if (m_jedi.Caracteristiques != null)
-            {
-                // fill carac in collection
-                foreach (Caracteristique c in m_jedi.Caracteristiques)
-                {
-                    _caracs.Add(new CaracteristiqueViewModel(c));
-                }
-            }
+            _caracs = new CaracteristiquesViewModel(jedi.Caracteristiques);
         }
 
         /// <summary>
@@ -61,7 +50,7 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Getter/setter pour les caractéristiques
         /// </summary>
-        public ObservableCollection<CaracteristiqueViewModel> Caracteristiques
+        public CaracteristiquesViewModel Caracteristiques
         {
             get { return _caracs; }
             set {
@@ -89,12 +78,5 @@ namespace JediTournamentWPF.ViewModel {
                 OnPropertyChanged("IsNotSith");
             }
         }
-
-        public CaracteristiqueViewModel SelectedCarac
-        {
-            get { return _selectedCarac; }
-            set { _selectedCarac = value; }
-        }
-
     }
 }

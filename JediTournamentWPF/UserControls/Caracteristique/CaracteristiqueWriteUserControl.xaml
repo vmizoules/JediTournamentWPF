@@ -7,6 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <Grid>
-            
+        <TextBox x:Name="textBlock"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 TextWrapping="Wrap"
+                 Text="{Binding Path=Nom, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Background="White"/>
     </Grid>
 </UserControl>
