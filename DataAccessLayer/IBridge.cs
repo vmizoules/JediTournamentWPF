@@ -6,11 +6,15 @@ using System.Threading.Tasks;
 using EntitiesLayer;
 namespace DataAccessLayer {
     interface IBridge {
-        List<Jedi> GetAllJedis();
-        void AddJedis(Jedi _jedi);
+        List<Jedi> SelectAllJedis();
+        void InsertJedis(Jedi _jedi);
         int RemoveJedi(Jedi _jedi);
         int EditJedi(Jedi _jedi);
-        List<Caracteristique> GetAllCaracteristique();
+        List<Stade> SelectAllStades();
+        int InsertStades(Stade _stade);
+        int RemoveStade(Stade _stade);
+        int EditStade(Stade _stade);
+        //List<Caracteristique> GetAllCaracteristique();
         /*List<Stade> GetAllStades();
         List<Match> GetAllMatchs();
         List<Caracteristique> GetAllCaracteristiques();

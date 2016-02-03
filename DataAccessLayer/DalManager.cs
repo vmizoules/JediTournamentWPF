@@ -43,7 +43,30 @@ namespace DataAccessLayer
 
         public List<Jedi> getJedis()
         {
-            return bd.GetAllJedis();
+            return bd.SelectAllJedis();
         }
+
+        public List<Stade> getStades()
+        {
+            return bd.SelectAllStades();
+        }
+
+        public int DeleteJedis(Jedi _jedi)
+        {
+            return bd.RemoveJedi(_jedi);
+        }
+        public int DeleteStades(Stade _stade)
+        {
+            return bd.RemoveStade(_stade);
+        }
+        public int UpdateJedi(Jedi _jedi)
+        {
+            return bd.EditJedi(_jedi);
+        }
+        public int UpdateStade(Stade _stade)
+        {
+            return bd.EditStade(_stade);
+        }
+
     }
 }
