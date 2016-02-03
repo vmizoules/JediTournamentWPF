@@ -17,6 +17,7 @@ namespace JediTournamentWPF.ViewModel {
                 _carac = value;
             }
         }
+
         public string Nom
         {
 
@@ -31,15 +32,16 @@ namespace JediTournamentWPF.ViewModel {
 
         public int Valeur
         {
-
             get { return Carac.Valeur; }
             set
             {
                 if (value == Carac.Valeur) return;
                 Carac.Valeur = value;
                 OnPropertyChanged("Nom");
+                OnPropertyChanged("Valeur");
             }
         }
+
         public CaracteristiqueViewModel(EntitiesLayer.Caracteristique caract) {
             Carac = caract;
         }

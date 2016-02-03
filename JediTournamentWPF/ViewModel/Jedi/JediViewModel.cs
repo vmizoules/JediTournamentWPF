@@ -12,7 +12,8 @@ namespace JediTournamentWPF.ViewModel {
     /// ViewModel pour les Jedis
     /// </summary>
     class JediViewModel : ViewModelBase {
-        private ObservableCollection<CaracteristiqueViewModel> _carac;
+
+        private CaracteristiquesViewModel _caracs;
         private Jedi m_jedi;
         
         /// <summary>
@@ -21,11 +22,7 @@ namespace JediTournamentWPF.ViewModel {
         /// <param name="jedi"></param>
         public JediViewModel(Jedi jedi) {
             m_jedi = jedi;
-            _carac = new ObservableCollection<CaracteristiqueViewModel>();
-            // TODO : voir pour les caractéristiques : initialisation
-            /*foreach(Caracteristique c in m_jedi.Caracteristiques) {
-                _carac.Add(new CaracteristiqueViewModel(c));
-            }*/
+            _caracs = new CaracteristiquesViewModel(jedi.Caracteristiques);
         }
 
         /// <summary>
@@ -33,11 +30,11 @@ namespace JediTournamentWPF.ViewModel {
         /// </summary>
         public string Name
         {
-
             get { return m_jedi.Nom; }
             set {
                 m_jedi.Nom = value;
                 OnPropertyChanged("Name");
+                //OnPropertyChanged("Nom");
             }
         }
 
@@ -53,14 +50,33 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Getter/setter pour les caractéristiques
         /// </summary>
-        private ObservableCollection<CaracteristiqueViewModel> Carac
+        public CaracteristiquesViewModel Caracteristiques
         {
-            get { return _carac; }
+            get { return _caracs; }
             set {
-                _carac = value;
-                OnPropertyChanged("Carac");
+                _caracs = value;
+                OnPropertyChanged("Caracteristiques");
             }
         }
 
+        public Boolean IsSith
+        {
+            get { return Jedi.IsSith; }
+            set {
+                Jedi.IsSith = value;
+                OnPropertyChanged("IsSith");
+                OnPropertyChanged("IsNotSith");
+            }
+        }
+
+        public Boolean IsNotSith
+        {
+            get { return ! Jedi.IsSith; }
+            set {
+                Jedi.IsSith = ! value;
+                OnPropertyChanged("IsSith");
+                OnPropertyChanged("IsNotSith");
+            }
+        }
     }
 }

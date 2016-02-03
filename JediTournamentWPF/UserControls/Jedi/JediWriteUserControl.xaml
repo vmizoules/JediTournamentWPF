@@ -4,29 +4,61 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
-             mc:Ignorable="d" 
-             Width="492.906" Height="305">
+             mc:Ignorable="d" >
     <Grid>
-        <Label x:Name="label" Content="Nom :" HorizontalAlignment="Left" Margin="10,71,0,0" VerticalAlignment="Top" Width="60" RenderTransformOrigin="0.467,0.346" Height="27" Foreground="White"/>
-        <TextBox x:Name="textBlock" HorizontalAlignment="Left" Margin="75,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Height="26" Width="123" Text="{Binding Name}" Background="White"/>
-        <Label x:Name="label1" Content="Sith :" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.139,1.269" Foreground="White"/>
-        <CheckBox x:Name="checkBox" HorizontalAlignment="Left" Margin="55,103,0,0" VerticalAlignment="Top" Height="26" Width="15" IsChecked="{Binding IsSith}" />
-        <Label x:Name="label2" Content="Caracteristiques :" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.066,0.346" Foreground="White"/>
-        <ListView x:Name="listView" HorizontalAlignment="Left" Height="144" Margin="10,151,0,0" VerticalAlignment="Top" Width="188">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                    <GridViewColumn Header="Valeur" DisplayMemberBinding="{Binding Valeur}"/>
-                </GridView>
-            </ListView.View>
-            <ListView x:Name="listView1" Height="100" Width="100">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn/>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </ListView>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="60" Margin="128,0,0,0" VerticalAlignment="Top" Width="70" Source="{Binding image}"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="150"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="150"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="20"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Self binding on JediReadUC -->
+        <local:JediReadUserControl x:Name="JediUserControl"
+                                   Grid.Row="0" Grid.ColumnSpan="3"
+                                   DataContext="{Binding Path=.}"
+                                   Width="125" Height="125"/>
+
+        <!-- Name -->
+        <Label x:Name="label"
+               Grid.Row="1" Grid.Column="0"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               Content="Nom :"
+               Foreground="White"/>
+        <TextBox x:Name="textBlock"
+                 Grid.Row="1" Grid.Column="2"
+                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                 TextWrapping="Wrap"
+                 Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                 Background="White"/>
+
+        <!-- Sith -->
+        <Label x:Name="label1"
+               Grid.Row="2" Grid.Column="0"
+               Content="Sith :"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               Foreground="White"/>
+        <CheckBox x:Name="checkBox"
+                  Grid.Row="2" Grid.Column="2"
+                  HorizontalAlignment="Left"
+                  Margin="0,6"
+                  VerticalAlignment="Top"
+                  IsChecked="{Binding IsSith}" />
+
+        <!-- Caracteristiques -->
+        <Label x:Name="label2"
+               Grid.Row="3" Grid.Column="0"
+               Content="Caracteristiques :"
+               HorizontalAlignment="Right" VerticalAlignment="Top"
+               Foreground="White"/>
+
+        <local:CaracteristiquesWriteUserControl x:Name="CaracsUC"
+                                   Grid.Row="4" Grid.Column="2"
+                                   DataContext="{Binding Caracteristiques}"/>
     </Grid>
 </UserControl>

@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="267">
+             >
     <Grid Margin="0,0,10,0">
         <Label x:Name="label" Content="Planete : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="65" Foreground="White"/>
         <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="128,14,0,0" TextWrapping="Wrap" Text="{Binding Planete}" VerticalAlignment="Top" Width="119"/>
