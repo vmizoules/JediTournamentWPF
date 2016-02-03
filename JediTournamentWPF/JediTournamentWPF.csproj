@@ -95,7 +95,7 @@
     <Compile Include="UserControls\Stade\StadeWriteUserControl.xaml.cs">
       <DependentUpon>StadeWriteUserControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\CaracteristiqueViewModel.cs" />
+    <Compile Include="ViewModel\Caracteristique\CaracteristiqueViewModel.cs" />
     <Compile Include="ViewModel\Jedi\JediGestionViewModel.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
     <Compile Include="ViewModel\Tournoi\MatchViewModel.cs" />
@@ -269,9 +269,7 @@
   <ItemGroup>
     <Resource Include="Resources\no-stade.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewModel\Caracteristique\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
