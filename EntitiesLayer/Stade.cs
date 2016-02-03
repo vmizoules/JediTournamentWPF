@@ -44,6 +44,7 @@ namespace EntitiesLayer
             set { _Planete = value; }
         }
 
+        public string Image { get; set; }
         /// <summary>
         /// Constructeur.
         /// </summary>
@@ -51,12 +52,22 @@ namespace EntitiesLayer
         /// <param name="nbPlaces">Nombre de places du stade.</param>
         /// <param name="planete">Nom de la planète sur laquelle se situe le stade.</param>
         /// <param name="carac">Caractéritiques associées au stade.</param>
-        public Stade(int id, int nbPlaces, string planete, List<Caracteristique> carac) 
+        public Stade(int id, int nbPlaces, string planete, List<Caracteristique> carac)
             : base(id)
         {
             NbPlaces = nbPlaces;
             Planete = planete;
             Caracteristiques = carac;
+
         }
-    }
+        public Stade(int id, int nbPlaces, string planete, List<Caracteristique> carac, string source)
+          : base(id)
+        {
+            NbPlaces = nbPlaces;
+            Planete = planete;
+            Caracteristiques = carac;
+            Image = source;
+        }
+    
+}
 }
