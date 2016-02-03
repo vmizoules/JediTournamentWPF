@@ -33,21 +33,11 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
                 //sqlConnection.Open();
-                SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idJedi, Name, isSith, Pic FROM Jedis;", sqlConnection));
+              //  SqlDataAdapter sqlDataAdapter = new SqlDataAdapter(new SqlCommand("SELECT idJedi, Name, isSith, Pic FROM Jedis;", sqlConnection));
 
             }
         }
 
-        public List<Caracteristique> GetAllCaracteristiques()
-        {
-            List<Caracteristique> _allCarac = new List<Caracteristique>();
-            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
-            {
-                //throw new NotImplementedException();
-            }
-
-            return _allCarac;
-        }
 
         public List<Jedi> GetAllJedis()
         {
@@ -124,6 +114,17 @@ namespace DataAccessLayer
                 val = 1;
             }
             return val;
+        }
+
+        public List<Caracteristique> GetAllCaracteristique()
+        {
+            List<Caracteristique> _allCarac = new List<Caracteristique>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                //throw new NotImplementedException();
+            }
+
+            return _allCarac;
         }
     }
 
