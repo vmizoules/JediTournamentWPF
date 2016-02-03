@@ -12,7 +12,9 @@ namespace JediTournamentWPF.ViewModel {
     /// ViewModel pour les Jedis
     /// </summary>
     class JediViewModel : ViewModelBase {
-        private ObservableCollection<CaracteristiqueViewModel> _carac;
+
+        private ObservableCollection<CaracteristiqueViewModel> _caracs;
+        private CaracteristiqueViewModel _selectedCarac;
         private Jedi m_jedi;
         
         /// <summary>
@@ -21,11 +23,17 @@ namespace JediTournamentWPF.ViewModel {
         /// <param name="jedi"></param>
         public JediViewModel(Jedi jedi) {
             m_jedi = jedi;
-            _carac = new ObservableCollection<CaracteristiqueViewModel>();
-            // TODO : voir pour les caractéristiques : initialisation
-            /*foreach(Caracteristique c in m_jedi.Caracteristiques) {
-                _carac.Add(new CaracteristiqueViewModel(c));
-            }*/
+            _caracs = new ObservableCollection<CaracteristiqueViewModel>();
+
+            // if not null
+            if (m_jedi.Caracteristiques != null)
+            {
+                // fill carac in collection
+                foreach (Caracteristique c in m_jedi.Caracteristiques)
+                {
+                    _caracs.Add(new CaracteristiqueViewModel(c));
+                }
+            }
         }
 
         /// <summary>
@@ -33,11 +41,11 @@ namespace JediTournamentWPF.ViewModel {
         /// </summary>
         public string Name
         {
-
             get { return m_jedi.Nom; }
             set {
                 m_jedi.Nom = value;
                 OnPropertyChanged("Name");
+                //OnPropertyChanged("Nom");
             }
         }
 
@@ -53,12 +61,12 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Getter/setter pour les caractéristiques
         /// </summary>
-        private ObservableCollection<CaracteristiqueViewModel> Carac
+        public ObservableCollection<CaracteristiqueViewModel> Caracteristiques
         {
-            get { return _carac; }
+            get { return _caracs; }
             set {
-                _carac = value;
-                OnPropertyChanged("Carac");
+                _caracs = value;
+                OnPropertyChanged("Caracteristiques");
             }
         }
 
@@ -66,6 +74,12 @@ namespace JediTournamentWPF.ViewModel {
         {
             get { return Jedi.IsSith; }
             set { Jedi.IsSith = value; }
+        }
+
+        public CaracteristiqueViewModel SelectedCarac
+        {
+            get { return _selectedCarac; }
+            set { _selectedCarac = value; }
         }
 
     }
