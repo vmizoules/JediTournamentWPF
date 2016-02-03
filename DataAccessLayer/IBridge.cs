@@ -9,7 +9,7 @@ namespace DataAccessLayer {
         List<Jedi> GetAllJedis();
         void AddJedis(Jedi _jedi);
         int RemoveJedi(Jedi _jedi);
-
+        int EditJedi(Jedi _jedi);
         List<Caracteristique> GetAllCaracteristique();
         /*List<Stade> GetAllStades();
         List<Match> GetAllMatchs();

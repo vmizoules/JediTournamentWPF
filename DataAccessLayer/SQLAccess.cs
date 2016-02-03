@@ -85,10 +85,11 @@ namespace DataAccessLayer
         {
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                string query = "INSERT INTO Jedis (Name, IsSith) VALUES (@Name, @IsSith)";
+                string query = "INSERT INTO Jedis (Name, IsSith, Pic) VALUES (@Name, @IsSith, @Pic)";
                 SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@Name", _jedi.Nom);
-                sqlCommand.Parameters.AddWithValue(" @IsSith", _jedi.IsSith);
+                sqlCommand.Parameters.AddWithValue("@IsSith", _jedi.IsSith);
+                sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Image);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
 
@@ -121,10 +122,30 @@ namespace DataAccessLayer
             List<Caracteristique> _allCarac = new List<Caracteristique>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                //throw new NotImplementedException();
             }
 
             return _allCarac;
+        }
+
+        public int EditJedi(Jedi _jedi)
+        {
+            /*command.Text = "UPDATE Student 
+            SET Address = @add, City = @cit Where FirstName = @fn and LastName = @add";*/
+            int val = 0;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                string query = "UPDATE Jedis SET Name=@name, IsSith=@Sith, Pic=@pic WHERE idJedi=@idjedi";
+                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idjedi", _jedi.ID);
+                sqlCommand.Parameters.AddWithValue("@name", _jedi.Nom);
+                sqlCommand.Parameters.AddWithValue("@Sith", _jedi.IsSith);
+                sqlCommand.Parameters.AddWithValue("@pic", _jedi.Image);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                val = 1;
+            }
+            return val;
         }
     }
 
