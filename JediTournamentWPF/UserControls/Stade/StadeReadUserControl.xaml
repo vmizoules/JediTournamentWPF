@@ -5,18 +5,25 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d"
-             d:DesignWidth="218.812" d:DesignHeight="79.137"
              >
-    <Grid>
+    <Canvas
+            Width="200"
+            Height="125"
+            >
+        <Image x:Name="defaultPic"
+                Source="../../Resources/no-stade.jpg"
+                Width="200"
+                Height="125"
+                />
         <Label x:Name="label"
-               Content="Planete : "
-               HorizontalAlignment="Left" VerticalAlignment="Top"
-               Margin="10,0,0,0"
-               Foreground="White"/>
-        <TextBox x:Name="textBox"
-                 HorizontalAlignment="Left" VerticalAlignment="Top"
-                 Margin="128,0,0,0"
-                 TextWrapping="Wrap"
-                 Text="{Binding Planete}" IsEnabled="False"/>
-    </Grid>
+               Content="{Binding Planete}"
+               Height="25"
+               Canvas.Left="0" Canvas.Top="100"
+               Foreground="White"
+               >
+            <Label.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Label.Background>
+        </Label>
+    </Canvas>
 </UserControl>

@@ -249,6 +249,12 @@
     <Resource Include="Resources\gameSymbols\feuille.png" />
     <Resource Include="Resources\gameSymbols\pierre.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\no-picture.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\no-stade.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
