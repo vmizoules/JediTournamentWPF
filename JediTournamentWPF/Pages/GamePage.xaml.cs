@@ -1,5 +1,6 @@
 ﻿using EntitiesLayer;
 using JediTournamentWPF.UserControls;
+using JediTournamentWPF.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -16,6 +17,8 @@ namespace JediTournamentWPF.Pages {
 
         private bool m_manual;
         private Tournoi m_tournament;
+        private int m_current_match;
+        private EPhaseTournoi m_current_phase;
 
         public GamePage() {
             InitializeComponent();
@@ -26,6 +29,10 @@ namespace JediTournamentWPF.Pages {
 
             m_tournament = t;
             m_manual = b;
+            m_current_match = 0;
+            m_current_phase = EPhaseTournoi.HuitiemeFinale;
+
+            currentMatch.DataContext = new MatchViewModel(m_tournament.Matchs[m_current_match]);
 
             if(m_manual) {
                 // Change the handler of the Button
@@ -34,10 +41,14 @@ namespace JediTournamentWPF.Pages {
                 // Make the explanations visible
                 explanations.Visibility = Visibility.Visible;
             }
+            else {
+                explanations.Visibility = Visibility.Hidden;
+            }
         }
 
         private void GoButton_Click(object sender, RoutedEventArgs e) {
-            ManualGameUserControl countDownControl = new ManualGameUserControl();
+            Match current_match = m_tournament.Matchs[m_current_match];
+            ManualGameUserControl countDownControl = new ManualGameUserControl(current_match.Jedi1, current_match.Jedi2);
 
             Container.Children.Clear();
             explanations.Visibility = Visibility.Hidden;

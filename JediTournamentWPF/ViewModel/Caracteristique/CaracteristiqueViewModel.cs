@@ -42,8 +42,13 @@ namespace JediTournamentWPF.ViewModel {
             }
         }
 
+        // CONSTRUCTEURS
         public CaracteristiqueViewModel(EntitiesLayer.Caracteristique caract) {
             Carac = caract;
+        }
+
+        public CaracteristiqueViewModel() {
+            Carac = new EntitiesLayer.Caracteristique();
         }
     }
 }

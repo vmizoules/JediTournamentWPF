@@ -6,19 +6,15 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" 
              >
-    
-    <UserControl.Resources>
-        <BooleanToVisibilityConverter x:Key="BoolToVis"/>
-    </UserControl.Resources>
-    
+
     <Grid>
         <Image x:Name="defaultPic"
             Source="../../Resources/no-picture.jpg"/>
 
         <Rectangle Fill="#FF00A2FF" Opacity="0.3"
-                   Visibility="{Binding Path=IsNotSith, Converter={StaticResource BoolToVis}}"/>
+                   Visibility="{Binding Path=IsNotSith, Converter={StaticResource BoolToVisibility}}"/>
         <Rectangle Fill="#FFFF0017" Opacity="0.3"
-                   Visibility="{Binding Path=IsSith, Converter={StaticResource BoolToVis}}"/>
+                   Visibility="{Binding Path=IsSith, Converter={StaticResource BoolToVisibility}}"/>
         <Label x:Name="label"
             Content="{Binding Name}"
             Height="25"

@@ -10,19 +10,23 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
         
         <ListView x:Name="listView"
                   Grid.Row="0"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Height="150" Width="200"
+                  Height="150"
                   ItemsSource="{Binding CaracteristiquesList}"
                   SelectedItem="{Binding SelectedCarac}">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                    <GridViewColumn Header="Valeur" DisplayMemberBinding="{Binding Valeur}"/>
-                </GridView>
-            </ListView.View>
+                  <ListView.View>
+                      <GridView>
+                          <GridViewColumn Header="Nom" Width="200" DisplayMemberBinding="{Binding Nom}"/>
+                          <GridViewColumn Header="Valeur" Width="75" DisplayMemberBinding="{Binding Valeur}"/>
+                      </GridView>
+                  </ListView.View>
         </ListView>
         
         <local:CaracteristiqueWriteUserControl x:Name="CaracUC"
@@ -30,5 +34,17 @@
             Grid.Row="1"
             />
         
+        <Button Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Content="+"
+                Command="{Binding AddCommand}"
+                />
+        <Button Grid.Column="1"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Content="-"
+                Command="{Binding RemoveCommand}" Margin="3,23,0,0"
+                />
+
+
     </Grid>
 </UserControl>

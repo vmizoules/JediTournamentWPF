@@ -10,7 +10,11 @@
              Loaded="UserControl_Loaded">
     <Grid>
         <Viewbox x:Name="viewbox" Visibility="Visible">
-            <TextBlock x:Name="displayText" HorizontalAlignment="Center" TextWrapping="Wrap" Text="Ready ?" Foreground="White"/>
+            <TextBlock x:Name="displayText"
+                       HorizontalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Text="Ready ?"
+                       Foreground="White"/>
         </Viewbox>
         <Grid x:Name="resultsGrid" Visibility="Hidden">
             <Grid.ColumnDefinitions>

@@ -19,6 +19,11 @@ namespace EntitiesLayer
             set { _nom = value; }
         }
 
+        public Tournoi() : base(0) {
+            Nom = "Nouveau tournoi";
+            Matchs = new List<Match>();
+        }
+
         /// <summary>
         /// Constructeur.
         /// </summary>

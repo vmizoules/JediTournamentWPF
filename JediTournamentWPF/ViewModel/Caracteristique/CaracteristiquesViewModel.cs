@@ -27,6 +27,69 @@ namespace JediTournamentWPF.ViewModel
             }
         }
 
+        #region "Commandes du formulaire"
+
+        // ADD COMMAND
+        private RelayCommand _addCommand;
+        public System.Windows.Input.ICommand AddCommand
+        {
+            get
+            {
+                if (_addCommand == null)
+                {
+                    _addCommand = new RelayCommand(
+                        () => this.Add(),
+                        () => this.CanAdd()
+                        );
+                }
+                return _addCommand;
+            }
+        }
+
+        private bool CanAdd()
+        {
+            return true;
+        }
+
+        private void Add()
+        {
+            EntitiesLayer.Caracteristique newOne = new EntitiesLayer.Caracteristique();
+            SelectedCarac = new CaracteristiqueViewModel(newOne);
+            _caracs.Add(SelectedCarac);
+        }
+        // /ADD COMMAND
+
+        // REMOVE COMMAND
+        private RelayCommand _removeCommand;
+        public System.Windows.Input.ICommand RemoveCommand
+        {
+            get
+            {
+                if (_removeCommand == null)
+                {
+                    _removeCommand = new RelayCommand(
+                        () => this.Remove(),
+                        () => this.CanRemove()
+                        );
+                }
+                return _removeCommand;
+            }
+        }
+
+        private bool CanRemove()
+        {
+            return (this.SelectedCarac != null);
+        }
+
+        private void Remove()
+        {
+            if (this.SelectedCarac != null) CaracteristiquesList.Remove(this.SelectedCarac);
+        }
+        // /REMOVE COMMAND
+
+        #endregion
+
+        #region "Attributs"
         public ObservableCollection<CaracteristiqueViewModel> CaracteristiquesList
         {
             get { return _caracs; }
@@ -41,5 +104,7 @@ namespace JediTournamentWPF.ViewModel
                 base.OnPropertyChanged("SelectedCarac");
             }
         }
+
+        #endregion
     }
 }

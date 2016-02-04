@@ -35,9 +35,9 @@ namespace BusinessLayer
         /// Donne la liste des stades disponibles.
         /// </summary>
         /// <returns>Liste des noms des stades.</returns>
-        public List<string> getStades()
+        public List<string> getStadesNames()
         {
-            return m_data.getAllStades().Select(s => s.Planete1).ToList();
+            return m_data.getAllStades().Select(s => s.Planete).ToList();
         }
 
         /// <summary>
@@ -58,7 +58,7 @@ namespace BusinessLayer
             return m_data.getAllJedis().Where(j => j.IsSith).Select(j => j.Nom).ToList();
         }
 
-        public List<string> getNoSithsName() {
+        public List<string> getJedisNames() {
             return m_data.getAllJedis().Where(j => !j.IsSith).Select(j => j.Nom).ToList();
         }
         /// <summary>
@@ -74,12 +74,28 @@ namespace BusinessLayer
         }
 
         /// <summary>
-        /// Donne la liste de tous les jedis.
+        /// Donne la liste de tous les combattants.
         /// </summary>
-        /// <returns>Liste de tous les jedis.</returns>
+        /// <returns>Liste de tous les combattants.</returns>
         public List<Jedi> getAllJedis()
         {
             return m_data.getAllJedis();
+        }
+
+        /// <summary>
+        /// Donne la liste de tous les jedis.
+        /// </summary>
+        /// <returns>Liste de tous les jedis.</returns>
+        public List<Jedi> getSiths() {
+            return m_data.getAllJedis().Where(j => j.IsSith).ToList();
+        }
+        
+        /// <summary>
+        /// Donne la liste de tous les siths.
+        /// </summary>
+        /// <returns>Liste de tous les siths.</returns>
+        public List<Jedi> getJedis() {
+            return m_data.getAllJedis().Where(j => !j.IsSith).ToList();
         }
 
         /// <summary>
