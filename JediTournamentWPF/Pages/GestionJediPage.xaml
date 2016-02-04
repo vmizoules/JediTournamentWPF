@@ -7,7 +7,7 @@
       xmlns:UserControls="clr-namespace:JediTournamentWPF.UserControls"
       xmlns:JediTournamentWPF="clr-namespace:JediTournamentWPF" x:Class="JediTournamentWPF.Pages.GestionJediPage"
       mc:Ignorable="d" 
-      d:DesignHeight="364.151" d:DesignWidth="776.415"
+      d:DesignHeight="500" d:DesignWidth="776.415"
       Title="GestionJediPage" Width="Auto" Height="Auto" WindowHeight="400" WindowWidth="800" Loaded="Page_Loaded">
     <Grid x:Name="MainGrid">
         <Grid.ColumnDefinitions>
@@ -48,7 +48,7 @@
         <ListView x:Name="JediList" 
             ItemsSource="{Binding Jedis}" 
             SelectedItem="{Binding SelectedItem}"
-            Grid.Column="1" Grid.Row="1" Grid.RowSpan="4" 
+            Grid.Column="1" Grid.Row="1" Grid.RowSpan="3" 
             Margin="10,10.2,10.2,10">
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -57,16 +57,20 @@
             </ListView.ItemTemplate>
         </ListView>
 
-        <Button Grid.Row="2"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Content="+"
+        <Grid Grid.Row="4" Grid.Column="1">
+            <Button
+                VerticalAlignment="Top"
+                Content="Ajouter"
+                Style="{DynamicResource AddRemoveButton}"
                 Command="{Binding AddCommand}"
                 />
-        <Button Grid.Row="3"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Content="-"
+            <Button Grid.Row="3"
+                VerticalAlignment="Bottom"
+                Content="Supprimer"
+                Style="{DynamicResource AddRemoveButton}"
                 Command="{Binding RemoveCommand}"
                 />
+        </Grid>
 
         <UserControls:JediWriteUserControl Grid.Column="2"
                                            HorizontalAlignment="Center"
