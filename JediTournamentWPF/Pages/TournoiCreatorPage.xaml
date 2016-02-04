@@ -10,7 +10,7 @@
       Title="TournoiCreator" Width="Auto" Height="Auto"  Loaded="Page_Loaded">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="50"/>
+            <RowDefinition Height="80"/>
             <RowDefinition Height="83*"/>
             <RowDefinition Height="117*"/>
             <RowDefinition Height="50*"/>
@@ -19,16 +19,18 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <TextBlock  x:Name="title"
-                    Grid.Row="0" Grid.ColumnSpan="2"
+        <Viewbox Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock  x:Name="title"
+                    
                     Text="Créer un nouveau tournoi"
                     Style="{DynamicResource title}"
                     />
+        </Viewbox>
         <ListView  
 			ItemsSource="{Binding Matchs}" 
 			SelectedItem="{Binding SelectedItem}"
-			Grid.Row="1" 
-			Margin="0,5,10,5" Grid.RowSpan="2">
+			Grid.Row="1" Grid.RowSpan="2"
+			Margin="25">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Matchs" DisplayMemberBinding="{Binding Descriptor}"/>
@@ -37,19 +39,29 @@
         </ListView>
 
         <Button x:Name="Add" 
-			Command="{Binding CreateCommand}" 
-			Grid.Row="3" Grid.Column="1" Content="Créer le tournoi" Margin="10"/>
+			    Command="{Binding CreateCommand}" 
+			    Grid.Row="3" Grid.Column="1"
+                Content="Créer le tournoi"
+                Margin="10"
+                Style="{DynamicResource GeneralButton}"/>
 
 
-        <Button x:Name="Cancel" Grid.Row="3" Command="{Binding CancelCommand}" Content="Cancel" Margin="10"/>
+        <Button x:Name="Cancel"
+                Grid.Row="3"
+                Command="{Binding CancelCommand}"
+                Content="Annuler"
+                Margin="10"
+                Style="{DynamicResource GeneralButton}"/>
 
         <UserControls:MatchWriteUserControl x:Name="ucMatch"
                                             Grid.Column="1"
-                                            Margin="0,5,1,0"
-                                            Grid.Row="1"
-                                            VerticalAlignment="Top"
-                                            Grid.RowSpan="2"
+                                            Margin="20"
+                                            Grid.Row="1" Grid.RowSpan="2"
+                                            VerticalAlignment="Center"
                                             DataContext="{Binding SelectedItem}"
                                             />
+        <Viewbox Grid.Column="1" Margin="0,149,0,0" Grid.Row="2">
+            <CheckBox x:Name="mode" Content="Manual ?"  VerticalAlignment="Center" Height="37" Width="74" Foreground="White"/>
+        </Viewbox>
     </Grid>
 </Page>

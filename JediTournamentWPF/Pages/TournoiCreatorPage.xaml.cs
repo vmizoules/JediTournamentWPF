@@ -43,8 +43,8 @@ namespace JediTournamentWPF.Pages {
 
         private void onCreate(Object sender, EventArgs args) {
             // TODO : to modify
-            GamePage nextPage = new GamePage(m_tmv.Tournoi, true);
-            this.NavigationService.Navigate(nextPage);
+            GamePage nextPage = new GamePage(m_tmv.Tournoi, mode.IsChecked);
+            NavigationService.Navigate(nextPage);
         }
     }
 }
