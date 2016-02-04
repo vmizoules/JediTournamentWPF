@@ -24,9 +24,11 @@
         <Label x:Name="label1" Content="Nombre de places :" HorizontalAlignment="Left" Margin="10,50,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.303,0.404" Foreground="White"/>
         <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="128,53,0,0" TextWrapping="Wrap" Text="{Binding NbPlaces }" VerticalAlignment="Top" Width="49"/>
 
-        <Label x:Name="label2" Content="Caracteristiques :" HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.737,-1.385" Foreground="White"/>
+        <Label x:Name="label2" Content="Caracteristiques :"
+               HorizontalAlignment="Left" Margin="10,94,0,0" VerticalAlignment="Top"
+               Foreground="White"/>
         <local:CaracteristiquesWriteUserControl x:Name="CaracsUC"
-                                   DataContext="{Binding Caracteristiques}" Margin="32,125,-32,-125"/>
+                                   DataContext="{Binding Caracteristiques}" Margin="32,125,-114,-125"/>
 
     </Grid>
 </UserControl>

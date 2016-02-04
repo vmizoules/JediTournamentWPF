@@ -48,10 +48,10 @@
             </ListView.ItemTemplate>
         </ListView>
         <UserControls:JediWriteUserControl Grid.Column="2"
-                                           HorizontalAlignment="Left"
+                                           HorizontalAlignment="Center"
                                            Margin="9.6,10.2,0,0"
                                            Grid.Row="1" Grid.RowSpan="4"
-                                           VerticalAlignment="Top" Width="447"
+                                           VerticalAlignment="Top"
                                            Grid.ColumnSpan="3"
                                            DataContext="{Binding SelectedItem}"/>
     </Grid>

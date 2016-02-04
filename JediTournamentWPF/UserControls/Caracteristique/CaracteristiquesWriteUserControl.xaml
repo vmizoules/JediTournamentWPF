@@ -14,13 +14,13 @@
         <ListView x:Name="listView"
                   Grid.Row="0"
                   HorizontalAlignment="Left" VerticalAlignment="Top"
-                  Height="150" Width="200"
+                  Height="150"
                   ItemsSource="{Binding CaracteristiquesList}"
                   SelectedItem="{Binding SelectedCarac}">
             <ListView.View>
                 <GridView>
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding Nom}"/>
-                    <GridViewColumn Header="Valeur" DisplayMemberBinding="{Binding Valeur}"/>
+                    <GridViewColumn Header="Nom" Width="200" DisplayMemberBinding="{Binding Nom}"/>
+                    <GridViewColumn Header="Valeur" Width="75" DisplayMemberBinding="{Binding Valeur}"/>
                 </GridView>
             </ListView.View>
         </ListView>
