@@ -32,13 +32,13 @@ namespace JediTournamentWPF.Pages {
             m_tmv = new TournoiCreatorViewModel();
 
             // Abonnement à l'évènement pour revenir en arrière
-            this.DataContext = m_tmv;                     // On donne le contexte des données
+            DataContext = m_tmv;                     // On donne le contexte des données
             m_tmv.CancelNotified += onCancel;
             m_tmv.CreateNotified += onCreate;
         }
 
         private void onCancel(Object sender, EventArgs args) {
-            this.NavigationService.GoBack();
+            NavigationService.GoBack();
         }
 
         private void onCreate(Object sender, EventArgs args) {

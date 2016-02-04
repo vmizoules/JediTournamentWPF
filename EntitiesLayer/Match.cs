@@ -51,7 +51,6 @@
             set { _stade = value; }
         }
 
-
         /// <summary>
         /// Constructeur.
         /// </summary>

@@ -85,22 +85,27 @@ namespace JediTournamentWPF.ViewModel {
         public TournoiCreatorViewModel() {
 
             // TODO : à modifier pour avoir les matchs d'un tournoi
-            
-            m_matchs = new ObservableCollection<MatchViewModel>();
+
+            //m_matchs = new ObservableCollection<MatchViewModel>();
+            Random random = new Random();
             BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
-            IList<Match> list = bm.getAllMatchs();                              // Création tournoi
 
-            m_tournoi = new Tournoi(1, "Yolo", null);                           // TODO : à modifier absolument !
+            m_tournoi = new Tournoi();
 
-            foreach (Match m in list)
-                m_matchs.Add(new MatchViewModel(m));
+            List<Jedi> JediList = bm.getJedis();
+            List<Jedi> SithList = bm.getSiths();
+            List<Stade> StadeList = bm.getAllStades();
 
-            Console.WriteLine("" + m_matchs.Count);
-            /*    
-            // Création de 8 Matchs
-            for (int i = 0; i < 8; i++) {
-                m_matchs.Add(new MatchViewModel());
-            }*/
+            for(int i = 0; i < 4; i++) {
+                int indexJedi = random.Next(JediList.Count);
+                int indexSith = random.Next(SithList.Count);
+                int indexStade = random.Next(StadeList.Count);
+                m_tournoi.Matchs.Add(new Match(i, JediList[indexJedi], SithList[indexSith], EPhaseTournoi.HuitiemeFinale, StadeList[indexStade]));
+                JediList.Remove(JediList[indexJedi]);
+                SithList.Remove(SithList[indexSith]);
+                m_matchs.Add(new MatchViewModel(m_tournoi.Matchs[i]));
+            }
+            
         }
 
         #region "Commandes du formulaire"

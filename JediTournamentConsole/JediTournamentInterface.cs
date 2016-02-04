@@ -96,7 +96,7 @@ namespace JediTournamentConsole
         {
             Console.WriteLine("Liste des stades :\n");
 
-            List<string> stades = m_manager.getStades();
+            List<string> stades = m_manager.getStadesNames();
             foreach (string s in stades)
             {
                 Console.WriteLine("Stade de " + s + ".");
