@@ -83,10 +83,9 @@ namespace JediTournamentWPF.ViewModel {
         /// Constructeur du ViewModel
         /// </summary>
         public TournoiCreatorViewModel() {
-
-            // TODO : à modifier pour avoir les matchs d'un tournoi
-
-            //m_matchs = new ObservableCollection<MatchViewModel>();
+            int indexJedi;
+            int indexSith;
+            int indexStade;
             Random random = new Random();
             BusinessLayer.JediTournamentManager bm = new BusinessLayer.JediTournamentManager();
 
@@ -96,22 +95,39 @@ namespace JediTournamentWPF.ViewModel {
             List<Jedi> SithList = bm.getSiths();
             List<Stade> StadeList = bm.getAllStades();
 
-            // Création des matchs
+            // Création des matchs de la quart de finale
             for(int i = 0; i < 4; i++) {
-                int indexJedi = random.Next(JediList.Count);
-                int indexSith = random.Next(SithList.Count);
-                int indexStade = random.Next(StadeList.Count);
-                m_tournoi.Matchs.Add(new Match(i, JediList[indexJedi], SithList[indexSith], EPhaseTournoi.HuitiemeFinale, StadeList[indexStade]));
+                indexJedi = random.Next(JediList.Count);
+                indexSith = random.Next(SithList.Count);
+                indexStade = random.Next(StadeList.Count);
+                m_tournoi.Matchs.Add(new Match(i, JediList[indexJedi], SithList[indexSith], EPhaseTournoi.QuartFinale, StadeList[indexStade]));
                 JediList.Remove(JediList[indexJedi]);
                 SithList.Remove(SithList[indexSith]);
             }
 
+            // Réinitialisation des listes
+            JediList = bm.getJedis();
+            SithList = bm.getSiths();
+
+            // Création des matchs de la demie finale
+            for (int i = 4; i < 6; i++) {
+                indexJedi = random.Next(JediList.Count);
+                indexSith = random.Next(SithList.Count);
+                indexStade = random.Next(StadeList.Count);
+                m_tournoi.Matchs.Add(new Match(i, JediList[indexJedi], SithList[indexSith], EPhaseTournoi.DemiFinale, StadeList[indexStade]));
+            }
+
+            // Création des matchs de la finale
+            indexJedi = random.Next(JediList.Count);
+            indexSith = random.Next(SithList.Count);
+            indexStade = random.Next(StadeList.Count);
+            m_tournoi.Matchs.Add(new Match(6, JediList[indexJedi], SithList[indexSith], EPhaseTournoi.Finale, StadeList[indexStade]));
+
             // Création de la liste MatchViewModel
             m_matchs = new ObservableCollection<MatchViewModel>();
-            foreach(Match m in m_tournoi.Matchs) {
-                m_matchs.Add(new MatchViewModel(m));
+            for(int i = 0; i < 4; i++) { 
+                m_matchs.Add(new MatchViewModel(m_tournoi.Matchs[i]));
             }
-            
         }
 
         #region "Commandes du formulaire"

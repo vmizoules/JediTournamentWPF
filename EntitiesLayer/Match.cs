@@ -5,8 +5,8 @@
     /// </summary>
     public enum EPhaseTournoi
     {
-        QuartFinale,
         HuitiemeFinale,
+        QuartFinale,
         DemiFinale,
         Finale
     }

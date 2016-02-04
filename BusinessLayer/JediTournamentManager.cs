@@ -22,6 +22,7 @@ namespace BusinessLayer
             m_data = new DalManager();
         }
 
+        #region Getters
         /// <summary>
         /// Donne la liste de l'ensemble des objets matchs.
         /// </summary>
@@ -116,6 +117,56 @@ namespace BusinessLayer
             List<Match> list = m_data.getAllMatchs().Where(m => m.Stade.NbPlaces > 200 && m.Jedi1.IsSith && m.Jedi2.IsSith).ToList();
             return new HashSet<Match>(list).ToList();   // Rend unique
         }
+
+        #endregion
+
+        #region Updaters
+        public int updateJedis(List<Jedi> old_list, List<Jedi> new_list) {
+            int value = 0;
+
+            // TODO : to implement
+
+            return value;
+        }
+
+        public int updateStades(List<Stade> old_stades, List<Stade> new_stades) {
+            int value = 0;
+
+            // TODO : to implement
+
+            return value;
+        }
+
+        public int updateMatch(Match m) {
+            int value = 0;
+
+            // TODO : to implement
+
+            return value;
+        }
+
+        public bool updateTournoi(Tournoi t) {
+            bool flag = true;
+
+            // TODO : to implement
+
+            return flag;
+        }
+
+        #endregion
+
+        #region Insert
+        public bool insertTournament(Tournoi t) {
+            bool flag = true;
+
+            // TODO : to implement
+
+            return flag;
+        }
+
+        #endregion
+
+        //public int updateTournament()
 
         /// <summary>
         /// Vérifie que le mot de passe correspond au login entré.
