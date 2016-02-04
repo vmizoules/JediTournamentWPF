@@ -8,7 +8,7 @@
       mc:Ignorable="d" 
       Width="Auto" Height="Auto"
       d:DesignHeight="364.151" d:DesignWidth="776.415"
-      Title="GamePage">
+      Title="GamePage" Loaded="Page_Loaded">
 
     <Grid x:Name="Container">
         <Grid>
@@ -20,7 +20,17 @@
                 <RowDefinition Height="80*"/>
                 <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
-            <UserControls:MatchReadUserControl x:Name="currentMatch" Grid.Column="0" Grid.Row="0"/>
+            <UserControls:MatchReadUserControl x:Name="recap" Grid.Column="0" Grid.Row="0" Visibility="Visible"/>
+            <Grid x:Name="ContainerAuto" Visibility="Hidden" Grid.Column="0" Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Viewbox Grid.Column="0" Margin="10">
+                    <TextBlock x:Name="winnerText" Grid.Column="0" Foreground="White"/>
+                </Viewbox>
+                <UserControls:JediReadUserControl x:Name="winner" Grid.Column="1" Margin="10"/>
+            </Grid>
             <Grid x:Name="explanations" Grid.Column="1" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
@@ -71,7 +81,7 @@
                     <Button x:Name="cancelButton" Content="Return" Click="cancelButton_Click"/>
                 </Viewbox>
                 <Viewbox Stretch="Uniform" Grid.Column="1">
-                    <Button x:Name="GoButton" Content="Go !" />
+                    <Button x:Name="GoButton" Content="Jouer" />
                 </Viewbox>
             </Grid>
         </Grid>

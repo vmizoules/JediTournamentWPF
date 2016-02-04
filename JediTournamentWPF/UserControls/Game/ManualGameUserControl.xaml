@@ -43,6 +43,9 @@
                     (Cliquez ici pour rejouer)
                 </TextBlock>
             </Viewbox>
+            <Viewbox Grid.Row="3" Grid.Column="1"  Margin="10">
+                <TextBlock x:Name="winner" Foreground="White" TextAlignment="Left" Visibility="Hidden"/>
+            </Viewbox>
         </Grid>
     </Grid>
 </UserControl>

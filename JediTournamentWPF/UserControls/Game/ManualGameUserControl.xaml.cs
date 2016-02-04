@@ -1,4 +1,5 @@
-﻿using EntitiesLayer;
+﻿using BusinessLayer;
+using EntitiesLayer;
 using JediTournamentWPF.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -180,6 +181,7 @@ namespace JediTournamentWPF.UserControls {
 
             if(m_winner == null) {                      // Egalité
                 egalite.Visibility = Visibility.Visible;
+                winner.Visibility = Visibility.Hidden;
                 egalite.MouseLeftButtonDown += launchAgain;  
             }
             else {                                      // A winner is defined
@@ -187,12 +189,12 @@ namespace JediTournamentWPF.UserControls {
                 JediReadUserControl winner_uc = new JediReadUserControl();
 
                 resultsGrid.Children.Add(winner_uc);
-                winner_uc.SetValue(Grid.ColumnProperty, 1);
+                winner.Visibility = Visibility.Visible;
+                winner.Text = m_winner.Nom + " gagne !";
+                winner_uc.SetValue(Grid.ColumnProperty, 3);
                 winner_uc.SetValue(Grid.RowProperty, 3);
-                winner_uc.SetValue(Grid.ColumnSpanProperty, 3);
                 winner_uc.Margin = new Thickness(10);
-
-                // TODO : vérifier que la recopie de jedi est ok
+                
                 // TODO : update match and tournament table
                 // TODO : go to the next match
             }
@@ -208,8 +210,7 @@ namespace JediTournamentWPF.UserControls {
             egalite.MouseLeftButtonDown -= launchAgain;
             egalite.Visibility = Visibility.Hidden;
             resultsGrid.Visibility = Visibility.Hidden;
-            viewbox.Visibility = Visibility.Visible;
-            
+            viewbox.Visibility = Visibility.Visible;   
         }
     }
 }
