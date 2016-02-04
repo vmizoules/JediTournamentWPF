@@ -49,11 +49,11 @@ namespace JediTournamentWPF.ViewModel {
         /// </summary>
         public string Planete
         {
-            get { return m_stades.Planete1; }
+            get { return m_stades.Planete; }
             private set
             {
-                if (value == m_stades.Planete1) return;
-                m_stades.Planete1 = value;
+                if (value == m_stades.Planete) return;
+                m_stades.Planete = value;
                 OnPropertyChanged("Planete");
             }
         }

@@ -37,7 +37,7 @@ namespace BusinessLayer
         /// <returns>Liste des noms des stades.</returns>
         public List<string> getStades()
         {
-            return m_data.getAllStades().Select(s => s.Planete1).ToList();
+            return m_data.getAllStades().Select(s => s.Planete).ToList();
         }
 
         /// <summary>
