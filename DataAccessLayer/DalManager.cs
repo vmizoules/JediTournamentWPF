@@ -69,11 +69,11 @@ namespace DataAccessLayer
         }
         public int InsertJedi(Jedi _jedi)
         {
-            return bd.InsertJedis(_jedi);
+            return bd.InsertJedi(_jedi);
         }
         public int InsertStade(Stade _stade)
         {
-            return bd.InsertStades(_stade);
+            return bd.InsertStade(_stade);
         }
 
 

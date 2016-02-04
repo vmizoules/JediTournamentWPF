@@ -8,7 +8,7 @@ namespace DataAccessLayer {
     interface IBridge {
         Jedi SelectJediById(int idJedi);
         List<Jedi> SelectAllJedis();
-        void InsertJedi(Jedi _jedi);
+        int InsertJedi(Jedi _jedi);
         int RemoveJedi(Jedi _jedi);
         int EditJedi(Jedi _jedi);
         //----------------------------------------------------

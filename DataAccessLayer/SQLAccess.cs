@@ -48,7 +48,7 @@ namespace DataAccessLayer
         {
             m_connectionString = connectionString;
         }
-        // Gestion des Jedis ----------------------------------------------------------------------------------------------------------------------
+        #region Gestion jedis
         public Jedi SelectJediById(int idJedi)
         {
             Jedi _jedi = null;
@@ -128,8 +128,9 @@ namespace DataAccessLayer
             return _allJedis;
         }
 
-        public void InsertJedi(Jedi _jedi)
+        public int InsertJedi(Jedi _jedi)
         {
+            int nb = 0;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
                 string requete = "INSERT INTO Jedis (Name, IsSith, Pic) VALUES (@Name, @IsSith, @Pic)";
@@ -141,7 +142,11 @@ namespace DataAccessLayer
                 sqlCommand.ExecuteNonQuery();
 
                 sqlConnection.Close();
+
+                nb = 1;
             }
+
+            return nb;
         }
 
         public int RemoveJedi(Jedi _jedi)
@@ -183,7 +188,8 @@ namespace DataAccessLayer
             }
             return val;
         }
-        //Gestion des Stades --------------------------------------------------------------------------------------------------------------------------------------------
+        #endregion
+        #region Gestion des stades
         public List<Stade> SelectAllStades()
         {
             List<Stade> _allStades = new List<Stade>();
@@ -207,7 +213,7 @@ namespace DataAccessLayer
                         {
                             _carac.Add(new Caracteristique(sqlDataReader2.GetInt32((int)Carac_enum.IDCARAC),
                                                           sqlDataReader2.GetString((int)Carac_enum.NOM),
-                                                          sqlDataReader2.GetInt32((int)Carac_enum.VALEUR));
+                                                          sqlDataReader2.GetInt32((int)Carac_enum.VALEUR)));
                         }
                         sqlConnection2.Close();
                         _allStades.Add(new Stade(sqlDataReader.GetInt32((int)Stade_enum.IDSTADE),
@@ -315,6 +321,7 @@ namespace DataAccessLayer
             }
             return _stade;
         }
+        #endregion
 
         public Tournoi selectTournoiById()
         {

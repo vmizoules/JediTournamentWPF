@@ -96,6 +96,7 @@ namespace JediTournamentWPF.ViewModel {
             List<Jedi> SithList = bm.getSiths();
             List<Stade> StadeList = bm.getAllStades();
 
+            // Création des matchs
             for(int i = 0; i < 4; i++) {
                 int indexJedi = random.Next(JediList.Count);
                 int indexSith = random.Next(SithList.Count);
@@ -103,7 +104,12 @@ namespace JediTournamentWPF.ViewModel {
                 m_tournoi.Matchs.Add(new Match(i, JediList[indexJedi], SithList[indexSith], EPhaseTournoi.HuitiemeFinale, StadeList[indexStade]));
                 JediList.Remove(JediList[indexJedi]);
                 SithList.Remove(SithList[indexSith]);
-                m_matchs.Add(new MatchViewModel(m_tournoi.Matchs[i]));
+            }
+
+            // Création de la liste MatchViewModel
+            m_matchs = new ObservableCollection<MatchViewModel>();
+            foreach(Match m in m_tournoi.Matchs) {
+                m_matchs.Add(new MatchViewModel(m));
             }
             
         }
