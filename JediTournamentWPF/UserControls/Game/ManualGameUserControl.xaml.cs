@@ -190,7 +190,7 @@ namespace JediTournamentWPF.UserControls {
             }
             else {                                      // A winner is defined
                 JediViewModel jvm = new JediViewModel(m_winner);
-                JediReadUserControl winner_uc = new JediReadUserControl();
+                JediReadUserControl winner_uc = new JediReadUserControl(jvm);
 
                 resultsGrid.Children.Add(winner_uc);
                 winner.Visibility = Visibility.Visible;

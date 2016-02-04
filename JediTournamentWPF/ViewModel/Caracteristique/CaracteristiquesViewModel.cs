@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace JediTournamentWPF.ViewModel
 {
-    class CaracteristiquesViewModel : ViewModelBase
+    public class CaracteristiquesViewModel : ViewModelBase
     {
         private ObservableCollection<CaracteristiqueViewModel> _caracs;
         private CaracteristiqueViewModel _selectedCarac;

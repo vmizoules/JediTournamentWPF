@@ -22,7 +22,6 @@
         </Grid.ColumnDefinitions>
         <Viewbox Grid.Row="0" Grid.ColumnSpan="2">
             <TextBlock  x:Name="title"
-                    
                     Text="Créer un nouveau tournoi"
                     Style="{DynamicResource title}"
                     />
