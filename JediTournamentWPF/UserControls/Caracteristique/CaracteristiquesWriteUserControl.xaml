@@ -7,8 +7,8 @@
              mc:Ignorable="d">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition MinHeight="120"/>
+            <RowDefinition MinHeight="40"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -28,23 +28,36 @@
                       </GridView>
                   </ListView.View>
         </ListView>
-        
-        <local:CaracteristiqueWriteUserControl x:Name="CaracUC"
-            DataContext="{Binding SelectedCarac}"
-            Grid.Row="1"
-            />
-        
-        <Button Grid.Column="1"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Content="+"
+        <Grid Grid.Row="0" Grid.Column="1">
+            <Button
+                VerticalAlignment="Top"
+                Content="Ajouter"
+                Style="{DynamicResource AddRemoveButton}"
                 Command="{Binding AddCommand}"
                 />
-        <Button Grid.Column="1"
-                HorizontalAlignment="Left" VerticalAlignment="Top"
-                Content="-"
-                Command="{Binding RemoveCommand}" Margin="3,23,0,0"
+            <Button Grid.Row="3"
+                VerticalAlignment="Bottom"
+                Content="Supprimer"
+                Style="{DynamicResource AddRemoveButton}"
+                Command="{Binding RemoveCommand}"
+                Visibility="{Binding Path=CanRemove, Converter={StaticResource BoolToVisibility}}"
                 />
+        </Grid>
+        
+        <local:CaracteristiqueWriteUserControl x:Name="CaracUC"
+            HorizontalAlignment="Left"
+            Margin="0,5"
+            DataContext="{Binding SelectedCarac}"
+            Grid.Row="1" Grid.ColumnSpan="1"
+            />
 
-
+        <Button Grid.Row="3" Grid.Column="1"
+                VerticalAlignment="Top"
+                Content="valider"
+                Style="{DynamicResource AddRemoveButton}"
+                Command="{Binding ValidCommand}"
+                Visibility="{Binding Path=SelectedCarac, Converter={StaticResource NullToVisibility}}"
+                />
+        
     </Grid>
 </UserControl>
