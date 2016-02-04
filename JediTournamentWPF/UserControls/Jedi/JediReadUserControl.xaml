@@ -6,26 +6,27 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" 
              >
+
     <Grid>
-        <Canvas
-            Width="125"
-            Height="125"
+        <Image x:Name="defaultPic"
+            Source="../../Resources/no-picture.jpg"/>
+
+        <Rectangle Fill="#FF00A2FF" Opacity="0.3"
+                   Visibility="{Binding Path=IsNotSith, Converter={StaticResource BoolToVisibility}}"/>
+        <Rectangle Fill="#FFFF0017" Opacity="0.3"
+                   Visibility="{Binding Path=IsSith, Converter={StaticResource BoolToVisibility}}"/>
+        <Label x:Name="label"
+            Content="{Binding Name}"
+            Height="25"
+            VerticalAlignment="Bottom"
+            HorizontalAlignment="Right"
+            Canvas.Left="0" Canvas.Top="100"
+            Panel.ZIndex="2"
+            Foreground="White"
             >
-            <Image x:Name="defaultPic"
-                Source="../../Resources/no-picture.jpg"
-                Width="125"
-                Height="125"
-                />
-            <Label x:Name="label"
-               Content="{Binding Nom}"
-               Height="25"
-               Canvas.Left="0" Canvas.Top="100"
-               Foreground="White"
-               >
-                <Label.Background>
-                    <SolidColorBrush Color="Black" Opacity="0.5"/>
-                </Label.Background>
-            </Label>
-        </Canvas>
+            <Label.Background>
+                <SolidColorBrush Color="Black" Opacity="0.5"/>
+            </Label.Background>
+        </Label>
     </Grid>
 </UserControl>

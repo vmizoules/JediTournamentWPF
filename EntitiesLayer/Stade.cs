@@ -2,19 +2,18 @@
 
 namespace EntitiesLayer
 {
-    public class Stade : EntityObject
-    {
+    public class Stade : EntityObject {
         private int _nbPlaces;
 
         /// <summary>
         /// Constructeur par défaut.
         /// </summary>
         public Stade()
-            : base(0)
-        {
+            : base(0) {
             NbPlaces = 0;
             _Planete = "Default Name";
             Caracteristiques = null;
+            Photo = null;
         }
 
         public int NbPlaces
@@ -37,14 +36,8 @@ namespace EntitiesLayer
             get { return _Planete; }
             set { _Planete = value; }
         }
-        // typo (todo: fix it)
-        public string Planete1
-        {
-            get { return _Planete; }
-            set { _Planete = value; }
-        }
 
-        public string Image { get; set; }
+        public string Photo { get; set; }
         /// <summary>
         /// Constructeur.
         /// </summary>
@@ -52,22 +45,20 @@ namespace EntitiesLayer
         /// <param name="nbPlaces">Nombre de places du stade.</param>
         /// <param name="planete">Nom de la planète sur laquelle se situe le stade.</param>
         /// <param name="carac">Caractéritiques associées au stade.</param>
+        /// <param name="source">Source de la photo associée au stade.</param>
         public Stade(int id, int nbPlaces, string planete, List<Caracteristique> carac)
-            : base(id)
-        {
+            : base(id) {
             NbPlaces = nbPlaces;
             Planete = planete;
             Caracteristiques = carac;
-
+            Photo = null;
         }
         public Stade(int id, int nbPlaces, string planete, List<Caracteristique> carac, string source)
-          : base(id)
-        {
+          : base(id) {
             NbPlaces = nbPlaces;
             Planete = planete;
             Caracteristiques = carac;
-            Image = source;
+            Photo = source;
         }
-    
-}
+    }
 }

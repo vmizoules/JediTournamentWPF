@@ -13,7 +13,7 @@ namespace JediTournamentWPF.ViewModel {
     /// </summary>
     class StadeViewModel : ViewModelBase 
     {
-       private ObservableCollection<CaracteristiqueViewModel> _carac;
+        private CaracteristiquesViewModel _caracs;
         private Stade m_stades;
         
         /// <summary>
@@ -22,11 +22,7 @@ namespace JediTournamentWPF.ViewModel {
         /// <param name="stade"></param>
         public StadeViewModel(Stade stade) {
             m_stades = stade;
-            _carac = new ObservableCollection<CaracteristiqueViewModel>();
-            // TODO : voir pour les caractéristiques : initialisation
-            /*foreach(Caracteristique c in m_stades.Caracteristiques) {
-                _carac.Add(new CaracteristiqueViewModel(c));
-            }*/
+            _caracs = new CaracteristiquesViewModel(stade.Caracteristiques);
         }
 
 
@@ -42,10 +38,10 @@ namespace JediTournamentWPF.ViewModel {
         /// <summary>
         /// Getter/setter pour les caractéristiques
         /// </summary>
-        private ObservableCollection<CaracteristiqueViewModel> Carac
+        public CaracteristiquesViewModel Caracteristiques
         {
-            get { return _carac; }
-            set { _carac = value; }
+            get { return _caracs; }
+            set { _caracs = value; }
         }
 
         /// <summary>
@@ -53,11 +49,11 @@ namespace JediTournamentWPF.ViewModel {
         /// </summary>
         public string Planete
         {
-            get { return m_stades.Planete1; }
+            get { return m_stades.Planete; }
             private set
             {
-                if (value == m_stades.Planete1) return;
-                m_stades.Planete1 = value;
+                if (value == m_stades.Planete) return;
+                m_stades.Planete = value;
                 OnPropertyChanged("Planete");
             }
         }
