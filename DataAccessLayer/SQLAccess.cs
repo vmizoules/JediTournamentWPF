@@ -17,7 +17,7 @@ namespace DataAccessLayer
             ISSITH = 2,
             PIC = 3
         }
-        public enum Carac_enum// Cours 
+        public enum Carac_enum  // Cours 
         {
             IDCARAC = 0,
             IDJEDI = 1,
@@ -38,7 +38,7 @@ namespace DataAccessLayer
         {
             m_connectionString = connectionString;
         }
-        //  Block Gestion des Jedis ----------------------------------------------------------------------------------------------------------------------
+        #region Gestion des jedis
         public List<Jedi> SelectAllJedis()
         {
             List<Jedi> _allJedis = new List<Jedi>();
@@ -136,7 +136,8 @@ namespace DataAccessLayer
             }
             return val;
         }
-        //---------------------------------------------------------------------------------------------------------------------------------------------------
+        #endregion
+        #region Gestion des stades
         public List<Stade> SelectAllStades()
         {
             List<Stade> _allStades = new List<Stade>();
@@ -228,6 +229,8 @@ namespace DataAccessLayer
             }
             return val;
         }
+
+        #endregion
     }
 }
 
