@@ -13,6 +13,7 @@
             <RowDefinition Height="80"/>
             <RowDefinition Height="83*"/>
             <RowDefinition Height="117*"/>
+            <RowDefinition MinHeight="40"/>
             <RowDefinition Height="50*"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
@@ -30,7 +31,7 @@
 			ItemsSource="{Binding Matchs}" 
 			SelectedItem="{Binding SelectedItem}"
 			Grid.Row="1" Grid.RowSpan="2"
-			Margin="25">
+			Margin="40">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Matchs" DisplayMemberBinding="{Binding Descriptor}"/>
@@ -40,14 +41,14 @@
 
         <Button x:Name="Add" 
 			    Command="{Binding CreateCommand}" 
-			    Grid.Row="3" Grid.Column="1"
+			    Grid.Row="4" Grid.Column="1"
                 Content="Créer le tournoi"
                 Margin="10"
                 Style="{DynamicResource GeneralButton}"/>
 
 
         <Button x:Name="Cancel"
-                Grid.Row="3"
+                Grid.Row="4"
                 Command="{Binding CancelCommand}"
                 Content="Annuler"
                 Margin="10"
@@ -60,8 +61,19 @@
                                             VerticalAlignment="Center"
                                             DataContext="{Binding SelectedItem}"
                                             />
-        <Viewbox Grid.Column="1" Margin="0,149,0,0" Grid.Row="2">
-            <CheckBox x:Name="mode" Content="Manual ?"  VerticalAlignment="Center" Height="37" Width="74" Foreground="White"/>
-        </Viewbox>
+        
+        <TextBlock Text="Mode automatique :"
+                   Grid.Row="3"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Style="{DynamicResource textNormal}"
+                   />
+        <CheckBox x:Name="mode"
+                Margin="10,0"
+                Grid.Row="3" Grid.Column="1"
+                VerticalAlignment="Center" HorizontalAlignment="Left"
+                Style="{DynamicResource OrangeSwitchStyle}"
+                Foreground="White"
+                />
     </Grid>
 </Page>
