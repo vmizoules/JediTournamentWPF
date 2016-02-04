@@ -32,19 +32,19 @@ namespace JediTournamentWPF.Pages {
             m_tmv = new TournoiCreatorViewModel();
 
             // Abonnement à l'évènement pour revenir en arrière
-            this.DataContext = m_tmv;                     // On donne le contexte des données
+            DataContext = m_tmv;                     // On donne le contexte des données
             m_tmv.CancelNotified += onCancel;
             m_tmv.CreateNotified += onCreate;
         }
 
         private void onCancel(Object sender, EventArgs args) {
-            this.NavigationService.GoBack();
+            NavigationService.GoBack();
         }
 
         private void onCreate(Object sender, EventArgs args) {
             // TODO : to modify
-            GamePage nextPage = new GamePage(m_tmv.Tournoi, true);
-            this.NavigationService.Navigate(nextPage);
+            GamePage nextPage = new GamePage(m_tmv.Tournoi, mode.IsChecked);
+            NavigationService.Navigate(nextPage);
         }
     }
 }

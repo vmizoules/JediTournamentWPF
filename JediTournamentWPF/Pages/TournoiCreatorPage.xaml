@@ -19,7 +19,13 @@
             <ColumnDefinition/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Label x:Name="title" Grid.Row="0" Grid.ColumnSpan="2" Foreground="white" FontSize="24" Margin="0,5,0,0" HorizontalAlignment="Center" Content="Créer un nouveau tournoi"/>
+        <Viewbox Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock  x:Name="title"
+                    
+                    Text="Créer un nouveau tournoi"
+                    Style="{DynamicResource title}"
+                    />
+        </Viewbox>
         <ListView  
 			ItemsSource="{Binding Matchs}" 
 			SelectedItem="{Binding SelectedItem}"
@@ -47,5 +53,8 @@
                                             Grid.RowSpan="2"
                                             DataContext="{Binding SelectedItem}"
                                             />
+        <Viewbox Grid.Column="1" Margin="0,149,0,0" Grid.Row="2">
+            <CheckBox x:Name="mode" Content="Manual ?"  VerticalAlignment="Center" Height="37" Width="74" Foreground="White"/>
+        </Viewbox>
     </Grid>
 </Page>

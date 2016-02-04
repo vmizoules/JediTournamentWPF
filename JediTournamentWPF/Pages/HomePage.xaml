@@ -25,7 +25,11 @@
                 <RowDefinition SharedSizeGroup="R5" />
                 <RowDefinition SharedSizeGroup="R6" />
             </Grid.RowDefinitions>
-            <TextBlock x:Name="title" TextAlignment="Center" TextWrapping="Wrap" Text="Jedi Tournament 2016" FontWeight="Bold" FontSize="26.667" Grid.ColumnSpan="5" Foreground="White" Margin="10" Style="{DynamicResource title}" FontFamily="Comic Sans MS"/>
+            <TextBlock x:Name="title"
+                       Grid.ColumnSpan="5"
+                       Text="Jedi Tournament 2016"
+                       Style="{DynamicResource title}"
+                       />
             <Button x:Name="buttonJedis" Grid.Column="2"
                     Content="Jedis"
                     Click="buttonJedis_Click"
@@ -44,7 +48,7 @@
                     Style="{DynamicResource GeneralButton}" Click="buttonHisto_Click_1"
                     />
             <Button x:Name="buttonTournoi"
-                    Grid.Column="1" Grid.Row="5" Grid.ColumnSpan="3"
+                    Grid.Column="2" Grid.Row="5"
                     Content="Nouveau Tournoi"
                     Click="buttonTournoi_Click"
                     Style="{DynamicResource GeneralButton}"/>

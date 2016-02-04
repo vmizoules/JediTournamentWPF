@@ -25,7 +25,12 @@
             <RowDefinition SharedSizeGroup="R5" />
             <RowDefinition SharedSizeGroup="R6" />
         </Grid.RowDefinitions>
-        <TextBlock x:Name="title" TextAlignment="Center" TextWrapping="Wrap" Text="Gestion des Jedis" FontWeight="Bold" FontSize="26.667" Grid.ColumnSpan="5" Foreground="White" Margin="10" Style="{DynamicResource title}" FontFamily="Comic Sans MS"/>
+        <TextBlock x:Name="title"
+                   TextAlignment="Center"
+                   TextWrapping="Wrap"
+                   Text="Gestion des Jedis"
+                   Grid.ColumnSpan="5"
+                   Style="{DynamicResource title}"/>
         <Button x:Name="cancelButton"
                 Content="Retour"
                 Style="{DynamicResource GeneralButton}"
