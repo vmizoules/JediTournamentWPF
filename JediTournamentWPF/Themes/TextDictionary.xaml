@@ -1,0 +1,23 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- TITLE-->
+    <Style x:Key="title"
+           TargetType="{x:Type TextBlock}">
+
+        <Setter Property="TextWrapping" Value="NoWrap"/>
+        <Setter Property="TextTrimming" Value="None"/>
+        <Setter Property="TextAlignment" Value="Center"/>
+
+        <!-- Availables : #Star Jedi Hollow / #Star Jedi Rounded / #Star Jedi -->
+        <Setter Property="FontFamily" Value="../Resources/Font/#Star Jedi Hollow"/>
+
+        <!-- Yellow StarWars -->
+        <Setter Property="Foreground" Value="#FFFFFB05"/>
+        <Setter Property="FontSize" Value="44"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+    </Style>
+    
+    
+
+</ResourceDictionary>
