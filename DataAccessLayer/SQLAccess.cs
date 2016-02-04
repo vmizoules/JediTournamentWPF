@@ -78,7 +78,7 @@ namespace DataAccessLayer
                                                           sqlDataReader2.GetInt32((int)Carac_enum.VALEUR))
                                     );
                                 }
-                            }catch (SqlException e)
+                            } catch (SqlException e)
                             {
                                 string s = e.Message;
 

@@ -17,19 +17,23 @@ namespace JediTournamentWPF.UserControls {
         private int m_counter;
         private DispatcherTimer m_timer = null;
 
+        private Match m_match;
         private bool m_j1;
         private bool m_j2;
         private Jedi m_joueur1;
         private Jedi m_joueur2;
         private Jedi m_winner = null;                             // Winner of the match
         private List<Key> m_keyPressed;
-
+        
+        public event ManualGameEventHandler WinnerDefined;
+        
         /// <summary>
         /// Constructor
         /// </summary>
-        public ManualGameUserControl(Jedi joueur1, Jedi joueur2) {
-            m_joueur1 = joueur1;
-            m_joueur2 = joueur2;
+        public ManualGameUserControl(Match m) {
+            m_match = m;
+            m_joueur1 = m.Jedi1;
+            m_joueur2 = m.Jedi2;
             InitializeComponent();
         }
 
@@ -194,6 +198,11 @@ namespace JediTournamentWPF.UserControls {
                 winner_uc.SetValue(Grid.ColumnProperty, 3);
                 winner_uc.SetValue(Grid.RowProperty, 3);
                 winner_uc.Margin = new Thickness(10);
+
+                m_timer.Interval = new TimeSpan(0, 0, 3);
+                m_timer.Tick -= new EventHandler(doGame);
+                m_timer.Tick += new EventHandler(endingGame);
+                m_timer.Start();
                 
                 // TODO : update match and tournament table
                 // TODO : go to the next match
@@ -212,5 +221,22 @@ namespace JediTournamentWPF.UserControls {
             resultsGrid.Visibility = Visibility.Hidden;
             viewbox.Visibility = Visibility.Visible;   
         }
+
+        private void endingGame(object sender, EventArgs e) {
+            m_timer.Stop();
+            onWinnerDefined(m_match);
+        }
+
+        /// <summary>
+        /// Event lorsque le gagnant est défini
+        /// </summary>
+        /// <param name="winner"></param>
+        protected void onWinnerDefined(Match m) {
+            if (WinnerDefined != null) {
+                WinnerDefined(this, m);
+            }
+        }
     }
+
+    public delegate void ManualGameEventHandler(object source, Match m);
 }

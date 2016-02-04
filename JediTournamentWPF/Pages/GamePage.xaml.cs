@@ -65,11 +65,37 @@ namespace JediTournamentWPF.Pages {
         /// <param name="e"></param>
         private void LaunchManualGame(object sender, RoutedEventArgs e) {
             Match current_match = m_tournament.Matchs[m_current_match];
-            ManualGameUserControl countDownControl = new ManualGameUserControl(current_match.Jedi1, current_match.Jedi2);
-
-            Container.Children.Clear();
+            ManualGameUserControl countDownControl = new ManualGameUserControl(current_match);
+            countDownControl.WinnerDefined += nextManualGame;
+            recap.Visibility = Visibility.Hidden;
+            ContainerAuto.Visibility = Visibility.Visible;
+            ContainerAuto.Children.Clear();
             explanations.Visibility = Visibility.Hidden;
-            Container.Children.Add(countDownControl);
+            ContainerAuto.Children.Add(countDownControl);
+        }
+
+        private void nextManualGame(object sender, Match m) {
+
+            if (m_manager.updateMatch(m) < 0) {
+                throw new Exception("Problème lors de la mise à jour des données !");
+            }
+
+            GoButton.Content = "Match suivant";
+            m_current_match++;
+            explanations.Visibility = Visibility.Visible;
+
+            if (m_current_match >= m_tournament.Matchs.Count) {
+                GoButton.Click -= LaunchManualGame;                             // Désactivation du bouton
+                GoButton.Visibility = Visibility.Hidden;                        // On cache le bouton
+                if (!m_manager.updateTournoi(m_tournament))
+                    MessageBox.Show("Problème lors de la mise à jour du tournoi dans la base de données !",
+                            Assembly.GetExecutingAssembly().GetName().Name,
+                            MessageBoxButton.OK,
+                            MessageBoxImage.Error);
+            }
+            else {
+                Match current_match = m_tournament.Matchs[m_current_match];
+            }
         }
 
         /// <summary>
