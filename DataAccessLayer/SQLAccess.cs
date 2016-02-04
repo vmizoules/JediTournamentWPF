@@ -136,9 +136,9 @@ namespace DataAccessLayer
                 SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@Name", _jedi.Nom);
                 sqlCommand.Parameters.AddWithValue("@IsSith", _jedi.IsSith);
-                sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Image);
+                sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Photo);
                 sqlConnection.Open();
-                sqlCommand.ExecuteReader();
+                sqlCommand.ExecuteNonQuery();
 
                 sqlConnection.Close();
             }
@@ -175,7 +175,7 @@ namespace DataAccessLayer
                 sqlCommand.Parameters.AddWithValue("@idjedi", _jedi.ID);
                 sqlCommand.Parameters.AddWithValue("@name", _jedi.Nom);
                 sqlCommand.Parameters.AddWithValue("@Sith", _jedi.IsSith);
-                sqlCommand.Parameters.AddWithValue("@pic", _jedi.Image);
+                sqlCommand.Parameters.AddWithValue("@pic", _jedi.Photo);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
@@ -231,9 +231,9 @@ namespace DataAccessLayer
                 SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@nbplaces", _stade.NbPlaces);
                 sqlCommand.Parameters.AddWithValue("@planet", _stade.Planete);
-                sqlCommand.Parameters.AddWithValue("@pic", _stade.Image);
+                sqlCommand.Parameters.AddWithValue("@pic", _stade.Photo);
                 sqlConnection.Open();
-                sqlCommand.ExecuteReader();
+                sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
                 val = 1;
             }
@@ -267,7 +267,7 @@ namespace DataAccessLayer
                 sqlCommand.Parameters.AddWithValue("@idjedi", _stade.ID);
                 sqlCommand.Parameters.AddWithValue("@nbPlaces", _stade.NbPlaces);
                 sqlCommand.Parameters.AddWithValue("@planet", _stade.Planete);
-                sqlCommand.Parameters.AddWithValue("@pic", _stade.Image);
+                sqlCommand.Parameters.AddWithValue("@pic", _stade.Photo);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
                 sqlConnection.Close();
@@ -342,32 +342,3 @@ namespace DataAccessLayer
     }
 }
 
-/*
-return new Tournoi(sqlDataReader.GetInt32(TOURNOI_ID),sqlDataReader.GetString(TOURNOI_NOM), GetMatchs(sqlDataReader.GetInt32(TOURNOI_ID)));
-        }
-        public void AddTournoi(Tournoi tournoi)
-        {
-            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
-            {
-                string query = "INSERT INTO Tournoi (Nom) VALUES (@nom)";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@nom", tournoi.Nom);
-                sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
-                sqlConnection.Close();
-            }
-            using (SqlConnection sqlConnection = new SqlConnection(_connectionString))
-            {
-                string query = "SELECT IDENT_CURRENT(‘Tournoi’)";
-                SqlCommand sqlCommand = new SqlCommand(query, sqlConnection);
-                sqlConnection.Open();
-                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                while (sqlDataReader.Read())
-                {
-                    tournoi.ID = sqlDataReader.GetInt32(STADE_ID);
-                }
-                sqlConnection.Close();
-            }
-            // ajouter les matchs
-        }
-*/
