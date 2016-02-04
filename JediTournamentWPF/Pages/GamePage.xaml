@@ -30,10 +30,16 @@
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
-                <Viewbox Grid.Column="0" Margin="10">
-                    <TextBlock x:Name="winnerText" Grid.Column="0" Foreground="White"/>
+                <Viewbox Grid.Column="0" Margin="50">
+                    <TextBlock x:Name="winnerText"
+                               Grid.Column="0"
+                               Style="{DynamicResource textBig}"
+                               />
                 </Viewbox>
-                <UserControls:JediReadUserControl x:Name="winner" Grid.Column="1" Margin="10"/>
+                <UserControls:JediReadUserControl x:Name="winner" Grid.Column="1"
+                                                  Height="300"
+                                                  Width="300"
+                                                  />
             </Grid>
             
             <!-- Explications -->
