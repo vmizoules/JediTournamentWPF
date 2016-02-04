@@ -6,11 +6,13 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" >
     <Grid Visibility="{Binding Path=., Converter={StaticResource NullToVisibility}}">
+        <!--<Grid>-->
         <Grid.RowDefinitions>
-            <RowDefinition Height="150"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="25"/>
-            <RowDefinition Height="150"/>
+            <RowDefinition MinHeight="150"/>
+            <RowDefinition MinHeight="25"/>
+            <RowDefinition MinHeight="25"/>
+            <RowDefinition MinHeight="25"/>
+            <RowDefinition MinHeight="200"/>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -58,7 +60,7 @@
                Foreground="White"/>
 
         <local:CaracteristiquesWriteUserControl x:Name="CaracsUC"
-                                   Grid.Row="4" Grid.Column="2"
+                                   Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
                                    DataContext="{Binding Caracteristiques}"/>
     </Grid>
 </UserControl>

@@ -69,16 +69,17 @@ namespace JediTournamentWPF.ViewModel
                 {
                     _removeCommand = new RelayCommand(
                         () => this.Remove(),
-                        () => this.CanRemove()
+                        () => this.CanRemove
                         );
                 }
                 return _removeCommand;
             }
         }
 
-        private bool CanRemove()
+        public bool CanRemove
         {
-            return (this.SelectedCarac != null);
+            get { return (this.SelectedCarac != null); }
+            set { }
         }
 
         private void Remove()
@@ -86,6 +87,23 @@ namespace JediTournamentWPF.ViewModel
             if (this.SelectedCarac != null) CaracteristiquesList.Remove(this.SelectedCarac);
         }
         // /REMOVE COMMAND
+
+        // VALID COMMAND
+        private RelayCommand _validCommand;
+        public System.Windows.Input.ICommand ValidCommand
+        {
+            get
+            {
+                if (_validCommand == null)
+                {
+                    _validCommand = new RelayCommand(
+                        () => SelectedCarac = null,
+                        () => SelectedCarac != null);
+                }
+                return _validCommand;
+            }
+        }
+        // END VALID
 
         #endregion
 
@@ -102,6 +120,7 @@ namespace JediTournamentWPF.ViewModel
             set { 
                 _selectedCarac = value;
                 base.OnPropertyChanged("SelectedCarac");
+                base.OnPropertyChanged("CanRemove");
             }
         }
 

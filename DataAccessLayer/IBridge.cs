@@ -20,6 +20,7 @@ namespace DataAccessLayer {
         //----------------------------------------------------
         Tournoi selectTournoiById();
         int InsertTournoi(Tournoi _tournoi);
-        // List<Stade> SelectAllMatchs();
+        int RemoveTournoi(Tournoi _tournoi);
+        int EditTournoi(Tournoi _tournoi);
     }
 }
