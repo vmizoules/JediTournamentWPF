@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" 
              >
-    <Grid Margin="0,0,10,0">
+    <Grid Visibility="{Binding Path=., Converter={StaticResource NullToVisibility}}">
         <Label x:Name="label"
                Content="Planete : "
                HorizontalAlignment="Left"

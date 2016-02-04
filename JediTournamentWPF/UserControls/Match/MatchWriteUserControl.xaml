@@ -6,7 +6,9 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              xmlns:JediTournamentWPF="clr-namespace:JediTournamentWPF" x:Class="JediTournamentWPF.UserControls.MatchWriteUserControl"
              mc:Ignorable="d">
-    <Grid>
+
+    <Grid Visibility="{Binding Path=., Converter={StaticResource NullToVisibility}}">
+        
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition/>

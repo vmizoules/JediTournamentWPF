@@ -45,6 +45,7 @@
                                             Grid.Row="1"
                                             VerticalAlignment="Top"
                                             Grid.RowSpan="2"
-                                            DataContext="{Binding SelectedItem}"/>
+                                            DataContext="{Binding SelectedItem}"
+                                            />
     </Grid>
 </Page>
