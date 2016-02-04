@@ -126,13 +126,13 @@ namespace JediTournamentWPF.Pages {
                 if (Convert.ToBoolean(m_random.Next() % 2)) {
                     current_match.IdJediVainqueur = current_match.Jedi1.ID;
                     current_winner = current_match.Jedi1;
-                    winner.DataContext = current_winner;
+                    winner.DataContext = new JediViewModel(current_winner);
                     winnerText.Text = current_winner.Nom + " gagne !";
                 }
                 else {
                     current_match.IdJediVainqueur = current_match.Jedi2.ID;
                     current_winner = current_match.Jedi2;
-                    winner.DataContext = current_winner;
+                    winner.DataContext = new JediViewModel(current_winner);
                     winnerText.Text = current_winner.Nom + " gagne !";
                 }
 
@@ -147,6 +147,11 @@ namespace JediTournamentWPF.Pages {
 
         private void cancelButton_Click(object sender, RoutedEventArgs e) {
             NavigationService.GoBack();
+        }
+
+        private void recap_Loaded(object sender, RoutedEventArgs e)
+        {
+
         }
 
         
