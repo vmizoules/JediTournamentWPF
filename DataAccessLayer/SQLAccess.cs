@@ -48,6 +48,7 @@ namespace DataAccessLayer
         {
             m_connectionString = connectionString;
         }
+
         #region Gestion jedis
         public Jedi SelectJediById(int idJedi)
         {
@@ -153,10 +154,10 @@ namespace DataAccessLayer
                         }
                         // int id, string nom, bool isSith, List< Caracteristique > carac
                         _allJedis.Add(new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
-                                               sqlDataReader.GetString((int)Jedi_enum.NAME),
-                                               sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
-                                               _carac,
-                                               sqlDataReader.GetString((int)Jedi_enum.PIC)));
+                                            sqlDataReader.GetString((int)Jedi_enum.NAME),
+                                            sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
+                                            _carac,
+                                            (sqlDataReader[(int)Jedi_enum.PIC] != DBNull.Value)? sqlDataReader.GetString((int)Jedi_enum.PIC) : ""));
                     }
                 }
                 catch (SqlException e)
@@ -182,7 +183,7 @@ namespace DataAccessLayer
                     SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
                     sqlCommand.Parameters.AddWithValue("@Name", _jedi.Nom);
                     sqlCommand.Parameters.AddWithValue("@IsSith", _jedi.IsSith);
-                    if (!_jedi.Photo.Equals("null")) { 
+                    if (!string.IsNullOrEmpty(_jedi.Photo)) { 
                         sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Photo);
                     }
                     sqlConnection.Open();
@@ -297,7 +298,7 @@ namespace DataAccessLayer
                                                sqlDataReader.GetInt32((int)Stade_enum.NBPLACES),
                                                sqlDataReader.GetString((int)Stade_enum.PLANET),
                                                _carac,
-                                               sqlDataReader.GetString((int)Stade_enum.PIC)));
+                                               (sqlDataReader[(int)Stade_enum.PIC] != DBNull.Value) ? sqlDataReader.GetString((int)Stade_enum.PIC) : ""));
                         }
                     }
                 }

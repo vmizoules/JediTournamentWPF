@@ -9,6 +9,30 @@ namespace DataAccessLayerTest {
 
     public class DalManagerTest 
     {
+        private void Initialize() {
+            DalManager manager = new DalManager();
+
+            // TODO : to continue
+        }
+
+        [TestMethod]
+        public void getJediTest() {
+            DalManager manager = new DalManager();
+
+            List<Jedi> list = manager.getJedis();
+
+            Console.WriteLine(list.Count);
+        }
+
+        [TestMethod]
+        public void getStadeTest() {
+            DalManager manager = new DalManager();
+
+            List<Stade> list = manager.getStades();
+
+            Console.WriteLine(list.Count);
+        }
+
         [TestMethod]
         public void TestCreateDeleteJedis() 
         {
