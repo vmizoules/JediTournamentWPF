@@ -161,7 +161,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\StyleDictionary.xaml">
+    <Page Include="Resources\Style\ButtonsDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -244,11 +244,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon.png" />
+    <Resource Include="Resources\Icons\app.png" />
     <Resource Include="Resources\login_background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\background.jpg" />
+    <Resource Include="Resources\Images\background.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\arrow.png" />
