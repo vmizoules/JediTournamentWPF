@@ -73,9 +73,9 @@ namespace StubDataAccessLayer
             List<Stade> listStades = new List<Stade>();
 
             // Caractéristiques éventuelles des stades
-            List<Caracteristique> caracsTatooine = new List<Caracteristique>().Where(s => s.Type == ETypeCaracteristique.Stade && s.ID == 13).ToList();
-            List<Caracteristique> caracsHoth = new List<Caracteristique>().Where(s => s.Type == ETypeCaracteristique.Stade && (s.ID == 12 || s.ID == 13)).ToList();
-            List<Caracteristique> caracsCoruscant = new List<Caracteristique>().Where(s => s.Type == ETypeCaracteristique.Stade && s.ID == 14).ToList();
+            List<Caracteristique> caracsTatooine = getAllCaracs().Where(s => s.Type == ETypeCaracteristique.Stade && s.ID == 13).ToList();
+            List<Caracteristique> caracsHoth = getAllCaracs().Where(s => s.Type == ETypeCaracteristique.Stade && (s.ID == 12 || s.ID == 13)).ToList();
+            List<Caracteristique> caracsCoruscant = getAllCaracs().Where(s => s.Type == ETypeCaracteristique.Stade && s.ID == 14).ToList();
 
             // Crée la liste des stades
             listStades.Add(new Stade(1, 150, "Jakku", null));
