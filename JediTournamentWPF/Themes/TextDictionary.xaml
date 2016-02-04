@@ -22,7 +22,12 @@
         <Setter Property="Foreground" Value="White"/>
         <Setter Property="FontFamily" Value="../Resources/Font/#Star Jedi Rounded"/>
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="FontWeight" Value="ExtraLight"/>
+    </Style>
+
+    <Style x:Key="textBig" TargetType="{x:Type TextBlock}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="../Resources/Font/#Star Jedi Rounded"/>
+        <Setter Property="FontSize" Value="30"/>
     </Style>
 
 </ResourceDictionary>

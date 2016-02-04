@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d"
              >
-    <Canvas
+    <Grid
             Width="200"
             Height="125"
             >
@@ -18,12 +18,13 @@
         <Label x:Name="label"
                Content="{Binding Planete}"
                Height="25"
-               Canvas.Left="0" Canvas.Top="100"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Bottom"
                Foreground="White"
                >
             <Label.Background>
                 <SolidColorBrush Color="Black" Opacity="0.5"/>
             </Label.Background>
         </Label>
-    </Canvas>
+    </Grid>
 </UserControl>

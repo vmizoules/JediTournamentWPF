@@ -7,14 +7,58 @@
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="600">
     <Grid>
-        <DockPanel LastChildFill="True">
-            <TextBlock x:Name="matchDescriptor" Height="57" TextWrapping="Wrap" Text="{Binding Descriptor}" DockPanel.Dock="Top" Width="597" Foreground="White" HorizontalAlignment="Center"/>
-            <local:StadeReadUserControl Height="49" DockPanel.Dock="Bottom" Margin="10,194,10,0"/>
-            <StackPanel Height="175" VerticalAlignment="Top" Width="600" Orientation="Horizontal" HorizontalAlignment="Center">
-                <local:JediReadUserControl Width="252" DataContext="{Binding SelectedJedi}"/>
-                <TextBlock x:Name="vs" Text="V.S." Foreground="White" HorizontalAlignment="Center" Width="60" FontSize="26.667"/>
-                <local:JediReadUserControl Width="261" DataContext="{Binding SelectedSith}"/>
-            </StackPanel>
-        </DockPanel>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="100"/>
+            <RowDefinition MinHeight="300"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock x:Name="title"
+                   Grid.Row="0"
+                   VerticalAlignment="Center"
+                   Text="{Binding Descriptor}"
+                   Style="{DynamicResource title}"
+                   />
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition MinWidth="100"/>
+                <ColumnDefinition MinWidth="100"/>
+                <ColumnDefinition MinWidth="100"/>
+            </Grid.ColumnDefinitions>
+
+            <local:JediReadUserControl Width="200" Height="200"
+                                       Margin="20"
+                                       VerticalAlignment="Bottom"
+                                       Grid.Column="0"
+                                       DataContext="{Binding SelectedJedi}"/>
+
+            <Grid Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center">
+                <Grid.RowDefinitions>
+                    <RowDefinition MinHeight="30"/>
+                    <RowDefinition MinHeight="50"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="vs"
+                       Foreground="White"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Style="{DynamicResource textBig}"
+                       />
+                <local:StadeReadUserControl DataContext="{Binding SelectedStade}"
+                                        Grid.Row="1"
+                                        MaxWidth="175"
+                                        />
+            </Grid>
+            
+            <local:JediReadUserControl Width="200" Height="200"
+                                       Margin="20"
+                                       VerticalAlignment="Bottom"
+                                       DataContext="{Binding SelectedSith}"
+                                       Grid.Column="2"/>
+            
+        </Grid>
     </Grid>
 </UserControl>
