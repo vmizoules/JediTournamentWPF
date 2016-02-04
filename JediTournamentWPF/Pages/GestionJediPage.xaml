@@ -47,6 +47,18 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button Grid.Row="2"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Content="+"
+                Command="{Binding AddCommand}"
+                />
+        <Button Grid.Row="3"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Content="-"
+                Command="{Binding RemoveCommand}"
+                />
+
         <UserControls:JediWriteUserControl Grid.Column="2"
                                            HorizontalAlignment="Center"
                                            Margin="9.6,10.2,0,0"

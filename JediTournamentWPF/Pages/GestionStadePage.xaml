@@ -48,6 +48,18 @@
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <Button Grid.Row="2"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Content="+"
+                Command="{Binding AddCommand}"
+                />
+        <Button Grid.Row="3"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                Content="-"
+                Command="{Binding RemoveCommand}"
+                />
+
         <UserControls:StadeWriteUserControl Grid.Column="2"
                                             HorizontalAlignment="Center"
                                             Grid.Row="1" Grid.RowSpan="4" Grid.ColumnSpan="3"
