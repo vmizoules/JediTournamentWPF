@@ -37,7 +37,7 @@ namespace DataAccessLayer
         }
         public DalManager()
         {
-            string connection = "Data Source=reseaug5.database.windows.net;Initial Catalog=JediTournamentBDD;Integrated Security=False;User ID=Reseau;Password=********;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+            string connection = "Data Source=reseaug5.database.windows.net;Initial Catalog=JediTournamentBDD;Integrated Security=False;User ID=Reseau;Password=JediTournamentEntities2016;Connect Timeout=15;Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
             bd = new SQLAccess(connection);
         }
 
@@ -67,6 +67,15 @@ namespace DataAccessLayer
         {
             return bd.EditStade(_stade);
         }
+        public int InsertJedi(Jedi _jedi)
+        {
+            return bd.InsertJedis(_jedi);
+        }
+        public int InsertStade(Stade _stade)
+        {
+            return bd.InsertStades(_stade);
+        }
+
 
     }
 }

@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:JediTournamentWPF.UserControls"
              mc:Ignorable="d" 
              d:DesignHeight="50" d:DesignWidth="300">
-    <Grid>
+    <Grid Visibility="{Binding Path=., Converter={StaticResource NullToVisibility}}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="20"/>

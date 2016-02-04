@@ -65,6 +65,7 @@
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Resources\Converter\NullVisibilityConverter.cs" />
     <Compile Include="UserControls\Caracteristique\CaracteristiquesWriteUserControl.xaml.cs">
       <DependentUpon>CaracteristiquesWriteUserControl.xaml</DependentUpon>
     </Compile>
@@ -156,11 +157,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Resources\ConverterDictionary.xaml">
+    <Page Include="Resources\Converter\ConverterDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Resources\StyleDictionary.xaml">
+    <Page Include="Themes\ButtonsDictionary.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -243,11 +244,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\icon.png" />
+    <Resource Include="Resources\Icons\app.png" />
     <Resource Include="Resources\login_background.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Resources\background.jpg" />
+    <Resource Include="Resources\Images\background.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\arrow.png" />
