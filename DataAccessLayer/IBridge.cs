@@ -7,7 +7,7 @@ using EntitiesLayer;
 namespace DataAccessLayer {
     interface IBridge {
         List<Jedi> SelectAllJedis();
-        void InsertJedis(Jedi _jedi);
+        int InsertJedis(Jedi _jedi);
         int RemoveJedi(Jedi _jedi);
         int EditJedi(Jedi _jedi);
         List<Stade> SelectAllStades();

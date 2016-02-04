@@ -67,6 +67,15 @@ namespace DataAccessLayer
         {
             return bd.EditStade(_stade);
         }
+        public int InsertJedi(Jedi _jedi)
+        {
+            return bd.InsertJedis(_jedi);
+        }
+        public int InsertStade(Stade _stade)
+        {
+            return bd.InsertStades(_stade);
+        }
+
 
     }
 }

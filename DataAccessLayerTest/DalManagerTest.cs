@@ -17,7 +17,7 @@ namespace DataAccessLayerTest {
             
             Jedi newJedi = new Jedi(12, "JediTest", true, null);
 
-            manager.UpdateJedi(newJedi); //TODO : remplacer par CreateJedi
+            manager.InsertJedi(newJedi);
             List<Jedi> listTemp = list1;
             listTemp.Add(newJedi);
 
@@ -39,7 +39,7 @@ namespace DataAccessLayerTest {
 
             Stade newStade = new Stade(12, 1000, "PlaneteTest", null);
 
-            manager.UpdateStade(newStade); //TODO : remplacer par CreateStade
+            manager.InsertStade(newStade);
             List<Stade> listTemp = list1;
             listTemp.Add(newStade);
 
