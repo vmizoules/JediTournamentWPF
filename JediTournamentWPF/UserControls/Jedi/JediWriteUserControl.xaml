@@ -50,6 +50,7 @@
                   HorizontalAlignment="Left"
                   Margin="0,6"
                   VerticalAlignment="Top"
+                  Style="{DynamicResource OrangeSwitchStyle}"
                   IsChecked="{Binding IsSith}" />
 
         <!-- Caracteristiques -->
