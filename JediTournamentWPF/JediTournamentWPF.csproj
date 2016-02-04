@@ -65,6 +65,9 @@
     <Compile Include="Pages\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\HistoriquePage.xaml.cs">
+      <DependentUpon>HistoriquePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Resources\Converter\NullVisibilityConverter.cs" />
     <Compile Include="UserControls\Caracteristique\CaracteristiquesWriteUserControl.xaml.cs">
       <DependentUpon>CaracteristiquesWriteUserControl.xaml</DependentUpon>
@@ -77,6 +80,9 @@
     </Compile>
     <Compile Include="UserControls\Game\ManualGameUserControl.xaml.cs">
       <DependentUpon>ManualGameUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\Historique\HistoriqueUserControl.xaml.cs">
+      <DependentUpon>HistoriqueUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="UserControls\Jedi\JediReadUserControl.xaml.cs">
       <DependentUpon>JediReadUserControl.xaml</DependentUpon>
@@ -98,6 +104,7 @@
     </Compile>
     <Compile Include="ViewModel\Caracteristique\CaracteristiquesViewModel.cs" />
     <Compile Include="ViewModel\Caracteristique\CaracteristiqueViewModel.cs" />
+    <Compile Include="ViewModel\Historique\HistoriqueViewModel.cs" />
     <Compile Include="ViewModel\Jedi\JediGestionViewModel.cs" />
     <Compile Include="ViewModel\Jedi\JediViewModel.cs" />
     <Compile Include="ViewModel\Tournoi\MatchViewModel.cs" />
@@ -127,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\GestionStadePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\HistoriquePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -182,6 +193,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="UserControls\Game\ManualGameUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="UserControls\Historique\HistoriqueUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
