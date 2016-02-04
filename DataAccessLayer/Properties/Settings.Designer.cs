@@ -44,5 +44,16 @@ namespace DataAccessLayer.Properties {
                 return ((string)(this["JediTournamentBDDConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=reseaug5.database.windows.net;Initial Catalog=JediTournamentBDD;User " +
+            "ID=Reseau;Password=JediTournamentEntities2016")]
+        public string JediTournamentBDDConnectionString1 {
+            get {
+                return ((string)(this["JediTournamentBDDConnectionString1"]));
+            }
+        }
     }
 }
