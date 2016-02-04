@@ -20,7 +20,7 @@
                 <RowDefinition Height="80*"/>
                 <RowDefinition Height="20*" />
             </Grid.RowDefinitions>
-            <UserControls:MatchReadUserControl Grid.Column="0" Grid.Row="0"/>
+            <UserControls:MatchReadUserControl x:Name="currentMatch" Grid.Column="0" Grid.Row="0"/>
             <Grid x:Name="explanations" Grid.Column="1" Visibility="Visible">
                 <Grid.RowDefinitions>
                     <RowDefinition/>
