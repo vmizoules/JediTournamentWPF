@@ -81,7 +81,8 @@
         </Setter>
         <!-- Font -->
         <Setter Property="FontSize" Value="14"/>
-        <Setter Property="Foreground" Value="#FFA8A8A8"/> <!-- Grey -->
+        <Setter Property="Foreground" Value="#FFA8A8A8"/>
+        <!-- Grey -->
         <Setter Property="FontFamily" Value="../Resources/Font/#Star Jedi Rounded"/>
         <!-- Border -->
         <Setter Property="Template">
@@ -131,5 +132,5 @@
             </Trigger>
         </Style.Triggers>
     </Style>
-
+    
 </ResourceDictionary>

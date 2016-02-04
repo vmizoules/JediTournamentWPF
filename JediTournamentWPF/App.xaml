@@ -10,6 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <!-- Themes -->
                 <ResourceDictionary Source="Themes/ButtonsDictionary.xaml"/>
+                <ResourceDictionary Source="Themes/ComboBoxDictionary.xaml"/>
                 <ResourceDictionary Source="Themes/TextDictionary.xaml"/>
                 <!-- Converter -->
                 <ResourceDictionary Source="Resources/Converter/ConverterDictionary.xaml"/>

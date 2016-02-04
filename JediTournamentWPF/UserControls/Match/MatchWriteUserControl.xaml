@@ -8,6 +8,7 @@
              mc:Ignorable="d">
 
     <Grid Visibility="{Binding Path=., Converter={StaticResource NullToVisibility}}">
+        <!--<Grid>-->
         
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
@@ -28,10 +29,15 @@
                   ItemsSource="{Binding Jedis}"
                   DisplayMemberPath="Name"
                   SelectedValue="{Binding SelectedJedi}"
-                  Foreground="White">
-                  <ComboBox.Background>
-                      <SolidColorBrush Color="Black" Opacity="0.7"/>
-                  </ComboBox.Background>
+                  Foreground="White"
+                  Style="{DynamicResource ComboBoxFlatStyle}"
+                  >
+                <ComboBox.ItemContainerStyle>
+                    <Style TargetType="ComboBoxItem">
+                        <Setter Property="Background" Value="#121212"/>
+                        <Setter Property="BorderBrush" Value="#121212"/>
+                    </Style>
+                </ComboBox.ItemContainerStyle>
         </ComboBox>
 
         <Label x:Name="title"
@@ -47,10 +53,15 @@
                   ItemsSource="{Binding Path=Siths}"
                   DisplayMemberPath="Name"
                   SelectedValue="{Binding Path=SelectedSith}"
-                  Foreground="White">
-            <ComboBox.Background>
-                <SolidColorBrush Color="Black" Opacity="0.7"/>
-            </ComboBox.Background>
+                  Foreground="White"
+                  Style="{DynamicResource ComboBoxFlatStyle}"
+                  >
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Background" Value="#121212"/>
+                    <Setter Property="BorderBrush" Value="#121212"/>
+                </Style>
+            </ComboBox.ItemContainerStyle>
         </ComboBox>
 
         <local:JediReadUserControl x:Name="Jedi1UserControl"
@@ -70,11 +81,16 @@
                   ItemsSource="{Binding Stades}"
                   DisplayMemberPath="Planete"
                   SelectedValue="{Binding SelectedStade}"
-                  Foreground="White">
-                  <ComboBox.Background>
-                     <SolidColorBrush Color="Black" Opacity="0.7"/>
-                  </ComboBox.Background>
-         </ComboBox>
+                  Foreground="White"
+                  Style="{DynamicResource ComboBoxFlatStyle}"
+                  >
+            <ComboBox.ItemContainerStyle>
+                <Style TargetType="ComboBoxItem">
+                    <Setter Property="Background" Value="#121212"/>
+                    <Setter Property="BorderBrush" Value="#121212"/>
+                </Style>
+            </ComboBox.ItemContainerStyle>
+        </ComboBox>
 
         <local:StadeReadUserControl
             Grid.Row="3"
