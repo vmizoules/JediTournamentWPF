@@ -46,12 +46,17 @@ namespace DataAccessLayerTest {
             listTemp.Add(newJedi);
 
             List<Jedi> list2 = manager.getJedis();
-            Assert.AreEqual(list1, list2);
+            Assert.AreEqual(listTemp.Count, list2.Count);
+            Assert.AreEqual(list1[listTemp.Count - 1].ID, list2[list2.Count - 1].ID);
+            Assert.AreEqual(list1[listTemp.Count - 1].IsSith, list2[list2.Count - 1].IsSith);
+            Assert.AreEqual(list1[listTemp.Count - 1].Nom, list2[list2.Count - 1].Nom);
 
             manager.DeleteJedis(newJedi);
             list2 = manager.getJedis();
-
-            Assert.AreEqual(list1, list2);
+            Assert.AreEqual(list1.Count, list2.Count);
+            Assert.AreEqual(list1[list1.Count - 1].ID, list2[list2.Count - 1].ID);
+            Assert.AreEqual(list1[list1.Count - 1].IsSith, list2[list2.Count - 1].IsSith);
+            Assert.AreEqual(list1[list1.Count - 1].Nom, list2[list2.Count - 1].Nom);
 
         }
 
@@ -68,12 +73,17 @@ namespace DataAccessLayerTest {
             listTemp.Add(newStade);
 
             List<Stade> list2 = manager.getStades();
-            Assert.AreEqual(list1, list2);
+            Assert.AreEqual(listTemp.Count, list2.Count);
+            Assert.AreEqual(list1[listTemp.Count - 1].ID, list2[list2.Count - 1].ID);
+            Assert.AreEqual(list1[listTemp.Count - 1].NbPlaces, list2[list2.Count - 1].NbPlaces);
+            Assert.AreEqual(list1[listTemp.Count - 1].Planete, list2[list2.Count - 1].Planete);
 
             manager.DeleteStades(newStade);
             list2 = manager.getStades();
-
-            Assert.AreEqual(list1, list2);
+            Assert.AreEqual(list1.Count, list2.Count);
+            Assert.AreEqual(list1[list1.Count - 1].ID, list2[list2.Count - 1].ID);
+            Assert.AreEqual(list1[list1.Count - 1].NbPlaces, list2[list2.Count - 1].NbPlaces);
+            Assert.AreEqual(list1[list1.Count - 1].Planete, list2[list2.Count - 1].Planete);
         }
 
         [TestMethod]
@@ -89,7 +99,11 @@ namespace DataAccessLayerTest {
             manager.UpdateJedi(updatedJedi); //Modification du premier Jedi
 
             List<Jedi> list2 = manager.getJedis();
-            Assert.AreEqual(updatedJedi, list2[0]); //Test si le premier Jedi à bien été modifié
+            //Assert.AreEqual(updatedJedi, list2[0]); //Test si le premier Jedi à bien été modifié
+            Assert.AreEqual(list1.Count, list2.Count);
+            Assert.AreEqual(updatedJedi.ID, list2[0].ID);
+            Assert.AreEqual(updatedJedi.IsSith, list2[0].IsSith);
+            Assert.AreEqual(updatedJedi.Nom, list2[0].Nom);
 
             updatedJedi.IsSith = list1[0].IsSith;
             updatedJedi.Nom = list1[0].Nom;
@@ -97,7 +111,12 @@ namespace DataAccessLayerTest {
             manager.UpdateJedi(updatedJedi); //Reinitialisation du premier Jedi
             list2 = manager.getJedis();
 
-            Assert.AreEqual(list1, list2); //Test si le jedi est bien réinitialisé
+            //Assert.AreEqual(list1, list2); //Test si le jedi est bien réinitialisé
+            Assert.AreEqual(list1.Count, list2.Count);
+            Assert.AreEqual(list1[list1.Count - 1].ID, list2[0].ID);
+            Assert.AreEqual(list1[list1.Count - 1].IsSith, list2[0].IsSith);
+            Assert.AreEqual(list1[list1.Count - 1].Nom, list2[0].Nom);
+
         }
 
         [TestMethod]
@@ -113,7 +132,10 @@ namespace DataAccessLayerTest {
             manager.UpdateStade(updatedStade); //Modification du premier Stade
 
             List<Stade> list2 = manager.getStades();
-            Assert.AreEqual(updatedStade, list2[0]); //Test si le premier Stade à bien été modifié
+            //Assert.AreEqual(updatedStade, list2[0]); //Test si le premier Stade à bien été modifié
+            Assert.AreEqual(updatedStade.ID, list2[0].ID);
+            Assert.AreEqual(updatedStade.NbPlaces, list2[0].NbPlaces);
+            Assert.AreEqual(updatedStade.Planete, list2[0].Planete);
 
             updatedStade.NbPlaces = list1[0].NbPlaces;
             updatedStade.Planete = list1[0].Planete;
@@ -121,7 +143,11 @@ namespace DataAccessLayerTest {
             manager.UpdateStade(updatedStade); //Reinitialisation du premier Stade
             list2 = manager.getStades();
 
-            Assert.AreEqual(list1, list2); //Test si le stade est bien réinitialisé
+            //Assert.AreEqual(list1, list2); //Test si le stade est bien réinitialisé
+            Assert.AreEqual(list1[list1.Count - 1].ID, list2[0].ID);
+            Assert.AreEqual(list1[list1.Count - 1].NbPlaces, list2[0].NbPlaces);
+            Assert.AreEqual(list1[list1.Count - 1].Planete, list2[0].Planete);
+
         }
     }
 }
