@@ -22,8 +22,9 @@ namespace DataAccessLayer
             IDCARAC = 0,
             IDJEDI = 1,
             IDSTADE = 2,
-            NOM = 3,
-            VALEUR = 4
+            DEFINITION = 3,
+            NOM = 4,
+            VALEUR = 5
         }
         public enum Stade_enum // soit des enums soit des constantes
         {
@@ -53,7 +54,7 @@ namespace DataAccessLayer
         public List<Caracteristique> SelectCaracsByJediID(int idJedi) {
             List<Caracteristique> _carac = new List<Caracteristique>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
-                string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idJedi=@idJedi;";
+                string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Definition, c.Nom, c.Valeur From Carac c WHERE c.idJedi=@idJedi;";
                 SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
                 sqlcommand.Parameters.AddWithValue("@idJedi", idJedi);
                 sqlConnection.Open();
@@ -61,6 +62,8 @@ namespace DataAccessLayer
                 while (sqlDataReader.Read()) {
                     _carac.Add(new Caracteristique(sqlDataReader.GetInt32((int)Carac_enum.IDCARAC),
                                             sqlDataReader.GetString((int)Carac_enum.NOM),
+                                            sqlDataReader.GetInt32((int)Carac_enum.DEFINITION),
+                                            ETypeCaracteristique.Jedi,
                                             sqlDataReader.GetInt32((int)Carac_enum.VALEUR))
                     );
                 }
@@ -72,7 +75,7 @@ namespace DataAccessLayer
         public List<Caracteristique> SelectCaracByStadeID(int idStade) {
             List<Caracteristique> _carac = new List<Caracteristique>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
-                string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idStade=@idStade;";
+                string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Definition, c.Nom, c.Valeur From Carac c WHERE c.idStade=@idStade;";
                 SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
                 sqlcommand.Parameters.AddWithValue("@idStade", idStade);
                 sqlConnection.Open();
@@ -80,12 +83,149 @@ namespace DataAccessLayer
                 while (sqlDataReader.Read()) {
                     _carac.Add(new Caracteristique(sqlDataReader.GetInt32((int)Carac_enum.IDCARAC),
                                             sqlDataReader.GetString((int)Carac_enum.NOM),
+                                            sqlDataReader.GetInt32((int) Carac_enum.DEFINITION),
+                                            ETypeCaracteristique.Stade,
                                             sqlDataReader.GetInt32((int)Carac_enum.VALEUR))
                     );
                 }
                 sqlConnection.Close();
             }
             return _carac;
+        }
+
+        public bool InsertJediCarac(Caracteristique carac, Jedi jedi) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string req = "INSERT INTO Carac (idJedi, idStade, Definition, Nom, Valeur) VALUES (@idJedi, NULL, @Def, @Nom, @Valeur);";
+                SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
+                sqlcommand.Parameters.AddWithValue("@idJedi", jedi.ID);
+                sqlcommand.Parameters.AddWithValue("@Def", (int) carac.Definition);
+                sqlcommand.Parameters.AddWithValue("@Nom", carac.Nom);
+                sqlcommand.Parameters.AddWithValue("@Valeur", carac.Valeur);
+                sqlConnection.Open();
+                sqlcommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool InsertStadeCarac(Caracteristique carac, Stade stade) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string req = "INSERT INTO Carac (idJedi, idStade, Definition, Nom, Valeur) VALUES (NULL, @idStade, @Def, @Nom, @Valeur);";
+                SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
+                sqlcommand.Parameters.AddWithValue("@idStade", stade.ID);
+                sqlcommand.Parameters.AddWithValue("@Def", (int)carac.Definition);
+                sqlcommand.Parameters.AddWithValue("@Nom", carac.Nom);
+                sqlcommand.Parameters.AddWithValue("@Valeur", carac.Valeur);
+                sqlConnection.Open();
+                sqlcommand.ExecuteNonQuery();
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool RemoveCaracByID(int ID) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string requete = "DELETE FROM Carac WHERE idCarac='@ID'";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@ID", ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool RemoveJediCaracs(Jedi jedi) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string requete = "DELETE FROM Carac WHERE idJedi='@idJedi'";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idJedi", jedi.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool RemoveStadeCaracs(Stade stade) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string requete = "DELETE FROM Carac WHERE idStade='@idStade'";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idJedi", stade.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool EditCarac(Caracteristique c) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string requete = "UPDATE Carac SET Definition=@Def, Nom=@Nom, Valeur=@Valeur WHERE idCarac=@idCarac";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Def", (int) c.Definition);
+                sqlCommand.Parameters.AddWithValue("@Nom", c.Nom);
+                sqlCommand.Parameters.AddWithValue("@Valeur", c.Valeur);
+                sqlCommand.Parameters.AddWithValue("@idCarac", c.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool EditJediCaracs(Jedi j) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                foreach(Caracteristique c in j.Caracteristiques) {
+                    string requete = "UPDATE Carac SET Definition=@Def, Nom=@Nom, Valeur=@Valeur WHERE idJedi=@idJedi";
+                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@Def", (int) c.Definition);
+                    sqlCommand.Parameters.AddWithValue("@Nom", c.Nom);
+                    sqlCommand.Parameters.AddWithValue("@Valeur", c.Valeur);
+                    sqlCommand.Parameters.AddWithValue("@idJedi", j.ID);
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteNonQuery();   
+                }
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool EditStadeCaracs(Stade s) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                foreach (Caracteristique c in s.Caracteristiques) {
+                    string requete = "UPDATE Carac SET Definition=@Def, Nom=@Nom, Valeur=@Valeur WHERE idStade=@idStade";
+                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@Def", (int)c.Definition);
+                    sqlCommand.Parameters.AddWithValue("@Nom", c.Nom);
+                    sqlCommand.Parameters.AddWithValue("@Valeur", c.Valeur);
+                    sqlCommand.Parameters.AddWithValue("@idStade", s.ID);
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
         }
         #endregion
 
@@ -142,7 +282,7 @@ namespace DataAccessLayer
 
         public bool InsertJedi(Jedi _jedi)
         {
-            bool flag = true;
+            bool flag = false;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
              
@@ -165,7 +305,7 @@ namespace DataAccessLayer
 
         public bool RemoveJedi(Jedi _jedi)
         {
-            bool flag = true;
+            bool flag = false;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
                 string requete = "DELETE FROM Jedis WHERE idJedi='@idJedi'";
