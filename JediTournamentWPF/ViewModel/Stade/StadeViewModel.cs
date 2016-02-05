@@ -68,7 +68,7 @@ namespace JediTournamentWPF.ViewModel {
             {
                 if (value == m_stades.NbPlaces) return;
                 m_stades.NbPlaces = value;
-                OnPropertyChanged("Nombre de places");
+                OnPropertyChanged("NbPlaces");
             }
         }
     }
