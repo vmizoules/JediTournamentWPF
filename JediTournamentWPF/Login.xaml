@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:JediTournamentWPF"
         mc:Ignorable="d"
-        Title="Login" Height="300" Width="300" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Icon="Resources/icon.png">
+        Title="Login" Height="300" Width="300" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Center" Icon="Resources/Icons/app.png">
     <Window.Background>
         <ImageBrush ImageSource="Resources/login_background.jpg"/>
     </Window.Background>
