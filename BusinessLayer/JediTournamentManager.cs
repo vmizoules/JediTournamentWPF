@@ -7,13 +7,13 @@ using StubDataAccessLayer;          // TODO : échanger avec le DataAccessLayer
 using EntitiesLayer;
 using System.IO;
 using System.Xml.Serialization;
-
+//using DataAccessLayer;
 namespace BusinessLayer
 {
     public class JediTournamentManager
     {
-        private DalManager m_data;    /// Gestionnaire d'interactions avec la base de données.
-
+         //private DalManager m_data;    /// Gestionnaire d'interactions avec la base de données.
+        private DalManager m_data;
         /// <summary>
         /// Constructeur.
         /// </summary>
@@ -158,7 +158,7 @@ namespace BusinessLayer
         #region Insert
         public bool insertTournament(Tournoi t) {
             bool flag = true;
-
+           // m_data
             // TODO : to implement
 
             return flag;
@@ -179,7 +179,7 @@ namespace BusinessLayer
             Utilisateur user = m_data.getUtilisateurByLogin(login);
             return user != null && user.Password == passwd;
         }
-
+        
         public void serializeJedis(string path)
         {
             // La sérialization peut être placé soit dans BusinessLayer, Presentation ou DataAccessLayer (Jamais dans EntityLayer)

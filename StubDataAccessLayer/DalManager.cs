@@ -6,12 +6,14 @@ namespace StubDataAccessLayer
 {
     public class DalManager
     {
+        
         /// <summary>
         /// Permet d'obtenir la liste de tous les jedis connus.
         /// </summary>
         /// <returns>Liste des jedis.</returns>
         public List<Jedi> getAllJedis() 
         {
+            
             List<Jedi> listJedi = new List<Jedi>();
 
             // Caractéristiques éventuelles des jedis
@@ -123,7 +125,7 @@ namespace StubDataAccessLayer
 
             return listMatch;
         }
- 
+
         /// <summary>
         /// Permet de récupérer un utilisateur par login.
         /// </summary>
@@ -140,5 +142,6 @@ namespace StubDataAccessLayer
             users.Add(new Utilisateur("AMRANI", "Oumaima", "ouma", "ouma"));
             return users.Where(u => u.Login == login).FirstOrDefault();
         }
+
     }
 }
