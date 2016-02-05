@@ -59,7 +59,7 @@ namespace DataAccessLayer
         {
             return bd.RemoveStade(_stade);
         }
-        public int UpdateJedi(Jedi _jedi)
+        public bool UpdateJedi(Jedi _jedi)
         {
             return bd.EditJedi(_jedi);
         }

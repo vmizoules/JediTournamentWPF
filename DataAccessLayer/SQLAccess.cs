@@ -55,7 +55,7 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
                 string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idJedi=@idJedi;";
                 SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
-                sqlcommand.Parameters.AddWithValue("@idJedi", Carac_enum.IDJEDI);
+                sqlcommand.Parameters.AddWithValue("@idJedi", idJedi);
                 sqlConnection.Open();
                 SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
                 while (sqlDataReader.Read()) {
@@ -74,7 +74,7 @@ namespace DataAccessLayer
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
                 string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idStade=@idStade;";
                 SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
-                sqlcommand.Parameters.AddWithValue("@idStade", Carac_enum.IDSTADE);
+                sqlcommand.Parameters.AddWithValue("@idStade", idStade);
                 sqlConnection.Open();
                 SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
                 while (sqlDataReader.Read()) {
@@ -97,7 +97,7 @@ namespace DataAccessLayer
             {
                 string requete = "SELECT idJedi, Name, IsSith, Pic From Jedis WHERE idJedi =@idJedi;";
                 SqlCommand sqlcommand = new SqlCommand(requete, sqlConnection);
-                sqlcommand.Parameters.AddWithValue("@idJedi", Jedi_enum.IDJEDI);
+                sqlcommand.Parameters.AddWithValue("@idJedi", idJedi);
                 sqlConnection.Open();
                 SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
                 while (sqlDataReader.Read())
@@ -113,7 +113,6 @@ namespace DataAccessLayer
                     
                 sqlConnection.Close();
             }
-            
             return _jedi;
         }
         public List<Jedi> SelectAllJedis()
@@ -146,26 +145,18 @@ namespace DataAccessLayer
             bool flag = true;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                try
-                {
-                    string requete = "INSERT INTO Jedis (Name, IsSith, Pic) VALUES (@Name, @IsSith, @Pic)";
-                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@Name", _jedi.Nom);
-                    sqlCommand.Parameters.AddWithValue("@IsSith", _jedi.IsSith);
-                    if (!string.IsNullOrEmpty(_jedi.Photo)) { 
-                        sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Photo);
-                    }
-                    sqlConnection.Open();
-                    sqlCommand.ExecuteNonQuery();
+             
+                string requete = "INSERT INTO Jedis (Name, IsSith, Pic) VALUES (@Name, @IsSith, @Pic)";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@Name", _jedi.Nom);
+                sqlCommand.Parameters.AddWithValue("@IsSith", _jedi.IsSith);
+                if (!string.IsNullOrEmpty(_jedi.Photo)) { 
+                    sqlCommand.Parameters.AddWithValue("@Pic", _jedi.Photo);
                 }
-                catch (SqlException e)
-                {
-                    string s = e.Message;
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                
+                sqlConnection.Close();
                 flag = true;
             }
 
@@ -189,35 +180,29 @@ namespace DataAccessLayer
             return flag;
         }
 
-        public int EditJedi(Jedi _jedi)
+        public bool EditJedi(Jedi _jedi)
         {
             /*
             @ sert à indiquer que cette variable qui par exemple _jedi.Nom doit etre la meme que celle dans la table pour pouvoir la renomer 
             */
             /*command.Text = "UPDATE Student 
             SET Address = @add, City = @cit Where FirstName = @fn and LastName = @add";*/
-            int val = 0;
+            bool flag = false;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                try {
-                    string requete = "UPDATE Jedis SET Name=@name, IsSith=@Sith, Pic=@pic WHERE idJedi=@idjedi";
-                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@idjedi", _jedi.ID);
-                    sqlCommand.Parameters.AddWithValue("@name", _jedi.Nom);
-                    sqlCommand.Parameters.AddWithValue("@Sith", _jedi.IsSith);
-                    sqlCommand.Parameters.AddWithValue("@pic", _jedi.Photo);
-                    sqlConnection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                }
-                catch (SqlException e) {
-                    string s = e.Message;
-                }
-                finally { 
-                    sqlConnection.Close();
-                }
-                val = 1;
+                string requete = "UPDATE Jedis SET Name=@name, IsSith=@Sith, Pic=@pic WHERE idJedi=@idjedi";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idjedi", _jedi.ID);
+                sqlCommand.Parameters.AddWithValue("@name", _jedi.Nom);
+                sqlCommand.Parameters.AddWithValue("@Sith", _jedi.IsSith);
+                sqlCommand.Parameters.AddWithValue("@pic", _jedi.Photo);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+                sqlConnection.Close();
+
+                flag = true;
             }
-            return val;
+            return flag;
         }
         #endregion
         #region Gestion des stades
@@ -226,48 +211,20 @@ namespace DataAccessLayer
             List<Stade> _allStades = new List<Stade>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                try {
-                    string requete = "SELECT idStade, nbPlaces, planet, Pic FROM Stade;";
-                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
-                    sqlConnection.Open();
-                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                    while (sqlDataReader.Read())
-                    {
-                        List<Caracteristique> _carac = new List<Caracteristique>();
-                        using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
-                        {
-                            try { 
-                            string id = sqlDataReader.GetInt32((int)Stade_enum.IDSTADE).ToString(); ;
-                            string requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Stade stade, Carac carac WHERE stade.idStade=" + id + " AND stade.idStade=carac.idStade;";
-                            SqlCommand sqlCommand2 = new SqlCommand(requete2, sqlConnection2);
-                            sqlConnection2.Open();
-                            SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();//creation d'une nouvelle sqlDataReader2
-                            while (sqlDataReader2.Read())
-                            {
-                                _carac.Add(new Caracteristique(sqlDataReader2.GetInt32((int)Carac_enum.IDCARAC),
-                                                              sqlDataReader2.GetString((int)Carac_enum.NOM),
-                                                              sqlDataReader2.GetInt32((int)Carac_enum.VALEUR)));
-                            }
-                        }catch (SqlException e) {
-                                string s = e.Message;
-                            }
-                        finally {
-                        sqlConnection2.Close();
-                        }
-                            _allStades.Add(new Stade(sqlDataReader.GetInt32((int)Stade_enum.IDSTADE),
-                                               sqlDataReader.GetInt32((int)Stade_enum.NBPLACES),
-                                               sqlDataReader.GetString((int)Stade_enum.PLANET),
-                                               _carac,
-                                               (sqlDataReader[(int)Stade_enum.PIC] != DBNull.Value) ? sqlDataReader.GetString((int)Stade_enum.PIC) : ""));
-                        }
-                    }
+                string requete = "SELECT idStade, nbPlaces, planet, Pic FROM Stade;";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
+                {
+                    List<Caracteristique> _carac = SelectCaracByStadeID((int)Stade_enum.IDSTADE);
+                    _allStades.Add(new Stade(sqlDataReader.GetInt32((int)Stade_enum.IDSTADE),
+                                        sqlDataReader.GetInt32((int)Stade_enum.NBPLACES),
+                                        sqlDataReader.GetString((int)Stade_enum.PLANET),
+                                        _carac,
+                                        (sqlDataReader[(int)Stade_enum.PIC] != DBNull.Value) ? sqlDataReader.GetString((int)Stade_enum.PIC) : ""));
                 }
-                catch (SqlException e) {
-                    string s = e.Message;
-                }
-                finally { 
-                    sqlConnection.Close();
-                }
+                sqlConnection.Close();
             }
             return _allStades;
         }
