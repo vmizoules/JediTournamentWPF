@@ -191,23 +191,38 @@ namespace DataAccessLayer
         }
 
         public bool EditJediCaracs(Jedi j) {
-            /*
-            @ sert à indiquer que cette variable qui par exemple _jedi.Nom doit etre la meme que celle dans la table pour pouvoir la renomer 
-            */
-            /*command.Text = "UPDATE Student 
-            SET Address = @add, City = @cit Where FirstName = @fn and LastName = @add";*/
             bool flag = false;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
-                string requete = "UPDATE Jedis SET Name=@name, IsSith=@Sith, Pic=@pic WHERE idJedi=@idjedi";
-                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
-                sqlCommand.Parameters.AddWithValue("@idjedi", _jedi.ID);
-                sqlCommand.Parameters.AddWithValue("@name", _jedi.Nom);
-                sqlCommand.Parameters.AddWithValue("@Sith", _jedi.IsSith);
-                sqlCommand.Parameters.AddWithValue("@pic", _jedi.Photo);
-                sqlConnection.Open();
-                sqlCommand.ExecuteNonQuery();
+                foreach(Caracteristique c in j.Caracteristiques) {
+                    string requete = "UPDATE Carac SET Definition=@Def, Nom=@Nom, Valeur=@Valeur WHERE idJedi=@idJedi";
+                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@Def", (int) c.Definition);
+                    sqlCommand.Parameters.AddWithValue("@Nom", c.Nom);
+                    sqlCommand.Parameters.AddWithValue("@Valeur", c.Valeur);
+                    sqlCommand.Parameters.AddWithValue("@idJedi", j.ID);
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteNonQuery();   
+                }
                 sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
 
+        public bool EditStadeCaracs(Stade s) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                foreach (Caracteristique c in s.Caracteristiques) {
+                    string requete = "UPDATE Carac SET Definition=@Def, Nom=@Nom, Valeur=@Valeur WHERE idStade=@idStade";
+                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                    sqlCommand.Parameters.AddWithValue("@Def", (int)c.Definition);
+                    sqlCommand.Parameters.AddWithValue("@Nom", c.Nom);
+                    sqlCommand.Parameters.AddWithValue("@Valeur", c.Valeur);
+                    sqlCommand.Parameters.AddWithValue("@idStade", s.ID);
+                    sqlConnection.Open();
+                    sqlCommand.ExecuteNonQuery();
+                }
+                sqlConnection.Close();
                 flag = true;
             }
             return flag;
