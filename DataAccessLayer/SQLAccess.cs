@@ -142,12 +142,44 @@ namespace DataAccessLayer
             return flag;
         }
 
+        public bool RemoveJediCarac(Caracteristique c, Jedi j) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string requete = "DELETE FROM Carac WHERE idJedi=@idJedi AND idCarac=@idCarac";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idJedi", j.ID);
+                sqlCommand.Parameters.AddWithValue("@idCarac", c.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
         public bool RemoveJediCaracs(Jedi jedi) {
             bool flag = false;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
-                string requete = "DELETE FROM Carac WHERE idJedi='@idJedi'";
+                string requete = "DELETE FROM Carac WHERE idJedi=@idJedi";
                 SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
                 sqlCommand.Parameters.AddWithValue("@idJedi", jedi.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+                flag = true;
+            }
+            return flag;
+        }
+
+        public bool RemoveStadeCarac(Caracteristique c, Stade stade) {
+            bool flag = false;
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string requete = "DELETE FROM Carac WHERE idStade='@idStade AND idCarac=@idCarac'";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@idJedi", stade.ID);
+                sqlCommand.Parameters.AddWithValue("@idCarac", c.ID);
                 sqlConnection.Open();
                 sqlCommand.ExecuteNonQuery();
 
@@ -242,7 +274,7 @@ namespace DataAccessLayer
                 SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
                 while (sqlDataReader.Read())
                 {
-                    List<Caracteristique> _carac = SelectCaracsByJediID((int)Jedi_enum.IDJEDI);
+                    List<Caracteristique> _carac = SelectCaracsByJediID(idJedi);
                         
                     _jedi = new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
                                     sqlDataReader.GetString((int)Jedi_enum.NAME),

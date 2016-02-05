@@ -41,9 +41,20 @@ namespace DataAccessLayer
             bd = new SQLAccess(connection);
         }
 
+        public Jedi getJedi(int id) {
+            return bd.SelectJediById(id);
+        }
         public List<Jedi> getJedis()
         {
             return bd.SelectAllJedis();
+        }
+
+        public bool insertCarac(Caracteristique c, Jedi j) {
+            return bd.InsertJediCarac(c, j);
+        }
+
+        public bool removeCarac(Caracteristique c, Jedi j) {
+            return bd.RemoveJediCarac(c, j);
         }
 
         public List<Stade> getStades()

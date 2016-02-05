@@ -6,6 +6,13 @@ using System.Threading.Tasks;
 using EntitiesLayer;
 namespace DataAccessLayer {
     interface IBridge {
+
+        bool InsertJediCarac(Caracteristique carac, Jedi jedi);
+        bool InsertStadeCarac(Caracteristique carac, Stade stade);
+        bool RemoveJediCarac(Caracteristique c, Jedi j);
+        bool RemoveStadeCarac(Caracteristique c, Stade stade);
+        
+
         Jedi SelectJediById(int idJedi);
         List<Jedi> SelectAllJedis();
         bool InsertJedi(Jedi _jedi);

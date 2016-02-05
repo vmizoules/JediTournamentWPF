@@ -15,6 +15,28 @@ namespace DataAccessLayerTest {
             // TODO : to continue
         }
 
+
+        [TestMethod]
+        public void JediCaracTest() {
+            DalManager manager = new DalManager();
+
+            Jedi jediTest = manager.getJedi(1);
+            int count = jediTest.Caracteristiques.Count;
+            Assert.AreEqual(count, 3);
+
+            Caracteristique save = jediTest.Caracteristiques[0];
+
+            manager.removeCarac(save, jediTest);
+            jediTest = manager.getJedi(1);
+            count = jediTest.Caracteristiques.Count;
+            Assert.AreEqual(count, 2);
+
+            manager.insertCarac(save, jediTest);
+            jediTest = manager.getJedi(1);
+            count = jediTest.Caracteristiques.Count;
+            Assert.AreEqual(count, 3);
+        }
+
         [TestMethod]
         public void getJediTest() {
             DalManager manager = new DalManager();
