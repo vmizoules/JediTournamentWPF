@@ -59,6 +59,14 @@ namespace EntitiesLayer
             Valeur = valeur;
         }
 
+        public Caracteristique(int id, string nom, int definition, ETypeCaracteristique type, int valeur)
+            : base(id) {
+            Nom = nom;
+            Definition = (EDefCaracteristique) definition;
+            Type = type;
+            Valeur = valeur;
+        }
+
         public Caracteristique(int id, string nom, int valeur)
             : base(id)
         {
