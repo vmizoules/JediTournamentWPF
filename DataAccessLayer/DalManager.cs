@@ -51,7 +51,7 @@ namespace DataAccessLayer
             return bd.SelectAllStades();
         }
 
-        public int DeleteJedis(Jedi _jedi)
+        public bool DeleteJedis(Jedi _jedi)
         {
             return bd.RemoveJedi(_jedi);
         }
@@ -59,7 +59,7 @@ namespace DataAccessLayer
         {
             return bd.RemoveStade(_stade);
         }
-        public int UpdateJedi(Jedi _jedi)
+        public bool UpdateJedi(Jedi _jedi)
         {
             return bd.EditJedi(_jedi);
         }
@@ -67,7 +67,7 @@ namespace DataAccessLayer
         {
             return bd.EditStade(_stade);
         }
-        public int InsertJedi(Jedi _jedi)
+        public bool InsertJedi(Jedi _jedi)
         {
             return bd.InsertJedi(_jedi);
         }
