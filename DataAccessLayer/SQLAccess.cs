@@ -49,62 +49,69 @@ namespace DataAccessLayer
             m_connectionString = connectionString;
         }
 
+        #region Gestion Caractéristiques
+        public List<Caracteristique> SelectCaracsByJediID(int idJedi) {
+            List<Caracteristique> _carac = new List<Caracteristique>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idJedi=@idJedi;";
+                SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
+                sqlcommand.Parameters.AddWithValue("@idJedi", Carac_enum.IDJEDI);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
+                while (sqlDataReader.Read()) {
+                    _carac.Add(new Caracteristique(sqlDataReader.GetInt32((int)Carac_enum.IDCARAC),
+                                            sqlDataReader.GetString((int)Carac_enum.NOM),
+                                            sqlDataReader.GetInt32((int)Carac_enum.VALEUR))
+                    );
+                }
+                sqlConnection.Close();
+            }
+            return _carac;
+        }
+
+        public List<Caracteristique> SelectCaracByStadeID(int idStade) {
+            List<Caracteristique> _carac = new List<Caracteristique>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                string req = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idStade=@idStade;";
+                SqlCommand sqlcommand = new SqlCommand(req, sqlConnection);
+                sqlcommand.Parameters.AddWithValue("@idStade", Carac_enum.IDSTADE);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
+                while (sqlDataReader.Read()) {
+                    _carac.Add(new Caracteristique(sqlDataReader.GetInt32((int)Carac_enum.IDCARAC),
+                                            sqlDataReader.GetString((int)Carac_enum.NOM),
+                                            sqlDataReader.GetInt32((int)Carac_enum.VALEUR))
+                    );
+                }
+                sqlConnection.Close();
+            }
+            return _carac;
+        }
+        #endregion
+
         #region Gestion jedis
         public Jedi SelectJediById(int idJedi)
         {
             Jedi _jedi = null;
-                using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
+            {
+                string requete = "SELECT idJedi, Name, IsSith, Pic From Jedis WHERE idJedi =@idJedi;";
+                SqlCommand sqlcommand = new SqlCommand(requete, sqlConnection);
+                sqlcommand.Parameters.AddWithValue("@idJedi", Jedi_enum.IDJEDI);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
+                while (sqlDataReader.Read())
                 {
-                try {
-                    string requete = "SELECT idJedi, Name, IsSith, Pic From Jedis WHERE idJedi =@idJedi;";
-                    SqlCommand sqlcommand = new SqlCommand(requete, sqlConnection);
-                    sqlcommand.Parameters.AddWithValue("@idJedi", Jedi_enum.IDJEDI);
-                    sqlConnection.Open();
-                    SqlDataReader sqlDataReader = sqlcommand.ExecuteReader();
-                    while (sqlDataReader.Read())
-                    {
-                        List<Caracteristique> _carac = new List<Caracteristique>();
-                        using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
-                        {
-                            try {
-                                string requete2 = "SELECT c.idCarac, c.idJedi, c.idStade, c.Nom, c.Valeur From Carac c WHERE c.idJedi=@idJedi;";
-                                SqlCommand sqlcommand2 = new SqlCommand(requete2, sqlConnection);
-                                sqlcommand2.Parameters.AddWithValue("@idJedi", Carac_enum.IDJEDI);
-                                sqlConnection2.Open();
-                                SqlDataReader sqlDataReader2 = sqlcommand2.ExecuteReader();
-                                while (sqlDataReader2.Read())
-                                {
-                                    _carac.Add(new Caracteristique(sqlDataReader2.GetInt32((int)Carac_enum.IDCARAC),
-                                                          sqlDataReader2.GetString((int)Carac_enum.NOM),
-                                                          sqlDataReader2.GetInt32((int)Carac_enum.VALEUR))
-                                    );
-                                }
-                            } catch (SqlException e)
-                            {
-                                string s = e.Message;
-
-                            }
-                            finally
-                            {
-                                sqlConnection.Close();
-                            }
-                            sqlConnection2.Close();
-                            }
-                            _jedi = new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
-                                         sqlDataReader.GetString((int)Jedi_enum.NAME),
-                                         sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
-                                         _carac);
-                        //int id, string nom, bool isSith, List<Caracteristique> carac
-                        }
-                    }
-                catch (SqlException e)
-                {
-                    string s = e.Message;
-
+                    List<Caracteristique> _carac = SelectCaracsByJediID((int)Jedi_enum.IDJEDI);
+                        
+                    _jedi = new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
+                                    sqlDataReader.GetString((int)Jedi_enum.NAME),
+                                    sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
+                                    _carac);
+                    //int id, string nom, bool isSith, List<Caracteristique> carac
                 }
-                finally {
-                    sqlConnection.Close();
-                }
+                    
+                sqlConnection.Close();
             }
             
             return _jedi;
@@ -114,67 +121,29 @@ namespace DataAccessLayer
             List<Jedi> _allJedis = new List<Jedi>();
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                try
+                
+                string requete = "SELECT idJedi, Name, isSith, Pic FROM Jedis;";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlConnection.Open();
+                SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                while (sqlDataReader.Read())
                 {
-                    string requete = "SELECT idJedi, Name, isSith, Pic FROM Jedis;";
-                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
-                    sqlConnection.Open();
-                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-                    while (sqlDataReader.Read())
-                    {
-                        List<Caracteristique> _carac = new List<Caracteristique>();
-                        using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString))
-                        {
-                            try {
-                                string _idjedi = sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI).ToString(); ;
-                                string requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Jedis jedi, Carac carac WHERE jedi.idJedi=" + _idjedi + " AND jedi.idJedi=carac.idJedi;";
-                                SqlCommand sqlCommand2 = new SqlCommand(requete2, sqlConnection2);
-                                sqlConnection2.Open();
-
-                                SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();//creation d'une nouvelle sqlDataReader2
-                                while (sqlDataReader2.Read())
-                                {
-                                    _carac.Add(new Caracteristique(sqlDataReader2.GetInt32((int)Carac_enum.IDCARAC),
-                                                              sqlDataReader2.GetString((int)Carac_enum.NOM),
-                                                              sqlDataReader2.GetInt32((int)Carac_enum.VALEUR))
-                                  );
-                                }
-                                sqlConnection2.Close();
-                                //jointure entre les 2 tables
-                            }
-                            catch (SqlException e)
-                            {
-                                string s = e.Message;
-
-                            }
-                            finally
-                            {
-                                sqlConnection2.Close();
-                            }
-                        }
-                        // int id, string nom, bool isSith, List< Caracteristique > carac
-                        _allJedis.Add(new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
-                                            sqlDataReader.GetString((int)Jedi_enum.NAME),
-                                            sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
-                                            _carac,
-                                            (sqlDataReader[(int)Jedi_enum.PIC] != DBNull.Value)? sqlDataReader.GetString((int)Jedi_enum.PIC) : ""));
-                    }
+                    List<Caracteristique> _carac = SelectCaracsByJediID((int)Jedi_enum.IDJEDI);
+                    // int id, string nom, bool isSith, List< Caracteristique > carac
+                    _allJedis.Add(new Jedi(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI),
+                                        sqlDataReader.GetString((int)Jedi_enum.NAME),
+                                        sqlDataReader.GetBoolean((int)Jedi_enum.ISSITH),
+                                        _carac,
+                                        (sqlDataReader[(int)Jedi_enum.PIC] != DBNull.Value)? sqlDataReader.GetString((int)Jedi_enum.PIC) : ""));
                 }
-                catch (SqlException e)
-                {
-                    string s = e.Message;
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
+                sqlConnection.Close();
             }
             return _allJedis;
         }
 
-        public int InsertJedi(Jedi _jedi)
+        public bool InsertJedi(Jedi _jedi)
         {
-            int nb = 0;
+            bool flag = true;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
                 try
@@ -197,36 +166,27 @@ namespace DataAccessLayer
                 {
                     sqlConnection.Close();
                 }
-                nb = 1;
+                flag = true;
             }
 
-            return nb;
+            return flag;
         }
 
-        public int RemoveJedi(Jedi _jedi)
+        public bool RemoveJedi(Jedi _jedi)
         {
-            int val = 0;
+            bool flag = true;
             using (SqlConnection sqlConnection = new SqlConnection(m_connectionString))
             {
-                try
-                {
-                    string requete = "DELETE FROM Jedis WHERE idJedi='@idJedi'";
-                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
-                    sqlCommand.Parameters.AddWithValue("@id", _jedi.ID);
-                    sqlConnection.Open();
-                    sqlCommand.ExecuteNonQuery();
-                }
-                catch (SqlException e)
-                {
-                    string s = e.Message;
-                }
-                finally
-                {
-                    sqlConnection.Close();
-                }
-                val = 1;
+                string requete = "DELETE FROM Jedis WHERE idJedi='@idJedi'";
+                SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                sqlCommand.Parameters.AddWithValue("@id", _jedi.ID);
+                sqlConnection.Open();
+                sqlCommand.ExecuteNonQuery();
+
+                sqlConnection.Close();
+                flag = true;
             }
-            return val;
+            return flag;
         }
 
         public int EditJedi(Jedi _jedi)
@@ -449,6 +409,7 @@ namespace DataAccessLayer
         }
         #endregion
 
+        #region Tournois
         public Tournoi selectTournoiById()
         {
             throw new NotImplementedException();
@@ -528,6 +489,57 @@ namespace DataAccessLayer
             }
             return val;
         }
+        #endregion
+
+        #region Matchs
+        public List<Match> SelectAllMatchs() {
+            List<Match> _allMatchs = new List<Match>();
+            using (SqlConnection sqlConnection = new SqlConnection(m_connectionString)) {
+                try {
+                    string requete = "SELECT idMatch, idJedi1, idJedi2, phaseTournoi, idStade, idVainqueur, idTournoi;";
+                    SqlCommand sqlCommand = new SqlCommand(requete, sqlConnection);
+                    sqlConnection.Open();
+                    SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+                    while (sqlDataReader.Read()) {
+                        Jedi jedi1 = SelectJediById(sqlDataReader.GetInt32((int)Jedi_enum.IDJEDI));
+                        using (SqlConnection sqlConnection2 = new SqlConnection(m_connectionString)) {
+                            try {
+                                string id = sqlDataReader.GetInt32((int)Stade_enum.IDSTADE).ToString(); ;
+                                string requete2 = "SELECT carac.idCarac, carac.idJedi, carac.idStade, carac.Nom ,carac.Valeur FROM Stade stade, Carac carac WHERE stade.idStade=" + id + " AND stade.idStade=carac.idStade;";
+                                SqlCommand sqlCommand2 = new SqlCommand(requete2, sqlConnection2);
+                                sqlConnection2.Open();
+                                SqlDataReader sqlDataReader2 = sqlCommand2.ExecuteReader();//creation d'une nouvelle sqlDataReader2
+                                while (sqlDataReader2.Read()) {
+                                    /*_carac.Add(new Caracteristique(sqlDataReader2.GetInt32((int)Carac_enum.IDCARAC),
+                                                                  sqlDataReader2.GetString((int)Carac_enum.NOM),
+                                                                  sqlDataReader2.GetInt32((int)Carac_enum.VALEUR)));*/
+                                }
+                            }
+                            catch (SqlException e) {
+                                string s = e.Message;
+                            }
+                            finally {
+                                sqlConnection2.Close();
+                            }
+                            /*_allMatchs.Add(new Stade(sqlDataReader.GetInt32((int)Stade_enum.IDSTADE),
+                                               sqlDataReader.GetInt32((int)Stade_enum.NBPLACES),
+                                               sqlDataReader.GetString((int)Stade_enum.PLANET),
+                                               _carac,
+                                               (sqlDataReader[(int)Stade_enum.PIC] != DBNull.Value) ? sqlDataReader.GetString((int)Stade_enum.PIC) : ""));*/
+                        }
+                    }
+                }
+                catch (SqlException e) {
+                    string s = e.Message;
+                }
+                finally {
+                    sqlConnection.Close();
+                }
+            }
+            return _allMatchs;
+        }
+        #endregion
+
     }
 }
 

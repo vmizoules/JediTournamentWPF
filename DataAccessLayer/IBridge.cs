@@ -8,8 +8,8 @@ namespace DataAccessLayer {
     interface IBridge {
         Jedi SelectJediById(int idJedi);
         List<Jedi> SelectAllJedis();
-        int InsertJedi(Jedi _jedi);
-        int RemoveJedi(Jedi _jedi);
+        bool InsertJedi(Jedi _jedi);
+        bool RemoveJedi(Jedi _jedi);
         int EditJedi(Jedi _jedi);
         //----------------------------------------------------
         Stade selectStadeById(int idStade);
