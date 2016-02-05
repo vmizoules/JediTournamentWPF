@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JediTournamentWPF.ViewModel {
-    class CaracteristiqueViewModel : ViewModelBase
+    public class CaracteristiqueViewModel : ViewModelBase
     {
         private EntitiesLayer.Caracteristique _carac;
 

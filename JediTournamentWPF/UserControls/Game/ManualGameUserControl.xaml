@@ -11,10 +11,11 @@
     <Grid>
         <Viewbox x:Name="viewbox" Visibility="Visible">
             <TextBlock x:Name="displayText"
-                       HorizontalAlignment="Center"
-                       TextWrapping="Wrap"
+                       Margin="30, 30, 0, 30"
+                       Style="{DynamicResource title}"
+                       HorizontalAlignment="Right"
                        Text="Ready ?"
-                       Foreground="White"/>
+                       />
         </Viewbox>
         <Grid x:Name="resultsGrid" Visibility="Hidden">
             <Grid.ColumnDefinitions>

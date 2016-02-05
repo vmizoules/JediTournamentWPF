@@ -11,7 +11,7 @@ namespace JediTournamentWPF.ViewModel {
     /// <summary>
     /// ViewModel pour les Jedis
     /// </summary>
-    class JediViewModel : ViewModelBase {
+    public class JediViewModel : ViewModelBase {
 
         private CaracteristiquesViewModel _caracs;
         private Jedi m_jedi;

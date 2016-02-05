@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using EntitiesLayer;
+using JediTournamentWPF.ViewModel;
 
 namespace JediTournamentWPF.UserControls {
     /// <summary>
@@ -22,6 +23,12 @@ namespace JediTournamentWPF.UserControls {
 
         public JediReadUserControl() {
             InitializeComponent();
+        }
+
+        public JediReadUserControl(JediViewModel jvm)
+        {
+            InitializeComponent();
+            DataContext = jvm;
         }
     }
 }
