@@ -69,7 +69,7 @@ namespace DataAccessLayer
         }
         public bool InsertJedi(Jedi _jedi)
         {
-            return bo.InsertJedi(_jedi);
+            return bd.InsertJedi(_jedi);
         }
         public int InsertStade(Stade _stade)
         {
